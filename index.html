@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <!-- SEO Meta Tags -->
     <title>Happy AI Path | Executive AI Coaching & Team Training</title>
     <meta name="description" content="Expert executive AI coaching and team training to guide your organization from AI uncertainty to strategic advantage. Achieve confident AI adoption with a seasoned Fortune 100 technology leader.">
-    <meta name="keywords" content="Executive AI Coaching, AI Team Training, AI Adoption, AI Strategy, AI Leadership, Prompt Engineering">
+    <meta name="keywords" content="Executive AI Coaching, AI Team Training, AI Adoption, AI Strategy, AI Leadership, Prompt Engineering, AI Readiness Quiz">
     <meta name="author" content="Jim Perry, Happy AI Path">
-    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>Path</text></svg>">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -61,6 +63,7 @@
             width: 100%;
             height: 100%;
             z-index: 0;
+            opacity: 0.5;
         }
 
         .path {
@@ -92,6 +95,40 @@
             display: block;
         }
     </style>
+    
+    <!-- JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Happy AI Path",
+      "image": "https://arthurpolo.github.io/happyaipath/DSC00498%20(Small).jpg",
+      "url": "https://happyaipath.com",
+      "telephone": "",
+      "description": "Executive AI coaching and team training to guide organizations from AI uncertainty to strategic advantage.",
+      "founder": {
+        "@type": "Person",
+        "name": "Jim Perry",
+        "url": "https://www.linkedin.com/in/jimperry"
+      },
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Executive AI Coaching"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "AI Team Training"
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-white text-gray-800">
 
@@ -107,6 +144,7 @@
                         <a href="#" onclick="event.preventDefault(); showPage('home')" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Home</a>
                         <a href="#services" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Services</a>
                         <a href="#about" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                        <a href="#" onclick="event.preventDefault(); showPage('quiz')" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Quiz</a>
                         <a href="#" onclick="event.preventDefault(); showPage('blog')" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Blog</a>
                         <a href="#testimonials" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Testimonials</a>
                         <a href="#contact" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
@@ -127,6 +165,7 @@
                  <a href="#" onclick="event.preventDefault(); showPage('home'); closeMobileMenu();" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Home</a>
                 <a href="#services" class="nav-link text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Services</a>
                 <a href="#about" class="nav-link text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#" onclick="event.preventDefault(); showPage('quiz'); closeMobileMenu();" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Quiz</a>
                 <a href="#" onclick="event.preventDefault(); showPage('blog'); closeMobileMenu();" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
                 <a href="#testimonials" class="nav-link text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Testimonials</a>
                 <a href="#contact" class="nav-link text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
@@ -141,11 +180,18 @@
              <svg class="animated-path" viewBox="0 0 1000 300" preserveAspectRatio="none">
                 <path class="path" d="M -100 150 Q 250 50 500 150 T 1100 150" fill="none" stroke="rgba(79, 70, 229, 0.2)" stroke-width="2"/>
             </svg>
-            <div class="max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8 text-center relative z-10">
-                <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl hero-h1">From AI Uncertainty to Strategic Advantage</h1>
-                <p class="mt-6 max-w-3xl mx-auto text-xl text-gray-300 hero-p">Leveraging 20+ years of enterprise tech leadership to guide your organization through a successful, human-centered AI transformation.</p>
-                <div class="mt-10 hero-p">
-                    <a href="#contact" class="nav-link bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block cta-button hover:bg-indigo-700">Schedule a Consultation</a>
+            <div class="max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8 relative z-10">
+                <div class="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
+                    <div class="text-center lg:text-left">
+                        <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl hero-h1">From AI Uncertainty to Strategic Advantage</h1>
+                        <p class="mt-6 max-w-2xl mx-auto lg:mx-0 text-xl text-gray-300 hero-p">Leveraging my 20+ years of enterprise tech leadership to guide your organization through a successful, human-centered AI transformation.</p>
+                    </div>
+                    <div class="mt-10 lg:mt-0 flex-shrink-0">
+                         <div class="flex flex-col items-center lg:items-start space-y-4">
+                             <a href="#contact" class="nav-link w-full sm:w-auto bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block text-center cta-button hover:bg-indigo-700">Schedule a Consultation</a>
+                             <a href="#" onclick="event.preventDefault(); showPage('quiz')" class="w-full sm:w-auto bg-transparent border-2 border-white text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block text-center cta-button hover:bg-white hover:text-gray-900">Take the AI Readiness Quiz</a>
+                         </div>
+                    </div>
                 </div>
             </div>
         </header>
@@ -156,14 +202,15 @@
             <section id="services" class="py-20 bg-gray-100">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center">
-                        <h2 class="text-base font-semibold text-teal-600 tracking-wide uppercase">Our Services</h2>
+                        <h2 class="text-base font-semibold text-teal-600 tracking-wide uppercase">My Services</h2>
                         <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">Corporate AI Training & Executive Coaching</p>
-                        <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">We provide tailored programs to help your business innovate and become operationally efficient with AI.</p>
+                        <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">I provide tailored programs to help your business innovate and become operationally efficient with AI.</p>
+                        <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600 italic">All coaching and training is delivered in a safe, inclusive learning environment to encourage curiosity and build confidence.</p>
                     </div>
                     <div class="mt-12 grid gap-10 md:grid-cols-2 lg:gap-12">
                         <!-- Service 1: AI Team Training -->
                         <div class="bg-white rounded-lg shadow-lg p-8 card-hover">
-                             <img class="h-48 w-full object-cover rounded-md" src="https://placehold.co/600x400/0d9488/ffffff?text=Team+Training" alt="A corporate team engaged in AI training workshop" >
+                             <img class="h-48 w-full object-cover rounded-md" src="https://placehold.co/600x400/0d9488/ffffff?text=Team+Training" alt="A corporate team engaged in an AI training workshop to improve their AI adoption strategy." >
                             <h3 class="mt-6 text-2xl font-bold text-gray-900">AI Team Training</h3>
                             <p class="mt-4 text-gray-600">Empower your teams with cutting-edge skills through hands-on workshops designed to transform day-to-day business operations.</p>
                             <ul class="mt-6 space-y-2 text-gray-600">
@@ -175,7 +222,7 @@
                         </div>
                         <!-- Service 2: Executive Coaching -->
                         <div class="bg-white rounded-lg shadow-lg p-8 card-hover">
-                             <img class="h-48 w-full object-cover rounded-md" src="https://placehold.co/600x400/4f46e5/ffffff?text=AI+Coaching" alt="An executive receiving one-on-one AI coaching">
+                             <img class="h-48 w-full object-cover rounded-md" src="https://placehold.co/600x400/4f46e5/ffffff?text=AI+Coaching" alt="An executive leader receiving one-on-one executive AI coaching for strategic advantage.">
                             <h3 class="mt-6 text-2xl font-bold text-gray-900">Executive AI Coaching</h3>
                             <p class="mt-4 text-gray-600">Ongoing strategic support to help senior leaders build AI fluency and confidently integrate artificial intelligence into their daily workflow.</p>
                              <ul class="mt-6 space-y-2 text-gray-600">
@@ -196,9 +243,9 @@
                         <div>
                             <h2 class="text-base font-semibold text-teal-600 tracking-wide uppercase">About Jim Perry</h2>
                             <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">Your Guide on the Path to AI Adoption</p>
-                            <p class="mt-4 text-gray-600">Jim Perry is a seasoned technology leader with over 20 years of experience driving business transformation for Fortune 100 companies. His expertise is in helping organizations navigate major technological shifts by focusing on human-centered strategy and clear, effective implementation.</p>
-                            <p class="mt-4 text-gray-600">As an Adjunct Lecturer at The Ohio State University Fisher College of Business, Jim designs and teaches courses in AI Prompt Engineering, empowering the next generation of leaders to harness the power of AI. His passion is demystifying complex technology and making it accessible and practical for everyday business use.</p>
-                            <p class="mt-4 text-gray-600">This unique blend of deep technical knowledge and a passion for education allows Jim to offer a holistic approach to AI adoption and leadership development.</p>
+                            <p class="mt-4 text-gray-600">I'm a seasoned technology leader with over 20 years of experience driving business transformation for Fortune 100 companies. My expertise is in helping organizations navigate major technological shifts by focusing on human-centered strategy and clear, effective implementation.</p>
+                            <p class="mt-4 text-gray-600">As an Adjunct Lecturer at The Ohio State University Fisher College of Business, I design and teach courses in AI Prompt Engineering, empowering the next generation of leaders to harness the power of AI. My passion is demystifying complex technology and making it accessible for practical business use.</p>
+                            <p class="mt-4 text-gray-600">This unique blend of deep technical knowledge and a passion for education allows me to offer a holistic approach to AI adoption. My teaching background has taught me that every learner is different, and I bring that inclusive, adaptable style to all my coaching and training engagements.</p>
                         </div>
                         <div class="mt-10 lg:mt-0 flex justify-center">
                             <img class="rounded-lg shadow-xl object-cover w-full max-w-md" src="DSC00498 (Small).jpg" alt="Headshot of Jim Perry, founder of Happy AI Path">
@@ -211,14 +258,14 @@
             <section id="blog-preview" class="py-20 bg-gray-100">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center">
-                        <h2 class="text-base font-semibold text-teal-600 tracking-wide uppercase">Latest Insights</h2>
-                        <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">Your Journey to AI Fluency</p>
+                        <h2 class="text-base font-semibold text-teal-600 tracking-wide uppercase">My Latest Insights</h2>
+                        <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">AI Strategy & Leadership Blog</p>
                          <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">Explore strategies and ideas for effective AI adoption and innovation.</p>
                     </div>
                     <div class="mt-12 grid gap-10 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
                         <!-- Blog Post 1 -->
                         <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
-                            <img class="h-48 w-full object-cover" src="https://placehold.co/600x400/4f46e5/ffffff?text=Gemini+2.5" alt="Google Gemini AI logo">
+                            <img class="h-48 w-full object-cover" src="https://placehold.co/600x400/4f46e5/ffffff?text=Gemini+2.5" alt="Google Gemini AI logo representing the latest AI news.">
                             <div class="p-6">
                                 <p class="text-sm text-gray-500">JULY 22, 2025</p>
                                 <h3 class="mt-2 text-xl font-semibold text-gray-900">Gemini 2.5 is Now Enterprise-Ready: What it Means for You</h3>
@@ -230,7 +277,7 @@
                         </div>
                         <!-- Blog Post 2 -->
                         <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
-                            <img class="h-48 w-full object-cover" src="https://placehold.co/600x400/0d9488/ffffff?text=ChatGPT" alt="ChatGPT logo with a meeting icon">
+                            <img class="h-48 w-full object-cover" src="https://placehold.co/600x400/0d9488/ffffff?text=ChatGPT" alt="ChatGPT logo representing AI productivity tools for meetings.">
                             <div class="p-6">
                                 <p class="text-sm text-gray-500">JULY 15, 2025</p>
                                 <h3 class="mt-2 text-xl font-semibold text-gray-900">Is AI Coming for Your Meetings? ChatGPT Says Yes.</h3>
@@ -242,7 +289,7 @@
                         </div>
                         <!-- Blog Post 3 -->
                          <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
-                            <img class="h-48 w-full object-cover" src="https://placehold.co/600x400/111827/ffffff?text=AI+Strategy" alt="A person planning an AI strategy on a whiteboard">
+                            <img class="h-48 w-full object-cover" src="https://placehold.co/600x400/111827/ffffff?text=AI+Strategy" alt="A person planning an AI adoption strategy on a whiteboard.">
                             <div class="p-6">
                                 <p class="text-sm text-gray-500">JULY 8, 2025</p>
                                 <h3 class="mt-2 text-xl font-semibold text-gray-900">5 Mistakes to Avoid in Your AI Adoption Strategy</h3>
@@ -260,8 +307,8 @@
             <section id="testimonials" class="py-20 bg-white">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                      <div class="text-center">
-                        <h2 class="text-base font-semibold text-teal-600 tracking-wide uppercase">Testimonials</h2>
-                        <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">What Our Clients Say</p>
+                        <h2 class="text-base font-semibold text-teal-600 tracking-wide uppercase">What My Clients Say</h2>
+                        <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">AI Coaching & Training Testimonials</p>
                     </div>
                     <div class="mt-12 grid gap-8 md:grid-cols-1 lg:grid-cols-3">
                         <div class="bg-gray-100 rounded-lg p-6">
@@ -296,8 +343,8 @@
                           allow="geolocation; microphone; camera"
                           src="https://form.jotform.com/251755448879072"
                           frameborder="0"
-                          style="min-width: 100%; height:850px; border:none;"
-                          scrolling="no"
+                          style="min-width: 100%; width: 100%; height:850px; border:none;"
+                          scrolling="yes"
                         >
                         </iframe>
                     </div>
@@ -351,11 +398,92 @@
         </div>
     </div>
 
+    <!-- AI Readiness Quiz Page -->
+    <div id="quiz" class="page">
+        <div class="bg-white py-20">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                 <div class="text-center">
+                    <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">AI Readiness Quiz</h1>
+                    <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">Take this 2-minute quiz to gauge your organization's readiness for AI adoption.</p>
+                 </div>
+
+                 <div class="mt-12 bg-gray-100 p-8 rounded-lg shadow-md">
+                    <form id="aiQuiz">
+                        <div class="space-y-8">
+                            <!-- Question 1 -->
+                            <div>
+                                <h3 class="text-lg font-medium text-gray-900">1. How would you describe your leadership team's current understanding of AI's strategic potential?</h3>
+                                <fieldset class="mt-4">
+                                    <legend class="sr-only">AI Understanding</legend>
+                                    <div class="space-y-4">
+                                        <div class="flex items-center"><input type="radio" name="q1" value="1" class="h-4 w-4 text-indigo-600 border-gray-300"><label class="ml-3 block text-sm font-medium text-gray-700">Beginner: We are just starting to explore what AI can do.</label></div>
+                                        <div class="flex items-center"><input type="radio" name="q1" value="2" class="h-4 w-4 text-indigo-600 border-gray-300"><label class="ml-3 block text-sm font-medium text-gray-700">Intermediate: We have some knowledge but need a clearer strategy.</label></div>
+                                        <div class="flex items-center"><input type="radio" name="q1" value="3" class="h-4 w-4 text-indigo-600 border-gray-300"><label class="ml-3 block text-sm font-medium text-gray-700">Advanced: We have a solid understanding and are looking to optimize.</label></div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <!-- Question 2 -->
+                            <div>
+                                <h3 class="text-lg font-medium text-gray-900">2. How clearly defined are the business problems you plan to solve with AI?</h3>
+                                <fieldset class="mt-4">
+                                    <legend class="sr-only">Business Problems</legend>
+                                    <div class="space-y-4">
+                                        <div class="flex items-center"><input type="radio" name="q2" value="1" class="h-4 w-4 text-indigo-600 border-gray-300"><label class="ml-3 block text-sm font-medium text-gray-700">Not Defined: We know we need AI, but aren't sure where to start.</label></div>
+                                        <div class="flex items-center"><input type="radio" name="q2" value="2" class="h-4 w-4 text-indigo-600 border-gray-300"><label class="ml-3 block text-sm font-medium text-gray-700">Partially Defined: We have a few ideas but need to prioritize.</label></div>
+                                        <div class="flex items-center"><input type="radio" name="q2" value="3" class="h-4 w-4 text-indigo-600 border-gray-300"><label class="ml-3 block text-sm font-medium text-gray-700">Clearly Defined: We have specific, high-priority use cases identified.</label></div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <!-- Question 3 -->
+                            <div>
+                                <h3 class="text-lg font-medium text-gray-900">3. How would you describe your team's current skill set regarding AI tools?</h3>
+                                <fieldset class="mt-4">
+                                    <legend class="sr-only">Team Skills</legend>
+                                    <div class="space-y-4">
+                                        <div class="flex items-center"><input type="radio" name="q3" value="1" class="h-4 w-4 text-indigo-600 border-gray-300"><label class="ml-3 block text-sm font-medium text-gray-700">Limited: Most of our team has little to no experience with AI tools.</label></div>
+                                        <div class="flex items-center"><input type="radio" name="q3" value="2" class="h-4 w-4 text-indigo-600 border-gray-300"><label class="ml-3 block text-sm font-medium text-gray-700">Mixed: Some team members are proficient, while others are beginners.</label></div>
+                                        <div class="flex items-center"><input type="radio" name="q3" value="3" class="h-4 w-4 text-indigo-600 border-gray-300"><label class="ml-3 block text-sm font-medium text-gray-700">Proficient: Our team is generally comfortable using and adapting to new AI tools.</label></div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                             <button type="submit" class="w-full bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block text-center cta-button hover:bg-indigo-700">See My Results</button>
+                        </div>
+                    </form>
+                    <div id="quiz-results" class="hidden mt-8 text-center p-6 bg-white rounded-lg shadow-inner">
+                        <h3 class="text-2xl font-bold text-gray-900">Your AI Readiness Score:</h3>
+                        <p id="score-text" class="mt-2 text-lg text-gray-600"></p>
+                        <button onclick="event.preventDefault(); showPage('home'); document.getElementById('contact').scrollIntoView();" class="mt-6 text-indigo-600 hover:text-indigo-800 font-semibold">Let's discuss your results &rarr;</button>
+                    </div>
+                 </div>
+
+                 <div class="text-center mt-8">
+                    <button onclick="event.preventDefault(); showPage('home')" class="mt-6 text-indigo-600 hover:text-indigo-800 font-semibold">&larr; Back to Home</button>
+                 </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Footer -->
     <footer class="bg-gray-900">
         <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-            <div class="text-center text-base text-gray-400">
+             <div class="flex justify-center space-x-6">
+                <a href="mailto:JimPerry@happyaipath.com" class="text-gray-400 hover:text-white">
+                    <span class="sr-only">Email</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/jimperry" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white">
+                    <span class="sr-only">LinkedIn</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="mt-8 text-center text-base text-gray-400">
                 &copy; 2025 Happy AI Path. All rights reserved.
             </div>
         </div>
@@ -366,6 +494,10 @@
         const navLinks = document.querySelectorAll('.nav-link');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const quizForm = document.getElementById('aiQuiz');
+        const quizResults = document.getElementById('quiz-results');
+        const scoreText = document.getElementById('score-text');
+
 
         function showPage(pageId) {
             // Hide all pages
@@ -408,6 +540,31 @@
                 }, 0);
             });
         });
+
+        // Handle Quiz Submission
+        if(quizForm) {
+            quizForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(quizForm);
+                let score = 0;
+                for (let value of formData.values()) {
+                    score += parseInt(value, 10);
+                }
+
+                let resultMessage = '';
+                if (score <= 4) {
+                    resultMessage = "You're at the beginning of your AI path. This is the perfect time to build a strong foundation. My coaching can help chart your course.";
+                } else if (score <= 7) {
+                    resultMessage = "You have a solid base! Now is the time to refine your strategy and accelerate adoption. My training and coaching can provide the targeted guidance you need.";
+                } else {
+                    resultMessage = "You're well on your way to AI fluency! My executive coaching can help you optimize your strategy and lead your team to the next level of innovation.";
+                }
+                scoreText.textContent = resultMessage;
+                quizResults.classList.remove('hidden');
+
+            });
+        }
+
 
         // Set the initial page
         showPage('home');
