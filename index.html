@@ -24,7 +24,7 @@
     <meta property="twitter:description" content="From AI uncertainty to strategic advantage. Expert coaching to guide your organization's AI transformation.">
     <meta property="twitter:image" content="https://arthurpolo.github.io/happyaipath/social-preview.jpg"> <!-- Note: Replace with a real URL to a 1200x630px image -->
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>Path</text></svg>">
+    <link rel="icon" href="HappyAIPath.png" type="image/png">
     
     <!-- Performance: Preconnect to Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -107,9 +107,20 @@
 
         /* Cookie Banner */
         #cookie-banner {
-            display: none; position: fixed; bottom: 0; left: 0; width: 100%; background-color: #1f2937; color: white; padding: 1rem; z-index: 100; transition: bottom 0.5s ease-in-out;
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #1f2937;
+            color: white;
+            padding: 1rem;
+            z-index: 100;
         }
-        #cookie-banner.show { display: flex; align-items: center; justify-content: space-between; }
+        #cookie-banner.show {
+            display: block;
+        }
+
 
         /* Hiding pages by default */
         .page { display: none; }
@@ -151,14 +162,7 @@
 
     <!-- Splash Screen -->
     <div id="splash-screen">
-        <div class="flex items-center space-x-4 text-white">
-            <svg width="64" height="64" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-indigo-500">
-               <path d="M6 27C6 27 16.8408 26.4752 19.1386 19.587C21.4364 12.6988 16.4431 7 16.4431 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-               <path d="M16.4431 7L20 10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-               <path d="M16.4431 7L13 3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span class="font-bold text-5xl">Happy AI Path</span>
-        </div>
+        <img src="HappyAIPath.png" alt="Happy AI Path Logo" class="h-24 w-auto">
     </div>
     
     <div id="site-wrapper" style="visibility: hidden;">
@@ -168,12 +172,7 @@
             <div class="flex justify-between items-center h-16">
                 <div class="flex-shrink-0">
                     <a href="#" onclick="event.preventDefault(); showPage('home')" class="flex items-center space-x-2 text-gray-900">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-indigo-600">
-                           <path d="M6 27C6 27 16.8408 26.4752 19.1386 19.587C21.4364 12.6988 16.4431 7 16.4431 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                           <path d="M16.4431 7L20 10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                           <path d="M16.4431 7L13 3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        <span class="font-bold text-2xl">Happy AI Path</span>
+                       <img src="HappyAIPath.png" alt="Happy AI Path Logo" class="h-10 w-auto">
                     </a>
                 </div>
                 <div class="hidden md:block">
@@ -183,7 +182,7 @@
                         <a href="#about" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About</a>
                         <a href="#" onclick="event.preventDefault(); showPage('quiz')" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Quiz</a>
                         <a href="#" onclick="event.preventDefault(); showPage('blog')" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Blog</a>
-                        <a href="#testimonials" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Testimonials</a>
+                        <a href="#" onclick="event.preventDefault(); showPage('faq')" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">FAQ</a>
                         <a href="#contact" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
                     </div>
                 </div>
@@ -204,7 +203,7 @@
                 <a href="#about" class="nav-link text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">About</a>
                 <a href="#" onclick="event.preventDefault(); showPage('quiz'); closeMobileMenu();" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Quiz</a>
                 <a href="#" onclick="event.preventDefault(); showPage('blog'); closeMobileMenu();" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
-                <a href="#testimonials" class="nav-link text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Testimonials</a>
+                <a href="#" onclick="event.preventDefault(); showPage('faq'); closeMobileMenu();" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">FAQ</a>
                 <a href="#contact" class="nav-link text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
             </div>
         </div>
@@ -456,6 +455,40 @@
         </main>
     </div>
 
+    <!-- FAQ Page Content -->
+    <div id="faq" class="page">
+        <main class="bg-white py-20">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">Frequently Asked Questions</h1>
+                     <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">How this site was built and other curiosities.</p>
+                     <button onclick="event.preventDefault(); showPage('home')" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</button>
+                </div>
+
+                 <div class="mt-12 space-y-10">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900">How was this website created?</h3>
+                        <p class="mt-2 text-lg text-gray-600">This website is the result of a collaborative process between a human (Jim Perry) and an AI assistant (Google's Gemini). Jim provided the vision, strategic direction, content, and iterative feedback, while the AI handled the coding and implementation. This "human-in-the-loop" approach demonstrates how AI can be a powerful tool for accelerating development without sacrificing quality or creative control.</p>
+                    </div>
+                     <div>
+                        <h3 class="text-xl font-semibold text-gray-900">What technologies were used?</h3>
+                        <p class="mt-2 text-lg text-gray-600">The site is built with standard, modern web technologies:</p>
+                        <ul class="mt-4 list-disc list-inside space-y-2 text-gray-600">
+                            <li><strong>HTML5</strong> for the structure and content.</li>
+                            <li><strong>Tailwind CSS</strong> for a utility-first approach to styling, allowing for rapid and consistent design.</li>
+                            <li><strong>JavaScript</strong> for interactivity, including the multi-page navigation, quiz logic, and animations.</li>
+                            <li>All code was written and refined within a collaborative AI environment.</li>
+                        </ul>
+                    </div>
+                     <div>
+                        <h3 class="text-xl font-semibold text-gray-900">Why was it built this way?</h3>
+                        <p class="mt-2 text-lg text-gray-600">Building the site this way serves as a practical example of the "blended AI/human work approach" that is central to my coaching philosophy. It shows that AI can be a powerful partner in creative and technical projects, helping to bring ideas to life quickly and efficiently while the human remains firmly in control of the strategy and final output.</p>
+                    </div>
+                 </div>
+            </div>
+        </main>
+    </div>
+
     <!-- Back to Top Button -->
     <button id="backToTopBtn" title="Go to top">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -465,8 +498,13 @@
     
     <!-- Cookie Banner -->
     <div id="cookie-banner">
-        <p class="text-sm">This website uses cookies to ensure you get the best experience. By continuing to use this site, you agree to our use of cookies.</p>
-        <button id="cookie-accept" class="bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg text-sm ml-4">Accept</button>
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <p class="text-sm">This website uses cookies to ensure you get the best experience on our website.</p>
+            <div class="flex space-x-2">
+                 <button id="cookie-accept" class="bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg text-sm">Accept</button>
+                 <button id="cookie-reject" class="bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg text-sm">Reject</button>
+            </div>
+        </div>
     </div>
 
 
@@ -504,6 +542,8 @@
         const backToTopBtn = document.getElementById('backToTopBtn');
         const cookieBanner = document.getElementById('cookie-banner');
         const cookieAcceptBtn = document.getElementById('cookie-accept');
+        const cookieRejectBtn = document.getElementById('cookie-reject');
+
         const siteWrapper = document.getElementById('site-wrapper');
         const splashScreen = document.getElementById('splash-screen');
 
@@ -602,13 +642,17 @@
         });
 
         // Cookie Banner Logic
+        const handleCookieConsent = (consent) => {
+            localStorage.setItem('cookie_consent', consent);
+            cookieBanner.classList.remove('show');
+        };
+
         if (!localStorage.getItem('cookie_consent')) {
             cookieBanner.classList.add('show');
         }
-        cookieAcceptBtn.addEventListener('click', () => {
-            localStorage.setItem('cookie_consent', 'true');
-            cookieBanner.classList.remove('show');
-        });
+
+        cookieAcceptBtn.addEventListener('click', () => handleCookieConsent(true));
+        cookieRejectBtn.addEventListener('click', () => handleCookieConsent(false));
 
         // Splash Screen Logic
         document.addEventListener('DOMContentLoaded', () => {
