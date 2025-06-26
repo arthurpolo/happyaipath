@@ -9,7 +9,7 @@
     <meta name="description" content="Expert executive AI coaching and team training to guide your organization from AI uncertainty to strategic advantage. Achieve confident AI adoption with a seasoned Fortune 100 technology leader.">
     <meta name="keywords" content="Executive AI Coaching, AI Team Training, AI Adoption, AI Strategy, AI Leadership, Prompt Engineering, AI Readiness Quiz">
     <meta name="author" content="Jim Perry, Happy AI Path">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>Path</text></svg>">
+    <link rel="icon" href="Happy AI Path.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -26,9 +26,11 @@
         }
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #fff;
+            color: #1f2937;
         }
 
-        /* Hero text animation */
+        /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -38,6 +40,15 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .hero-h1 {
@@ -85,6 +96,28 @@
         .cta-button:hover, .card-hover:hover {
             transform: translateY(-4px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Back to Top Button */
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: #4f46e5;
+            color: white;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        #backToTopBtn:hover {
+            background-color: #4338ca;
         }
 
         /* Hiding pages by default */
@@ -137,7 +170,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex-shrink-0">
-                    <a href="#" onclick="event.preventDefault(); showPage('home')" class="text-2xl font-bold text-gray-900">Happy AI Path</a>
+                    <a href="#" onclick="event.preventDefault(); showPage('home')" class="block">
+                        <img class="h-10 w-auto" src="Happy AI Path.png" alt="Happy AI Path Logo">
+                    </a>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
@@ -185,6 +220,7 @@
                     <div class="text-center lg:text-left">
                         <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl hero-h1">From AI Uncertainty to Strategic Advantage</h1>
                         <p class="mt-6 max-w-2xl mx-auto lg:mx-0 text-xl text-gray-300 hero-p">Leveraging my 20+ years of enterprise tech leadership to guide your organization through a successful, human-centered AI transformation.</p>
+                        <p class="mt-4 max-w-2xl mx-auto lg:mx-0 text-lg text-indigo-300 hero-p italic">A safe, inclusive learning environment for confident AI adoption.</p>
                     </div>
                     <div class="mt-10 lg:mt-0 flex-shrink-0">
                          <div class="flex flex-col items-center lg:items-start space-y-4">
@@ -195,41 +231,42 @@
                 </div>
             </div>
         </header>
+        
+        <!-- Authority Banner -->
+        <div class="bg-gray-100">
+            <div class="max-w-7xl mx-auto py-3 px-4 sm:px-6 lg:px-8 text-center text-sm font-medium text-gray-700">
+                <p>As an <span class="font-bold text-teal-700">Adjunct Lecturer at The Ohio State University Fisher College of Business</span>, I bring academic rigor to practical, real-world AI implementation.</p>
+            </div>
+        </div>
 
         <!-- Main Content -->
         <main>
             <!-- Services Section -->
-            <section id="services" class="py-20 bg-gray-100">
+            <section id="services" class="animate-on-scroll py-20 bg-white">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center">
                         <h2 class="text-base font-semibold text-teal-600 tracking-wide uppercase">My Services</h2>
                         <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">Corporate AI Training & Executive Coaching</p>
-                        <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">I provide tailored programs to help your business innovate and become operationally efficient with AI.</p>
-                        <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600 italic">All coaching and training is delivered in a safe, inclusive learning environment to encourage curiosity and build confidence.</p>
                     </div>
                     <div class="mt-12 grid gap-10 md:grid-cols-2 lg:gap-12">
                         <!-- Service 1: AI Team Training -->
-                        <div class="bg-white rounded-lg shadow-lg p-8 card-hover">
-                             <img class="h-48 w-full object-cover rounded-md" src="https://placehold.co/600x400/0d9488/ffffff?text=Team+Training" alt="A corporate team engaged in an AI training workshop to improve their AI adoption strategy." >
+                        <div class="bg-gray-100 rounded-lg p-8 card-hover">
                             <h3 class="mt-6 text-2xl font-bold text-gray-900">AI Team Training</h3>
-                            <p class="mt-4 text-gray-600">Empower your teams with cutting-edge skills through hands-on workshops designed to transform day-to-day business operations.</p>
+                            <p class="mt-4 text-gray-600">From hesitant teams to confident innovators, my workshops provide the hands-on skills to turn AI potential into measurable results.</p>
                             <ul class="mt-6 space-y-2 text-gray-600">
-                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600">✓</span><span class="ml-2">AI Prompt Engineering Fundamentals</span></li>
-                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600">✓</span><span class="ml-2">Hands-On, Fun and Practical Exercises</span></li>
-                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600">✓</span><span class="ml-2">Customized, Role-Based Curriculum</span></li>
-                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600">✓</span><span class="ml-2">Available as Quarterly Team Workshops</span></li>
+                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600">✓</span><span class="ml-2">Turn generic prompts into high-ROI, actionable outputs.</span></li>
+                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600">✓</span><span class="ml-2">Replace AI anxiety with confident, hands-on application.</span></li>
+                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600">✓</span><span class="ml-2">Move from one-size-fits-all training to role-specific fluency.</span></li>
                             </ul>
                         </div>
                         <!-- Service 2: Executive Coaching -->
-                        <div class="bg-white rounded-lg shadow-lg p-8 card-hover">
-                             <img class="h-48 w-full object-cover rounded-md" src="https://placehold.co/600x400/4f46e5/ffffff?text=AI+Coaching" alt="An executive leader receiving one-on-one executive AI coaching for strategic advantage.">
+                        <div class="bg-gray-100 rounded-lg p-8 card-hover">
                             <h3 class="mt-6 text-2xl font-bold text-gray-900">Executive AI Coaching</h3>
-                            <p class="mt-4 text-gray-600">Ongoing strategic support to help senior leaders build AI fluency and confidently integrate artificial intelligence into their daily workflow.</p>
+                            <p class="mt-4 text-gray-600">For leaders who feel behind on AI, my coaching provides a confidential, strategic path from uncertainty to clear, decisive action.</p>
                              <ul class="mt-6 space-y-2 text-gray-600">
-                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600">✓</span><span class="ml-2">Grow your individual AI adoption and fluency.</span></li>
-                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600">✓</span><span class="ml-2">Refine strategic use cases for your priorities.</span></li>
-                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600">✓</span><span class="ml-2">Master a blended AI/human work approach.</span></li>
-                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600">✓</span><span class="ml-2">Receive ongoing, confidential support.</span></li>
+                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600">✓</span><span class="ml-2">Go from AI curiosity to a clear, strategic roadmap.</span></li>
+                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600">✓</span><span class="ml-2">Connect AI initiatives directly to your highest-priority business goals.</span></li>
+                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600">✓</span><span class="ml-2">Make high-stakes decisions with an expert, confidential sounding board.</span></li>
                             </ul>
                         </div>
                     </div>
@@ -237,7 +274,7 @@
             </section>
 
             <!-- About Section -->
-            <section id="about" class="py-20 bg-white">
+            <section id="about" class="animate-on-scroll py-20 bg-gray-100">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center">
                         <div>
@@ -253,58 +290,9 @@
                     </div>
                 </div>
             </section>
-
-            <!-- Blog Preview Section -->
-            <section id="blog-preview" class="py-20 bg-gray-100">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center">
-                        <h2 class="text-base font-semibold text-teal-600 tracking-wide uppercase">My Latest Insights</h2>
-                        <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">AI Strategy & Leadership Blog</p>
-                         <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">Explore strategies and ideas for effective AI adoption and innovation.</p>
-                    </div>
-                    <div class="mt-12 grid gap-10 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-                        <!-- Blog Post 1 -->
-                        <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
-                            <img class="h-48 w-full object-cover" src="https://placehold.co/600x400/4f46e5/ffffff?text=Gemini+2.5" alt="Google Gemini AI logo representing the latest AI news.">
-                            <div class="p-6">
-                                <p class="text-sm text-gray-500">JULY 22, 2025</p>
-                                <h3 class="mt-2 text-xl font-semibold text-gray-900">Gemini 2.5 is Now Enterprise-Ready: What it Means for You</h3>
-                                <p class="mt-3 text-base text-gray-600">Google has moved its powerful Gemini 2.5 Pro and Flash models to 'General Availability.' Here's why that stability matters for your business.</p>
-                                <div class="mt-4">
-                                    <a href="#" onclick="event.preventDefault(); showPage('blog')" class="text-indigo-600 hover:text-indigo-800 font-semibold">Read More &rarr;</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Blog Post 2 -->
-                        <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
-                            <img class="h-48 w-full object-cover" src="https://placehold.co/600x400/0d9488/ffffff?text=ChatGPT" alt="ChatGPT logo representing AI productivity tools for meetings.">
-                            <div class="p-6">
-                                <p class="text-sm text-gray-500">JULY 15, 2025</p>
-                                <h3 class="mt-2 text-xl font-semibold text-gray-900">Is AI Coming for Your Meetings? ChatGPT Says Yes.</h3>
-                                <p class="mt-3 text-base text-gray-600">OpenAI's new 'Record' mode for ChatGPT can transcribe and summarize meetings. Let's look at the real productivity implications.</p>
-                                <div class="mt-4">
-                                    <a href="#" onclick="event.preventDefault(); showPage('blog')" class="text-indigo-600 hover:text-indigo-800 font-semibold">Read More &rarr;</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Blog Post 3 -->
-                         <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
-                            <img class="h-48 w-full object-cover" src="https://placehold.co/600x400/111827/ffffff?text=AI+Strategy" alt="A person planning an AI adoption strategy on a whiteboard.">
-                            <div class="p-6">
-                                <p class="text-sm text-gray-500">JULY 8, 2025</p>
-                                <h3 class="mt-2 text-xl font-semibold text-gray-900">5 Mistakes to Avoid in Your AI Adoption Strategy</h3>
-                                <p class="mt-3 text-base text-gray-600">Adopting AI is more than a technical challenge; it's a strategic one. Discover the common pitfalls that can derail your efforts.</p>
-                                <div class="mt-4">
-                                    <a href="#" onclick="event.preventDefault(); showPage('blog')" class="text-indigo-600 hover:text-indigo-800 font-semibold">Read More &rarr;</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
             
             <!-- Testimonials Section -->
-            <section id="testimonials" class="py-20 bg-white">
+            <section id="testimonials" class="animate-on-scroll py-20 bg-white">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                      <div class="text-center">
                         <h2 class="text-base font-semibold text-teal-600 tracking-wide uppercase">What My Clients Say</h2>
@@ -328,7 +316,7 @@
             </section>
 
             <!-- Contact Section -->
-            <section id="contact" class="py-20 bg-gray-100">
+            <section id="contact" class="animate-on-scroll py-20 bg-gray-100">
                 <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center">
                         <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Ready to Start Your Journey?</h2>
@@ -360,35 +348,35 @@
                 <div class="text-center">
                     <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">The Happy AI Path Blog</h1>
                     <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">Your path to AI fluency starts here. Explore insights, strategies, and practical tips for confident AI adoption.</p>
-                     <button onclick="event.preventDefault(); showPage('home')" class="mt-6 text-indigo-600 hover:text-indigo-800 font-semibold">&larr; Back to Home</button>
+                     <button onclick="event.preventDefault(); showPage('home')" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</button>
                 </div>
 
                 <div class="mt-16 space-y-16">
                     <!-- Blog Post 1 -->
-                    <article class="flex flex-col md:flex-row items-center gap-8">
+                    <article class="flex flex-col md:flex-row items-center gap-8 animate-on-scroll">
                         <img class="w-full md:w-1/3 rounded-lg shadow-lg" src="https://placehold.co/600x400/4f46e5/ffffff?text=Gemini+2.5" alt="Google Gemini AI Logo">
                         <div class="md:w-2/3">
-                            <p class="text-sm text-gray-500">JULY 22, 2025</p>
+                            <p class="text-sm text-gray-500">JUNE 24, 2025</p>
                             <h2 class="mt-2 text-3xl font-bold text-gray-900">Gemini 2.5 is Now Enterprise-Ready: What it Means for You</h2>
                             <p class="mt-4 text-lg text-gray-600">This month, Google made a pivotal announcement for any leader considering enterprise-wide AI adoption: their powerful Gemini 2.5 Pro and 2.5 Flash models are now "Generally Available" (GA). This is more than just a technical update; it signals a move from experimental "preview" to production-ready. For your business, this means you can now build mission-critical applications on these models with the confidence of stability, reliability, and enterprise-grade security. The shift to GA is a clear sign that the technology has matured, providing the predictable performance necessary for large-scale summarization, responsive internal chat applications, and efficient data extraction. As an executive, this means you can move forward with AI initiatives on a foundation that is built for scale, a crucial factor in achieving a positive ROI on your AI investments.</p>
                         </div>
                     </article>
 
                     <!-- Blog Post 2 -->
-                     <article class="flex flex-col md:flex-row-reverse items-center gap-8">
+                     <article class="flex flex-col md:flex-row-reverse items-center gap-8 animate-on-scroll">
                         <img class="w-full md:w-1/3 rounded-lg shadow-lg" src="https://placehold.co/600x400/0d9488/ffffff?text=ChatGPT" alt="ChatGPT Logo with a meeting icon">
                         <div class="md:w-2/3">
-                            <p class="text-sm text-gray-500">JULY 15, 2025</p>
+                            <p class="text-sm text-gray-500">JUNE 17, 2025</p>
                             <h2 class="mt-2 text-3xl font-bold text-gray-900">Is AI Coming for Your Meetings? ChatGPT Says Yes.</h2>
                             <p class="mt-4 text-lg text-gray-600">One of the biggest drains on executive time is the meeting lifecycle: preparing, participating, and then summarizing action items. OpenAI's recent rollout of "ChatGPT Record" for its macOS desktop app aims to automate much of this process. This new feature allows users to record up to two hours of conversation and then have the AI automatically generate a structured transcript and a concise summary. For leaders, the implications are significant. It frees up high-value time previously spent on note-taking, allowing for more focused participation. More importantly, it ensures that key decisions and follow-ups are captured accurately and can be distributed instantly. This isn't about replacing the meeting itself, but augmenting the human experience within it, boosting productivity and ensuring that strategic conversations translate directly into actionable outcomes.</p>
                         </div>
                     </article>
                     
                      <!-- Blog Post 3 -->
-                    <article class="flex flex-col md:flex-row items-center gap-8">
+                    <article class="flex flex-col md:flex-row items-center gap-8 animate-on-scroll">
                         <img class="w-full md:w-1/3 rounded-lg shadow-lg" src="https://placehold.co/600x400/111827/ffffff?text=AI+Strategy" alt="A person planning an AI strategy on a whiteboard">
                         <div class="md:w-2/3">
-                            <p class="text-sm text-gray-500">JULY 8, 2025</p>
+                            <p class="text-sm text-gray-500">JUNE 10, 2025</p>
                             <h2 class="mt-2 text-3xl font-bold text-gray-900">5 Mistakes to Avoid in Your AI Adoption Strategy</h2>
                             <p class="mt-4 text-lg text-gray-600">Adopting AI is more than a technical challenge; it's a strategic one. To ensure a smooth journey, it's crucial to sidestep common pitfalls that can derail your efforts. The first mistake many leaders make is treating AI as a purely technological upgrade rather than a fundamental business transformation. Without aligning your AI goals with core business objectives, you risk investing in solutions that don't deliver meaningful value. Another common issue is neglecting the human element. Your team's fears, skills gaps, and daily workflows must be at the center of your adoption plan to foster buy-in and ensure the technology is actually used. We'll explore the other three critical mistakes and how to proactively address them, setting your organization on a path to successful and sustainable AI integration.</p>
                         </div>
@@ -454,16 +442,23 @@
                     <div id="quiz-results" class="hidden mt-8 text-center p-6 bg-white rounded-lg shadow-inner">
                         <h3 class="text-2xl font-bold text-gray-900">Your AI Readiness Score:</h3>
                         <p id="score-text" class="mt-2 text-lg text-gray-600"></p>
-                        <button onclick="event.preventDefault(); showPage('home'); document.getElementById('contact').scrollIntoView();" class="mt-6 text-indigo-600 hover:text-indigo-800 font-semibold">Let's discuss your results &rarr;</button>
+                        <button onclick="event.preventDefault(); showPage('home'); document.getElementById('contact').scrollIntoView();" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">Let's discuss your results &rarr;</button>
                     </div>
                  </div>
 
                  <div class="text-center mt-8">
-                    <button onclick="event.preventDefault(); showPage('home')" class="mt-6 text-indigo-600 hover:text-indigo-800 font-semibold">&larr; Back to Home</button>
+                    <button onclick="event.preventDefault(); showPage('home')" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</button>
                  </div>
             </div>
         </div>
     </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" title="Go to top">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+        </svg>
+    </button>
 
 
     <!-- Footer -->
@@ -497,6 +492,7 @@
         const quizForm = document.getElementById('aiQuiz');
         const quizResults = document.getElementById('quiz-results');
         const scoreText = document.getElementById('score-text');
+        const backToTopBtn = document.getElementById('backToTopBtn');
 
 
         function showPage(pageId) {
@@ -565,6 +561,34 @@
             });
         }
 
+        // Back to Top Button Logic
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+        
+        // Scroll Animation Logic
+        const sectionsToAnimate = document.querySelectorAll('.animate-on-scroll');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        sectionsToAnimate.forEach(section => {
+            observer.observe(section);
+        });
+
 
         // Set the initial page
         showPage('home');
@@ -572,3 +596,4 @@
 
 </body>
 </html>
+
