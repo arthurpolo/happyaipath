@@ -31,6 +31,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- For a production build, replace this with your own purged CSS file -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /*
@@ -44,7 +45,7 @@
             scroll-behavior: smooth;
         }
         @media (prefers-reduced-motion: reduce) {
-          html, .animated-path, #splash-screen {
+          html, .animated-path, #splash-screen, .animate-on-scroll {
             scroll-behavior: auto;
             animation: none !important;
             transition: none !important;
@@ -162,7 +163,7 @@
 
     <!-- Splash Screen -->
     <div id="splash-screen">
-        <img src="HappyAIPath.png" alt="Happy AI Path Logo" class="h-72 w-auto">
+        <img src="HappyAIPath.png" alt="Happy AI Path Logo" class="h-48 w-auto">
     </div>
     
     <div id="site-wrapper" style="visibility: hidden;">
