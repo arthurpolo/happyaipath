@@ -9,10 +9,29 @@
     <meta name="description" content="Expert executive AI coaching and team training to guide your organization from AI uncertainty to strategic advantage. Achieve confident AI adoption with a seasoned Fortune 100 technology leader.">
     <meta name="keywords" content="Executive AI Coaching, AI Team Training, AI Adoption, AI Strategy, AI Leadership, Prompt Engineering, AI Readiness Quiz">
     <meta name="author" content="Jim Perry, Happy AI Path">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://happyaipath.com/">
+    <meta property="og:title" content="Happy AI Path | Executive AI Coaching & Team Training">
+    <meta property="og:description" content="From AI uncertainty to strategic advantage. Expert coaching to guide your organization's AI transformation.">
+    <meta property="og:image" content="https://arthurpolo.github.io/happyaipath/social-preview.jpg"> <!-- Note: Replace with a real URL to a 1200x630px image -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://happyaipath.com/">
+    <meta property="twitter:title" content="Happy AI Path | Executive AI Coaching & Team Training">
+    <meta property="twitter:description" content="From AI uncertainty to strategic advantage. Expert coaching to guide your organization's AI transformation.">
+    <meta property="twitter:image" content="https://arthurpolo.github.io/happyaipath/social-preview.jpg"> <!-- Note: Replace with a real URL to a 1200x630px image -->
+
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>Path</text></svg>">
+    
+    <!-- Performance: Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /*
         Color Palette:
@@ -24,6 +43,13 @@
         html {
             scroll-behavior: smooth;
         }
+        @media (prefers-reduced-motion: reduce) {
+          html, .animated-path, #splash-screen {
+            scroll-behavior: auto;
+            animation: none !important;
+            transition: none !important;
+          }
+        }
         body {
             font-family: 'Inter', sans-serif;
             background-color: #fff;
@@ -32,33 +58,20 @@
 
         /* Animations */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-section {
+        .animate-on-scroll {
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-        .fade-in-section.is-visible {
+        .animate-on-scroll.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
-
-        .hero-h1 {
-            animation: fadeInUp 1s ease-out forwards;
-        }
-
-        .hero-p {
-            opacity: 0;
-            animation: fadeInUp 1s ease-out 0.5s forwards;
-        }
+        .hero-h1 { animation: fadeInUp 1s ease-out forwards; }
+        .hero-p { opacity: 0; animation: fadeInUp 1s ease-out 0.5s forwards; }
 
         .hero-bg {
             background-color: #111827;
@@ -76,101 +89,92 @@
             z-index: 0;
             opacity: 0.5;
         }
-
         .path {
             stroke-dasharray: 1000;
             stroke-dashoffset: 1000;
-            animation: draw-path 30s linear infinite;
+            animation: draw-path 10s ease-out forwards;
         }
+        @keyframes draw-path { to { stroke-dashoffset: 0; } }
 
-        @keyframes draw-path {
-            to {
-                stroke-dashoffset: 0;
-            }
-        }
-
-        .cta-button, .card-hover {
-            transition: all 0.3s ease;
-        }
-
-        .cta-button:hover, .card-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
+        .cta-button, .card-hover { transition: all 0.3s ease; }
+        .cta-button:hover, .card-hover:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         
         /* Back to Top Button */
         #backToTopBtn {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            right: 30px;
-            z-index: 99;
-            border: none;
-            outline: none;
-            background-color: #4f46e5;
-            color: white;
-            cursor: pointer;
-            padding: 12px;
-            border-radius: 50%;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            transition: opacity 0.3s, visibility 0.3s;
+            display: none; position: fixed; bottom: 20px; right: 30px; z-index: 99; border: none; outline: none; background-color: #4f46e5; color: white; cursor: pointer; padding: 12px; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: opacity 0.3s, visibility 0.3s;
         }
+        #backToTopBtn:hover { background-color: #4338ca; }
 
-        #backToTopBtn:hover {
-            background-color: #4338ca;
+        /* Cookie Banner */
+        #cookie-banner {
+            display: none; position: fixed; bottom: 0; left: 0; width: 100%; background-color: #1f2937; color: white; padding: 1rem; z-index: 100; transition: bottom 0.5s ease-in-out;
         }
+        #cookie-banner.show { display: flex; align-items: center; justify-content: space-between; }
 
         /* Hiding pages by default */
-        .page {
-            display: none;
+        .page { display: none; }
+        .page.active { display: block; }
+        
+        /* Splash Screen */
+        #splash-screen {
+            position: fixed;
+            inset: 0;
+            background-color: #111827;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 101; /* Higher than nav */
+            transition: opacity 1s ease-out;
         }
-        .page.active {
-            display: block;
+        #splash-screen.fade-out {
+            opacity: 0;
+        }
+
+        /* Accessibility Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #4f46e5;
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+        .skip-link:focus {
+            top: 0;
         }
     </style>
-    
-    <!-- JSON-LD Schema Markup -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Happy AI Path",
-      "image": "https://arthurpolo.github.io/happyaipath/DSC00498%20(Small).jpg",
-      "url": "https://happyaipath.com",
-      "telephone": "",
-      "description": "Executive AI coaching and team training to guide organizations from AI uncertainty to strategic advantage.",
-      "founder": {
-        "@type": "Person",
-        "name": "Jim Perry",
-        "url": "https://www.linkedin.com/in/jimperry"
-      },
-      "makesOffer": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Executive AI Coaching"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "AI Team Training"
-          }
-        }
-      ]
-    }
-    </script>
 </head>
 <body class="bg-white text-gray-800">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <div class="flex items-center space-x-4 text-white">
+            <svg width="64" height="64" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-indigo-500">
+               <path d="M12 25C12 25 22.8408 24.4752 25.1386 17.587C27.4364 10.6988 22.4431 5 22.4431 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+               <path d="M22.4431 5L26 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+               <path d="M22.4431 5L19 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="font-bold text-5xl">Happy AI Path</span>
+        </div>
+    </div>
+    
+    <div id="site-wrapper" style="visibility: hidden;">
     <!-- Navigation -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex-shrink-0">
-                    <a href="#" onclick="event.preventDefault(); showPage('home')" class="text-2xl font-bold text-gray-900">Happy AI Path</a>
+                    <a href="#" onclick="event.preventDefault(); showPage('home')" class="flex items-center space-x-2 text-gray-900">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-indigo-600">
+                           <path d="M12 25C12 25 22.8408 24.4752 25.1386 17.587C27.4364 10.6988 22.4431 5 22.4431 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                           <path d="M22.4431 5L26 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                           <path d="M22.4431 5L19 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="font-bold text-2xl">Happy AI Path</span>
+                    </a>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
@@ -208,63 +212,64 @@
     
     <!-- Main Home Page Content -->
     <div id="home" class="page active">
-        <!-- Hero Section -->
-        <header class="hero-bg text-white">
-             <svg class="animated-path" viewBox="0 0 1000 300" preserveAspectRatio="none">
-                <path class="path" d="M -100 150 Q 250 50 500 150 T 1100 150" fill="none" stroke="rgba(79, 70, 229, 0.2)" stroke-width="2"/>
-            </svg>
-            <div class="max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8 relative z-10">
-                <div class="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
-                    <div class="text-center lg:text-left">
-                        <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl hero-h1">From AI Uncertainty to Strategic Advantage</h1>
-                        <p class="mt-6 max-w-2xl mx-auto lg:mx-0 text-xl text-gray-300 hero-p">Leveraging my 20+ years of enterprise tech leadership to guide your organization through a successful, human-centered AI transformation.</p>
-                        <p class="mt-4 max-w-2xl mx-auto lg:mx-0 text-lg text-indigo-300 hero-p italic">A safe, inclusive learning environment for confident AI adoption.</p>
-                    </div>
-                    <div class="mt-10 lg:mt-0 flex-shrink-0">
-                         <div class="flex flex-col items-center lg:items-start space-y-4">
-                             <a href="#contact" class="nav-link w-full sm:w-auto bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block text-center cta-button hover:bg-indigo-700">Schedule a Consultation</a>
-                             <a href="#" onclick="event.preventDefault(); showPage('quiz')" class="w-full sm:w-auto bg-transparent border-2 border-white text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block text-center cta-button hover:bg-white hover:text-gray-900">Take the AI Readiness Quiz</a>
-                         </div>
+        <main id="main-content">
+            <!-- Hero Section -->
+            <header class="hero-bg text-white">
+                 <svg class="animated-path" viewBox="0 0 1000 300" preserveAspectRatio="none">
+                    <path class="path" d="M -100 150 Q 250 50 500 150 T 1100 150" fill="none" stroke="rgba(79, 70, 229, 0.2)" stroke-width="2"/>
+                </svg>
+                <div class="max-w-6xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8 relative z-10">
+                    <div class="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
+                        <div class="text-center lg:text-left">
+                            <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl hero-h1">From AI Uncertainty to Strategic Advantage</h1>
+                            <p class="mt-6 max-w-2xl mx-auto lg:mx-0 text-xl text-gray-300 hero-p">Leveraging my 20+ years of enterprise tech leadership to guide your organization through a successful, human-centered AI transformation.</p>
+                            <p class="mt-4 max-w-2xl mx-auto lg:mx-0 text-lg text-indigo-300 hero-p italic">A safe, inclusive learning environment for confident AI adoption.</p>
+                        </div>
+                        <div class="mt-10 lg:mt-0 flex-shrink-0">
+                             <div class="flex flex-col items-center lg:items-start space-y-4">
+                                 <a href="#contact" class="nav-link w-full sm:w-auto bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block text-center cta-button hover:bg-indigo-700">Schedule a Consultation</a>
+                                 <a href="#" onclick="event.preventDefault(); showPage('quiz')" class="w-full sm:w-auto bg-transparent border-2 border-white text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block text-center cta-button hover:bg-white hover:text-gray-900">Take the AI Readiness Quiz</a>
+                             </div>
+                        </div>
                     </div>
                 </div>
+            </header>
+            
+            <!-- Authority Banner -->
+            <div class="bg-gray-100">
+                <div class="max-w-6xl mx-auto py-3 px-4 sm:px-6 lg:px-8 text-center text-sm font-medium text-gray-700">
+                    <p>As an <span class="font-bold text-teal-700">Adjunct Lecturer at The Ohio State University Fisher College of Business</span>, I bring academic rigor to practical, real-world AI implementation.</p>
+                </div>
             </div>
-        </header>
-        
-        <!-- Authority Banner -->
-        <div class="bg-gray-100">
-            <div class="max-w-7xl mx-auto py-3 px-4 sm:px-6 lg:px-8 text-center text-sm font-medium text-gray-700">
-                <p>As an <span class="font-bold text-teal-700">Adjunct Lecturer at The Ohio State University Fisher College of Business</span>, I bring academic rigor to practical, real-world AI implementation.</p>
-            </div>
-        </div>
 
-        <!-- Main Content -->
-        <main>
             <!-- Services Section -->
-            <section id="services" class="animate-on-scroll py-20 bg-white">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <section id="services" class="animate-on-scroll py-20 bg-gray-100">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center">
                         <h2 class="text-base font-semibold text-teal-600 tracking-wide uppercase">My Services</h2>
                         <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">Corporate AI Training & Executive Coaching</p>
                     </div>
                     <div class="mt-12 grid gap-10 md:grid-cols-2 lg:gap-12">
                         <!-- Service 1: AI Team Training -->
-                        <div class="bg-gray-100 rounded-lg p-8 card-hover">
+                        <div class="bg-white rounded-lg p-8 card-hover">
+                            <img class="h-48 w-full object-cover rounded-md" src="https://placehold.co/600x400/93c5fd/333333?text=AI+Team+Training" alt="AI Team Training placeholder with light blue background.">
                             <h3 class="mt-6 text-2xl font-bold text-gray-900">AI Team Training</h3>
                             <p class="mt-4 text-gray-600">From hesitant teams to confident innovators, my workshops provide the hands-on skills to turn AI potential into measurable results.</p>
                             <ul class="mt-6 space-y-2 text-gray-600">
-                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600">✓</span><span class="ml-2">Turn generic prompts into high-ROI, actionable outputs.</span></li>
-                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600">✓</span><span class="ml-2">Replace AI anxiety with confident, hands-on application.</span></li>
-                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600">✓</span><span class="ml-2">Move from one-size-fits-all training to role-specific fluency.</span></li>
+                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></span><span class="ml-2">Turn generic prompts into high-ROI, actionable outputs.</span></li>
+                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></span><span class="ml-2">Replace AI anxiety with confident, hands-on application.</span></li>
+                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></span><span class="ml-2">Move from one-size-fits-all training to role-specific fluency.</span></li>
                             </ul>
                         </div>
                         <!-- Service 2: Executive Coaching -->
-                        <div class="bg-gray-100 rounded-lg p-8 card-hover">
+                        <div class="bg-white rounded-lg p-8 card-hover">
+                             <img class="h-48 w-full object-cover rounded-md" src="https://placehold.co/600x400/6ee7b7/333333?text=Executive+Coaching" alt="Executive Coaching placeholder with mint green background.">
                             <h3 class="mt-6 text-2xl font-bold text-gray-900">Executive AI Coaching</h3>
                             <p class="mt-4 text-gray-600">For leaders who feel behind on AI, my coaching provides a confidential, strategic path from uncertainty to clear, decisive action.</p>
                              <ul class="mt-6 space-y-2 text-gray-600">
-                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600">✓</span><span class="ml-2">Go from AI curiosity to a clear, strategic roadmap.</span></li>
-                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600">✓</span><span class="ml-2">Connect AI initiatives directly to your highest-priority business goals.</span></li>
-                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600">✓</span><span class="ml-2">Make high-stakes decisions with an expert, confidential sounding board.</span></li>
+                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></span><span class="ml-2">Go from AI curiosity to a clear, strategic roadmap.</span></li>
+                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></span><span class="ml-2">Connect AI initiatives directly to your highest-priority business goals.</span></li>
+                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></span><span class="ml-2">Make high-stakes decisions with an expert, confidential sounding board.</span></li>
                             </ul>
                         </div>
                     </div>
@@ -272,40 +277,39 @@
             </section>
 
             <!-- About Section -->
-            <section id="about" class="animate-on-scroll py-20 bg-gray-100">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <section id="about" class="animate-on-scroll py-20 bg-white">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center">
                         <div>
                             <h2 class="text-base font-semibold text-teal-600 tracking-wide uppercase">About Jim Perry</h2>
                             <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">Your Guide on the Path to AI Adoption</p>
-                            <p class="mt-4 text-gray-600">I'm a seasoned technology leader with over 20 years of experience driving business transformation for Fortune 100 companies. My expertise is in helping organizations navigate major technological shifts by focusing on human-centered strategy and clear, effective implementation.</p>
-                            <p class="mt-4 text-gray-600">As an Adjunct Lecturer at The Ohio State University Fisher College of Business, I design and teach courses in AI Prompt Engineering, empowering the next generation of leaders to harness the power of AI. My passion is demystifying complex technology and making it accessible for practical business use.</p>
-                            <p class="mt-4 text-gray-600">This unique blend of deep technical knowledge and a passion for education allows me to offer a holistic approach to AI adoption. My teaching background has taught me that every learner is different, and I bring that inclusive, adaptable style to all my coaching and training engagements.</p>
+                            <p class="mt-4 text-gray-600">I'm a seasoned technology leader with over 20 years of experience driving business transformation for Fortune 100 companies. As an <span class="font-bold text-gray-800">Adjunct Lecturer at The Ohio State University Fisher College of Business</span>, I bring academic rigor to practical, real-world AI implementation.</p>
+                            <p class="mt-4 text-gray-600">My passion is demystifying complex technology and making it accessible for practical business use. This unique blend of deep technical knowledge and a passion for education allows me to offer a holistic approach to AI adoption. My teaching background has taught me that every learner is different, and I bring that inclusive, adaptable style to all my coaching and training engagements.</p>
                         </div>
                         <div class="mt-10 lg:mt-0 flex justify-center">
-                            <img class="rounded-lg shadow-xl object-cover w-full max-w-md" src="DSC00498 (Small).jpg" alt="Headshot of Jim Perry, founder of Happy AI Path">
+                            <img class="rounded-lg shadow-xl object-cover w-full max-w-md" src="DSC00498 (Small).jpg" alt="Headshot of Jim Perry, founder of Happy AI Path" loading="lazy" decoding="async">
                         </div>
                     </div>
                 </div>
             </section>
             
             <!-- Testimonials Section -->
-            <section id="testimonials" class="animate-on-scroll py-20 bg-white">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <section id="testimonials" class="animate-on-scroll py-20 bg-gray-100">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                      <div class="text-center">
                         <h2 class="text-base font-semibold text-teal-600 tracking-wide uppercase">What My Clients Say</h2>
                         <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">AI Coaching & Training Testimonials</p>
                     </div>
                     <div class="mt-12 grid gap-8 md:grid-cols-1 lg:grid-cols-3">
-                        <div class="bg-gray-100 rounded-lg p-6">
+                        <div class="bg-white rounded-lg p-6">
                             <p class="text-gray-600 italic">"This session was amazing and I learned so much. It was an amazing use of 2 hours and I would love to sign up for additional courses when available. Thank you so much Jim!"</p>
                             <div class="mt-4 font-semibold text-gray-900">- Training Attendee</div>
                         </div>
-                        <div class="bg-gray-100 rounded-lg p-6">
+                        <div class="bg-white rounded-lg p-6">
                             <p class="text-gray-600 italic">"Well paced session, starting with the basics and working up. Engaging presenter. Learnt lots. Time well spent - left me wanting more (in a good way!)"</p>
                             <div class="mt-4 font-semibold text-gray-900">- Workshop Participant</div>
                         </div>
-                        <div class="bg-gray-100 rounded-lg p-6">
+                        <div class="bg-white rounded-lg p-6">
                             <p class="text-gray-600 italic">"This training was very helpful... I specifically liked how he did the preparation and provided us with the persona based on our role."</p>
                             <div class="mt-4 font-semibold text-gray-900">- Pilot Program Member</div>
                         </div>
@@ -331,6 +335,7 @@
                           frameborder="0"
                           style="min-width: 100%; width: 100%; height:850px; border:none;"
                           scrolling="yes"
+                          rel="noopener"
                         >
                         </iframe>
                     </div>
@@ -341,8 +346,8 @@
 
     <!-- Blog Page Content -->
     <div id="blog" class="page">
-        <div class="bg-white py-20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <main class="bg-white py-20">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center">
                     <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">The Happy AI Path Blog</h1>
                     <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">Your path to AI fluency starts here. Explore insights, strategies, and practical tips for confident AI adoption.</p>
@@ -352,9 +357,9 @@
                 <div class="mt-16 space-y-16">
                     <!-- Blog Post 1 -->
                     <article class="flex flex-col md:flex-row items-center gap-8 animate-on-scroll">
-                        <img class="w-full md:w-1/3 rounded-lg shadow-lg" src="https://placehold.co/600x400/4f46e5/ffffff?text=Gemini+2.5" alt="Google Gemini AI Logo">
+                        <img class="w-full md:w-1/3 rounded-lg shadow-lg" src="https://placehold.co/600x400/4f46e5/ffffff?text=Gemini+2.5" alt="Google Gemini AI Logo" loading="lazy" decoding="async">
                         <div class="md:w-2/3">
-                            <p class="text-sm text-gray-500">JULY 22, 2025</p>
+                            <p class="text-sm text-gray-500">JUNE 24, 2025</p>
                             <h2 class="mt-2 text-3xl font-bold text-gray-900">Gemini 2.5 is Now Enterprise-Ready: What it Means for You</h2>
                             <p class="mt-4 text-lg text-gray-600">This month, Google made a pivotal announcement for any leader considering enterprise-wide AI adoption: their powerful Gemini 2.5 Pro and 2.5 Flash models are now "Generally Available" (GA). This is more than just a technical update; it signals a move from experimental "preview" to production-ready. For your business, this means you can now build mission-critical applications on these models with the confidence of stability, reliability, and enterprise-grade security. The shift to GA is a clear sign that the technology has matured, providing the predictable performance necessary for large-scale summarization, responsive internal chat applications, and efficient data extraction. As an executive, this means you can move forward with AI initiatives on a foundation that is built for scale, a crucial factor in achieving a positive ROI on your AI investments.</p>
                         </div>
@@ -362,9 +367,9 @@
 
                     <!-- Blog Post 2 -->
                      <article class="flex flex-col md:flex-row-reverse items-center gap-8 animate-on-scroll">
-                        <img class="w-full md:w-1/3 rounded-lg shadow-lg" src="https://placehold.co/600x400/0d9488/ffffff?text=ChatGPT" alt="ChatGPT Logo with a meeting icon">
+                        <img class="w-full md:w-1/3 rounded-lg shadow-lg" src="https://placehold.co/600x400/0d9488/ffffff?text=ChatGPT" alt="ChatGPT Logo with a meeting icon" loading="lazy" decoding="async">
                         <div class="md:w-2/3">
-                            <p class="text-sm text-gray-500">JULY 15, 2025</p>
+                            <p class="text-sm text-gray-500">JUNE 17, 2025</p>
                             <h2 class="mt-2 text-3xl font-bold text-gray-900">Is AI Coming for Your Meetings? ChatGPT Says Yes.</h2>
                             <p class="mt-4 text-lg text-gray-600">One of the biggest drains on executive time is the meeting lifecycle: preparing, participating, and then summarizing action items. OpenAI's recent rollout of "ChatGPT Record" for its macOS desktop app aims to automate much of this process. This new feature allows users to record up to two hours of conversation and then have the AI automatically generate a structured transcript and a concise summary. For leaders, the implications are significant. It frees up high-value time previously spent on note-taking, allowing for more focused participation. More importantly, it ensures that key decisions and follow-ups are captured accurately and can be distributed instantly. This isn't about replacing the meeting itself, but augmenting the human experience within it, boosting productivity and ensuring that strategic conversations translate directly into actionable outcomes.</p>
                         </div>
@@ -372,21 +377,21 @@
                     
                      <!-- Blog Post 3 -->
                     <article class="flex flex-col md:flex-row items-center gap-8 animate-on-scroll">
-                        <img class="w-full md:w-1/3 rounded-lg shadow-lg" src="https://placehold.co/600x400/111827/ffffff?text=AI+Strategy" alt="A person planning an AI strategy on a whiteboard">
+                        <img class="w-full md:w-1/3 rounded-lg shadow-lg" src="https://placehold.co/600x400/111827/ffffff?text=AI+Strategy" alt="A person planning an AI strategy on a whiteboard" loading="lazy" decoding="async">
                         <div class="md:w-2/3">
-                            <p class="text-sm text-gray-500">JULY 8, 2025</p>
+                            <p class="text-sm text-gray-500">JUNE 10, 2025</p>
                             <h2 class="mt-2 text-3xl font-bold text-gray-900">5 Mistakes to Avoid in Your AI Adoption Strategy</h2>
                             <p class="mt-4 text-lg text-gray-600">Adopting AI is more than a technical challenge; it's a strategic one. To ensure a smooth journey, it's crucial to sidestep common pitfalls that can derail your efforts. The first mistake many leaders make is treating AI as a purely technological upgrade rather than a fundamental business transformation. Without aligning your AI goals with core business objectives, you risk investing in solutions that don't deliver meaningful value. Another common issue is neglecting the human element. Your team's fears, skills gaps, and daily workflows must be at the center of your adoption plan to foster buy-in and ensure the technology is actually used. We'll explore the other three critical mistakes and how to proactively address them, setting your organization on a path to successful and sustainable AI integration.</p>
                         </div>
                     </article>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
 
     <!-- AI Readiness Quiz Page -->
     <div id="quiz" class="page">
-        <div class="bg-white py-20">
+        <main class="bg-white py-20">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                  <div class="text-center">
                     <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">AI Readiness Quiz</h1>
@@ -402,9 +407,9 @@
                                 <fieldset class="mt-4">
                                     <legend class="sr-only">AI Understanding</legend>
                                     <div class="space-y-4">
-                                        <div class="flex items-center"><input type="radio" name="q1" value="1" class="h-4 w-4 text-indigo-600 border-gray-300"><label class="ml-3 block text-sm font-medium text-gray-700">Beginner: We are just starting to explore what AI can do.</label></div>
-                                        <div class="flex items-center"><input type="radio" name="q1" value="2" class="h-4 w-4 text-indigo-600 border-gray-300"><label class="ml-3 block text-sm font-medium text-gray-700">Intermediate: We have some knowledge but need a clearer strategy.</label></div>
-                                        <div class="flex items-center"><input type="radio" name="q1" value="3" class="h-4 w-4 text-indigo-600 border-gray-300"><label class="ml-3 block text-sm font-medium text-gray-700">Advanced: We have a solid understanding and are looking to optimize.</label></div>
+                                        <div class="flex items-center"><input type="radio" id="q1-1" name="q1" value="1" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q1-1" class="ml-3 block text-sm font-medium text-gray-700">Beginner: We are just starting to explore what AI can do.</label></div>
+                                        <div class="flex items-center"><input type="radio" id="q1-2" name="q1" value="2" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q1-2" class="ml-3 block text-sm font-medium text-gray-700">Intermediate: We have some knowledge but need a clearer strategy.</label></div>
+                                        <div class="flex items-center"><input type="radio" id="q1-3" name="q1" value="3" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q1-3" class="ml-3 block text-sm font-medium text-gray-700">Advanced: We have a solid understanding and are looking to optimize.</label></div>
                                     </div>
                                 </fieldset>
                             </div>
@@ -414,9 +419,9 @@
                                 <fieldset class="mt-4">
                                     <legend class="sr-only">Business Problems</legend>
                                     <div class="space-y-4">
-                                        <div class="flex items-center"><input type="radio" name="q2" value="1" class="h-4 w-4 text-indigo-600 border-gray-300"><label class="ml-3 block text-sm font-medium text-gray-700">Not Defined: We know we need AI, but aren't sure where to start.</label></div>
-                                        <div class="flex items-center"><input type="radio" name="q2" value="2" class="h-4 w-4 text-indigo-600 border-gray-300"><label class="ml-3 block text-sm font-medium text-gray-700">Partially Defined: We have a few ideas but need to prioritize.</label></div>
-                                        <div class="flex items-center"><input type="radio" name="q2" value="3" class="h-4 w-4 text-indigo-600 border-gray-300"><label class="ml-3 block text-sm font-medium text-gray-700">Clearly Defined: We have specific, high-priority use cases identified.</label></div>
+                                        <div class="flex items-center"><input type="radio" id="q2-1" name="q2" value="1" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q2-1" class="ml-3 block text-sm font-medium text-gray-700">Not Defined: We know we need AI, but aren't sure where to start.</label></div>
+                                        <div class="flex items-center"><input type="radio" id="q2-2" name="q2" value="2" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q2-2" class="ml-3 block text-sm font-medium text-gray-700">Partially Defined: We have a few ideas but need to prioritize.</label></div>
+                                        <div class="flex items-center"><input type="radio" id="q2-3" name="q2" value="3" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q2-3" class="ml-3 block text-sm font-medium text-gray-700">Clearly Defined: We have specific, high-priority use cases identified.</label></div>
                                     </div>
                                 </fieldset>
                             </div>
@@ -426,9 +431,9 @@
                                 <fieldset class="mt-4">
                                     <legend class="sr-only">Team Skills</legend>
                                     <div class="space-y-4">
-                                        <div class="flex items-center"><input type="radio" name="q3" value="1" class="h-4 w-4 text-indigo-600 border-gray-300"><label class="ml-3 block text-sm font-medium text-gray-700">Limited: Most of our team has little to no experience with AI tools.</label></div>
-                                        <div class="flex items-center"><input type="radio" name="q3" value="2" class="h-4 w-4 text-indigo-600 border-gray-300"><label class="ml-3 block text-sm font-medium text-gray-700">Mixed: Some team members are proficient, while others are beginners.</label></div>
-                                        <div class="flex items-center"><input type="radio" name="q3" value="3" class="h-4 w-4 text-indigo-600 border-gray-300"><label class="ml-3 block text-sm font-medium text-gray-700">Proficient: Our team is generally comfortable using and adapting to new AI tools.</label></div>
+                                        <div class="flex items-center"><input type="radio" id="q3-1" name="q3" value="1" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q3-1" class="ml-3 block text-sm font-medium text-gray-700">Limited: Most of our team has little to no experience with AI tools.</label></div>
+                                        <div class="flex items-center"><input type="radio" id="q3-2" name="q3" value="2" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q3-2" class="ml-3 block text-sm font-medium text-gray-700">Mixed: Some team members are proficient, while others are beginners.</label></div>
+                                        <div class="flex items-center"><input type="radio" id="q3-3" name="q3" value="3" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q3-3" class="ml-3 block text-sm font-medium text-gray-700">Proficient: Our team is generally comfortable using and adapting to new AI tools.</label></div>
                                     </div>
                                 </fieldset>
                             </div>
@@ -448,7 +453,7 @@
                     <button onclick="event.preventDefault(); showPage('home')" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</button>
                  </div>
             </div>
-        </div>
+        </main>
     </div>
 
     <!-- Back to Top Button -->
@@ -457,13 +462,19 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
         </svg>
     </button>
+    
+    <!-- Cookie Banner -->
+    <div id="cookie-banner">
+        <p class="text-sm">This website uses cookies to ensure you get the best experience. By continuing to use this site, you agree to our use of cookies.</p>
+        <button id="cookie-accept" class="bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg text-sm ml-4">Accept</button>
+    </div>
 
 
     <!-- Footer -->
     <footer class="bg-gray-900">
-        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
              <div class="flex justify-center space-x-6">
-                <a href="mailto:JimPerry@happyaipath.com" class="text-gray-400 hover:text-white">
+                <a href="mailto:JimPerry@happyaipath.com" class="text-gray-400 hover:text-white" rel="noopener">
                     <span class="sr-only">Email</span>
                     <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                       <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
@@ -491,7 +502,10 @@
         const quizResults = document.getElementById('quiz-results');
         const scoreText = document.getElementById('score-text');
         const backToTopBtn = document.getElementById('backToTopBtn');
-
+        const cookieBanner = document.getElementById('cookie-banner');
+        const cookieAcceptBtn = document.getElementById('cookie-accept');
+        const siteWrapper = document.getElementById('site-wrapper');
+        const splashScreen = document.getElementById('splash-screen');
 
         function showPage(pageId) {
             // Hide all pages
@@ -585,6 +599,32 @@
 
         sectionsToAnimate.forEach(section => {
             observer.observe(section);
+        });
+
+        // Cookie Banner Logic
+        if (!localStorage.getItem('cookie_consent')) {
+            cookieBanner.classList.add('show');
+        }
+        cookieAcceptBtn.addEventListener('click', () => {
+            localStorage.setItem('cookie_consent', 'true');
+            cookieBanner.classList.remove('show');
+        });
+
+        // Splash Screen Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            if (sessionStorage.getItem('splash_shown')) {
+                splashScreen.style.display = 'none';
+                siteWrapper.style.visibility = 'visible';
+            } else {
+                setTimeout(() => {
+                    splashScreen.classList.add('fade-out');
+                    siteWrapper.style.visibility = 'visible';
+                    setTimeout(() => {
+                        splashScreen.style.display = 'none';
+                    }, 1000);
+                    sessionStorage.setItem('splash_shown', 'true');
+                }, 2000);
+            }
         });
 
 
