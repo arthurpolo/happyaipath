@@ -845,21 +845,16 @@
         cookieRejectBtn.addEventListener('click', () => handleCookieConsent(false));
 
         // Splash Screen Logic
-        document.addEventListener('DOMContentLoaded', () => {
-            if (sessionStorage.getItem('splash_shown')) {
-                splashScreen.style.display = 'none';
-                siteWrapper.style.visibility = 'visible';
-            } else {
-                setTimeout(() => {
-                    splashScreen.classList.add('fade-out');
-                    siteWrapper.style.visibility = 'visible';
-                    setTimeout(() => {
-                        splashScreen.style.display = 'none';
-                    }, 1000);
-                    sessionStorage.setItem('splash_shown', 'true');
-                }, 2000);
-            }
-        });
+document.addEventListener('DOMContentLoaded', () => {
+    // This will now run every time the page is loaded.
+    setTimeout(() => {
+        splashScreen.classList.add('fade-out');
+        siteWrapper.style.visibility = 'visible';
+        setTimeout(() => {
+            splashScreen.style.display = 'none';
+        }, 1000); // This inner timeout matches the CSS transition duration
+    }, 2000); // 2-second delay before the fade-out starts
+});
 
 
         // Set the initial page
