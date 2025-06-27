@@ -155,6 +155,62 @@
         .skip-link:focus {
             top: 0;
         }
+        
+        /* Styles for Guide Page */
+        .guide-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #111827;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 0.5rem;
+        }
+        .guide-content h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+        .guide-content p, .guide-content li {
+            color: #4b5563;
+            line-height: 1.7;
+        }
+        .guide-content ul {
+            list-style-type: disc;
+            padding-left: 2rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        .guide-content code {
+            background-color: #e5e7eb;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-size: 0.9em;
+            font-family: monospace;
+        }
+        .guide-content table {
+            width: 100%;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-collapse: collapse;
+        }
+        .guide-content th, .guide-content td {
+            border: 1px solid #d1d5db;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        .guide-content th {
+            background-color: #f3f4f6;
+        }
+        .guide-content a {
+            color: #4f46e5;
+            text-decoration: underline;
+        }
+        .guide-content a:hover {
+            color: #4338ca;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -172,7 +228,7 @@
             <div class="flex justify-between items-center h-16">
                 <div class="flex-shrink-0">
                     <a href="#" onclick="event.preventDefault(); showPage('home')" class="flex items-center">
-                       <img src="HappyAIPath.png" alt="Happy AI Path Logo" class="h-16 w-auto">
+                       <img src="HappyAIPath.png" alt="Happy AI Path Logo" class="h-10 w-auto">
                     </a>
                 </div>
                 <div class="hidden md:block">
@@ -182,7 +238,20 @@
                         <a href="#about" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About</a>
                         <a href="#" onclick="event.preventDefault(); showPage('quiz')" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Quiz</a>
                         <a href="#" onclick="event.preventDefault(); showPage('blog')" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Blog</a>
-                        <a href="#" onclick="event.preventDefault(); showPage('about-site')" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About This Site</a>
+                        <div class="relative" id="more-dropdown">
+                            <button class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex items-center">
+                                <span>More</span>
+                                <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                            <div id="more-dropdown-menu" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden">
+                                <div class="py-1" role="none">
+                                    <a href="#" onclick="event.preventDefault(); showPage('guide')" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">The Playbook</a>
+                                    <a href="#" onclick="event.preventDefault(); showPage('about-site')" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">About This Site</a>
+                                </div>
+                            </div>
+                        </div>
                         <a href="#contact" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
                     </div>
                 </div>
@@ -203,6 +272,7 @@
                 <a href="#about" class="nav-link text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">About</a>
                 <a href="#" onclick="event.preventDefault(); showPage('quiz'); closeMobileMenu();" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Quiz</a>
                 <a href="#" onclick="event.preventDefault(); showPage('blog'); closeMobileMenu();" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
+                <a href="#" onclick="event.preventDefault(); showPage('guide'); closeMobileMenu();" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">The Playbook</a>
                 <a href="#" onclick="event.preventDefault(); showPage('about-site'); closeMobileMenu();" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">About This Site</a>
                 <a href="#contact" class="nav-link text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
             </div>
@@ -217,20 +287,15 @@
                  <svg class="animated-path" viewBox="0 0 1000 300" preserveAspectRatio="none">
                     <path class="path" d="M -100 150 Q 250 50 500 150 T 1100 150" fill="none" stroke="rgba(79, 70, 229, 0.2)" stroke-width="2"/>
                 </svg>
-                <div class="max-w-6xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8 relative z-10">
-                    <div class="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
-                        <div class="text-center lg:text-left">
-                            <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl hero-h1">From AI Uncertainty to Strategic Advantage</h1>
-                            <p class="mt-6 max-w-2xl mx-auto lg:mx-0 text-xl text-gray-300 hero-p">Leveraging my 20+ years of enterprise tech leadership to guide your organization through a successful, human-centered AI transformation.</p>
-                            <p class="mt-4 max-w-2xl mx-auto lg:mx-0 text-lg text-indigo-300 hero-p italic">A safe, inclusive learning environment for confident AI adoption.</p>
-                        </div>
-                        <div class="mt-10 lg:mt-0 flex-shrink-0">
-                             <div class="flex flex-col items-center lg:items-start space-y-4">
-                                 <a href="#contact" class="nav-link w-full sm:w-auto bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block text-center cta-button hover:bg-indigo-700">Schedule a Consultation</a>
-                                 <a href="#" onclick="event.preventDefault(); showPage('quiz')" class="w-full sm:w-auto bg-transparent border-2 border-white text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block text-center cta-button hover:bg-white hover:text-gray-900">Take the AI Readiness Quiz</a>
-                             </div>
-                        </div>
-                    </div>
+                <div class="max-w-6xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8 relative z-10 text-center">
+                    <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl hero-h1">From AI Uncertainty to Strategic Advantage</h1>
+                    <p class="mt-6 max-w-2xl mx-auto text-xl text-gray-300 hero-p">Leveraging my 20+ years of enterprise tech leadership to guide your organization through a successful, human-centered AI transformation.</p>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-indigo-300 hero-p italic">A safe, inclusive learning environment for confident AI adoption.</p>
+                    <div class="mt-10 flex flex-wrap justify-center gap-4 hero-p">
+                         <a href="#contact" class="nav-link bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block text-center cta-button hover:bg-indigo-700">Schedule a Consultation</a>
+                         <a href="#" onclick="event.preventDefault(); showPage('quiz')" class="bg-transparent border-2 border-white text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block text-center cta-button hover:bg-white hover:text-gray-900">Take the AI Readiness Quiz</a>
+                         <a href="#events" class="nav-link bg-teal-600 text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block text-center cta-button hover:bg-teal-700">View Upcoming Events</a>
+                     </div>
                 </div>
             </header>
             
@@ -287,6 +352,30 @@
                         </div>
                         <div class="mt-10 lg:mt-0 flex justify-center">
                             <img class="rounded-lg shadow-xl object-cover w-full max-w-md" src="DSC00498 (Small).jpg" alt="Headshot of Jim Perry, founder of Happy AI Path" loading="lazy" decoding="async">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Upcoming Events Section -->
+            <section id="events" class="animate-on-scroll py-20 bg-white">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                     <div class="text-center">
+                        <h2 class="text-base font-semibold text-teal-600 tracking-wide uppercase">Upcoming Events</h2>
+                        <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">Join Me for a Live Session</p>
+                    </div>
+                    <div class="mt-12 grid gap-8 md:grid-cols-1 lg:grid-cols-2">
+                        <div class="bg-gray-100 rounded-lg p-6">
+                            <p class="text-sm text-indigo-600 font-semibold">July 29-30, 2025 - The Ohio State University</p>
+                            <h3 class="mt-2 text-xl font-bold text-gray-900">AI Prompt Engineering Workshop</h3>
+                            <p class="mt-2 text-gray-600">An immersive, in-person workshop at the OSU Fisher College of Business designed to equip professionals with the skills to leverage generative AI for strategic advantage.</p>
+                            <a href="https://fisher.osu.edu/executive-education/programs-individuals/ai-prompt-engineering" target="_blank" rel="noopener noreferrer" class="mt-4 inline-block text-indigo-700 hover:text-indigo-900 font-semibold">Learn More &rarr;</a>
+                        </div>
+                        <div class="bg-gray-100 rounded-lg p-6">
+                           <p class="text-sm text-indigo-600 font-semibold">September 5, 2025 - Online Webinar</p>
+                            <h3 class="mt-2 text-xl font-bold text-gray-900">AI for Small Business Leaders</h3>
+                            <p class="mt-2 text-gray-600">A 60-minute session covering practical AI use cases for marketing, sales, and operations that you can implement immediately.</p>
+                            <a href="#" class="mt-4 inline-block text-gray-500 font-semibold cursor-not-allowed">Registration Coming Soon</a>
                         </div>
                     </div>
                 </div>
@@ -402,37 +491,37 @@
                         <div class="space-y-8">
                             <!-- Question 1 -->
                             <div>
-                                <h3 class="text-lg font-medium text-gray-900">1. How would you describe your leadership team's current understanding of AI's strategic potential?</h3>
+                                <h3 class="text-lg font-medium text-gray-900">1. What is your biggest concern about adopting AI in your organization?</h3>
                                 <fieldset class="mt-4">
-                                    <legend class="sr-only">AI Understanding</legend>
+                                    <legend class="sr-only">AI Concerns</legend>
                                     <div class="space-y-4">
-                                        <div class="flex items-center"><input type="radio" id="q1-1" name="q1" value="1" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q1-1" class="ml-3 block text-sm font-medium text-gray-700">Beginner: We are just starting to explore what AI can do.</label></div>
-                                        <div class="flex items-center"><input type="radio" id="q1-2" name="q1" value="2" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q1-2" class="ml-3 block text-sm font-medium text-gray-700">Intermediate: We have some knowledge but need a clearer strategy.</label></div>
-                                        <div class="flex items-center"><input type="radio" id="q1-3" name="q1" value="3" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q1-3" class="ml-3 block text-sm font-medium text-gray-700">Advanced: We have a solid understanding and are looking to optimize.</label></div>
+                                        <div class="flex items-center"><input type="radio" id="q1-1" name="q1" value="a" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q1-1" class="ml-3 block text-sm font-medium text-gray-700">Wasting money or choosing the wrong technology.</label></div>
+                                        <div class="flex items-center"><input type="radio" id="q1-2" name="q1" value="b" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q1-2" class="ml-3 block text-sm font-medium text-gray-700">My team falling behind, resisting change, or not knowing how to use it.</label></div>
+                                        <div class="flex items-center"><input type="radio" id="q1-3" name="q1" value="c" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q1-3" class="ml-3 block text-sm font-medium text-gray-700">Ensuring we use AI securely, ethically, and in a way that provides a real competitive advantage.</label></div>
                                     </div>
                                 </fieldset>
                             </div>
                             <!-- Question 2 -->
                             <div>
-                                <h3 class="text-lg font-medium text-gray-900">2. How clearly defined are the business problems you plan to solve with AI?</h3>
+                                <h3 class="text-lg font-medium text-gray-900">2. What is the most common challenge your team faces with tools like ChatGPT?</h3>
                                 <fieldset class="mt-4">
-                                    <legend class="sr-only">Business Problems</legend>
+                                    <legend class="sr-only">Team Challenges</legend>
                                     <div class="space-y-4">
-                                        <div class="flex items-center"><input type="radio" id="q2-1" name="q2" value="1" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q2-1" class="ml-3 block text-sm font-medium text-gray-700">Not Defined: We know we need AI, but aren't sure where to start.</label></div>
-                                        <div class="flex items-center"><input type="radio" id="q2-2" name="q2" value="2" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q2-2" class="ml-3 block text-sm font-medium text-gray-700">Partially Defined: We have a few ideas but need to prioritize.</label></div>
-                                        <div class="flex items-center"><input type="radio" id="q2-3" name="q2" value="3" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q2-3" class="ml-3 block text-sm font-medium text-gray-700">Clearly Defined: We have specific, high-priority use cases identified.</label></div>
+                                        <div class="flex items-center"><input type="radio" id="q2-1" name="q2" value="a" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q2-1" class="ml-3 block text-sm font-medium text-gray-700">They don't use it at all or don't know where to start.</label></div>
+                                        <div class="flex items-center"><input type="radio" id="q2-2" name="q2" value="b" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q2-2" class="ml-3 block text-sm font-medium text-gray-700">The results are generic and not useful for their specific roles.</label></div>
+                                        <div class="flex items-center"><input type="radio" id="q2-3" name="q2" value="c" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q2-3" class="ml-3 block text-sm font-medium text-gray-700">We lack a consistent, company-wide approach for using it effectively.</label></div>
                                     </div>
                                 </fieldset>
                             </div>
                             <!-- Question 3 -->
                             <div>
-                                <h3 class="text-lg font-medium text-gray-900">3. How would you describe your team's current skill set regarding AI tools?</h3>
+                                <h3 class="text-lg font-medium text-gray-900">3. As a leader, which statement best describes your current approach to AI?</h3>
                                 <fieldset class="mt-4">
-                                    <legend class="sr-only">Team Skills</legend>
+                                    <legend class="sr-only">Leadership Approach</legend>
                                     <div class="space-y-4">
-                                        <div class="flex items-center"><input type="radio" id="q3-1" name="q3" value="1" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q3-1" class="ml-3 block text-sm font-medium text-gray-700">Limited: Most of our team has little to no experience with AI tools.</label></div>
-                                        <div class="flex items-center"><input type="radio" id="q3-2" name="q3" value="2" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q3-2" class="ml-3 block text-sm font-medium text-gray-700">Mixed: Some team members are proficient, while others are beginners.</label></div>
-                                        <div class="flex items-center"><input type="radio" id="q3-3" name="q3" value="3" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q3-3" class="ml-3 block text-sm font-medium text-gray-700">Proficient: Our team is generally comfortable using and adapting to new AI tools.</label></div>
+                                        <div class="flex items-center"><input type="radio" id="q3-1" name="q3" value="a" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q3-1" class="ml-3 block text-sm font-medium text-gray-700">"I need to understand the fundamentals before I can build a strategy."</label></div>
+                                        <div class="flex items-center"><input type="radio" id="q3-2" name="q3" value="b" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q3-2" class="ml-3 block text-sm font-medium text-gray-700">"I have a vision, but I need to translate it into a practical roadmap for my team."</label></div>
+                                        <div class="flex items-center"><input type="radio" id="q3-3" name="q3" value="c" class="h-4 w-4 text-indigo-600 border-gray-300"><label for="q3-3" class="ml-3 block text-sm font-medium text-gray-700">"We're already using AI, but I need to ensure we're maximizing its strategic value."</label></div>
                                     </div>
                                 </fieldset>
                             </div>
@@ -442,9 +531,7 @@
                         </div>
                     </form>
                     <div id="quiz-results" class="hidden mt-8 text-center p-6 bg-white rounded-lg shadow-inner">
-                        <h3 class="text-2xl font-bold text-gray-900">Your AI Readiness Score:</h3>
-                        <p id="score-text" class="mt-2 text-lg text-gray-600"></p>
-                        <button onclick="event.preventDefault(); showPage('home'); document.getElementById('contact').scrollIntoView();" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">Let's discuss your results &rarr;</button>
+                        <!-- Results will be injected here by JavaScript -->
                     </div>
                  </div>
 
@@ -490,6 +577,79 @@
             </div>
         </main>
     </div>
+
+    <!-- Guide Page Content -->
+    <div id="guide" class="page">
+        <main class="bg-white py-20">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 guide-content">
+                <div class="text-center">
+                    <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">Build & Launch Your Professional Website for ≈$20</h1>
+                     <h2 class="mt-4 text-2xl font-semibold text-gray-700">The Complete AI-Powered, Zero-Experience-Required Playbook</h2>
+                     <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">This guide provides exact, click-by-click instructions for building and launching a professional website. Every step includes detailed explanations and assumes zero prior experience.</p>
+                     <button onclick="event.preventDefault(); showPage('home')" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</button>
+                </div>
+
+                <div class="mt-12 text-lg">
+                    <h3 id="guide-pre-flight">Pre-Flight Checklist</h3>
+                    <p>Before you start, gather these items to ensure a smooth process. Missing any of these will slow you down later.</p>
+                    <h4>Required Information Checklist:</h4>
+                    <ul>
+                        <li>Business/Personal Name (exactly as you want it displayed - write it down now)</li>
+                        <li>Your Professional Email (the one you check regularly - for domain registration)</li>
+                        <li>A List of 2-3 Main Services You Offer (be specific: "Social Media Management for Restaurants" not just "Marketing")</li>
+                        <li>Target Audience Description (one sentence: "couples in Chicago planning weddings")</li>
+                        <li>Professional Headshot (high-resolution, well-lit photo of yourself)</li>
+                        <li>Pen and paper for writing down login credentials (this is critical!)</li>
+                    </ul>
+
+                    <h3 id="guide-step-1">Step 1: Create Accounts & Buy Domain (20 minutes)</h3>
+                    <h4>A. Create Your Accounts (15 minutes)</h4>
+                    <ul>
+                        <li><strong>Gemini Account:</strong> Go to <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> and sign in.</li>
+                        <li>**GitHub Account:** Go to <a href="https://github.com" target="_blank" rel="noopener">github.com</a> and sign up. Remember to verify your email. **[Help: <a href="https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account" target="_blank" rel="noopener">Signing up for a new GitHub account</a>]**</li>
+                        <li>**Canva Account:** Go to <a href="https://canva.com" target="_blank" rel="noopener">canva.com</a> and create a free account.</li>
+                        <li>**JotForm Account:** Go to <a href="https://jotform.com" target="_blank" rel="noopener">jotform.com</a> and sign up for the free "Starter" plan.</li>
+                    </ul>
+                    <h4>B. Buy Your Domain (5 minutes)</h4>
+                    <p>Go to a registrar like <a href="https://namecheap.com" target="_blank" rel="noopener">Namecheap</a> or <a href="https://godaddy.com" target="_blank" rel="noopener">GoDaddy</a> and purchase your domain. Uncheck all add-ons except for free WhoisGuard privacy protection.</p>
+                    
+                    <h3 id="guide-step-2">Step 2: Set Up Your Digital Workspace (10 minutes)</h3>
+                     <p>Create a main folder named `My_Website_Project` on your desktop. Inside, create two subfolders: `Images` and `Content`. In the `Content` folder, create a text file named `website_info.txt` and fill it out with your business details, services, content, and account usernames.</p>
+                    
+                     <h3 id="guide-step-3">Step 3: Design Your Logo in Canva (20 minutes)</h3>
+                     <p>Use Canva to create a simple, professional logo. Search for "logo" templates, customize with your brand name and colors, and download it as a **PNG with a transparent background**. Save it as `logo.png` in your `Images` folder. **[Help: <a href="https://www.canva.com/help/article/designing-a-logo/" target="_blank" rel="noopener">Designing a Logo in Canva</a>]** </p>
+
+                     <h3 id="guide-step-4">Step 4: Write Your Content & Collect Images (15 minutes)</h3>
+                     <p>Complete your `website_info.txt` file. Save your headshot as `headshot.jpg` in the `Images` folder. Compress any large images using <a href="https://tinypng.com" target="_blank" rel="noopener">TinyPNG</a>.</p>
+
+                     <h3 id="guide-step-5">Step 5: Generate Your Contact Form Code (10 min)</h3>
+                     <p>In JotForm, create a new "Classic Form" with Name, Email, and Message fields. Test it using the preview, then go to **Publish → Embed** and copy the full embed code. **[Help: <a href="https://www.jotform.com/help/122-how-to-embed-your-form-on-your-website/" target="_blank" rel="noopener">How to Embed Your Form</a>]**</p>
+
+                    <h3 id="guide-step-6">Step 6: Build Your Website with AI (60+ minutes)</h3>
+                    <p>Provide Gemini with your prepared content, logo, images, and JotForm embed code using a detailed prompt. Iterate on the design until you are happy with the preview.</p>
+
+                    <h3 id="guide-step-7">Step 7: Test Everything Locally (15 minutes)</h3>
+                    <p>Save the final code as `index.html` in a new folder called `my-final-website`, along with all your images. Open the file in your browser to test all links, buttons, and the contact form. Check for responsiveness by resizing your browser window.</p>
+                    
+                    <h3 id="guide-step-8">Step 8: Upload to GitHub & Go Live (20 minutes)</h3>
+                    <p>Create a new public repository on GitHub named `yourusername.github.io`. Upload all files from your `my-final-website` folder. Enable GitHub Pages from the repository's settings, deploying from the `main` branch. Your site will be live at `https://yourusername.github.io`. **[Help: <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site#creating-your-site" target="_blank" rel="noopener">Creating a GitHub Pages site</a>]** </p>
+
+                    <h3 id="guide-step-9">Step 9: Connect Your Custom Domain (25 minutes)</h3>
+                    <p>In your domain registrar's DNS settings, add a `CNAME` record for `www` pointing to `yourusername.github.io` and a `URL Redirect` for the root domain (`@`) to `https://www.yourdomain.com`. In GitHub Pages settings, add your custom domain and enforce HTTPS.</p>
+
+                    <h3 id="guide-qa-checklist">Step 10: Final Quality Check</h3>
+                     <p>Verify all functionality on the live site, including form submissions and mobile responsiveness.</p>
+
+                    <h3 id="guide-troubleshooting">Step 11: Troubleshooting Common Issues</h3>
+                    <p>This section provides solutions for common problems like 404 errors, broken images, and HTTPS issues.</p>
+                    
+                    <h3 id="guide-cost-recap">Step 12: Cost Recap</h3>
+                    <p>A summary of the costs, highlighting that the primary expense is the domain name.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
 
     <!-- Back to Top Button -->
     <button id="backToTopBtn" title="Go to top">
@@ -545,9 +705,12 @@
         const cookieBanner = document.getElementById('cookie-banner');
         const cookieAcceptBtn = document.getElementById('cookie-accept');
         const cookieRejectBtn = document.getElementById('cookie-reject');
+        const moreDropdown = document.getElementById('more-dropdown');
+        const moreDropdownMenu = document.getElementById('more-dropdown-menu');
 
         const siteWrapper = document.getElementById('site-wrapper');
         const splashScreen = document.getElementById('splash-screen');
+        const guideLinks = document.querySelectorAll('.guide-content a[href^="#"]');
 
         function showPage(pageId) {
             // Hide all pages
@@ -574,6 +737,16 @@
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
+        
+        // Dropdown Menu Toggle
+        moreDropdown.addEventListener('click', () => {
+            moreDropdownMenu.classList.toggle('hidden');
+        });
+        document.addEventListener('click', function(event) {
+            if (!moreDropdown.contains(event.target)) {
+                moreDropdownMenu.classList.add('hidden');
+            }
+        });
 
         // Event listeners for nav links to scroll on the home page
         navLinks.forEach(link => {
@@ -588,6 +761,21 @@
                     }
                     closeMobileMenu();
                 }, 0);
+            });
+        });
+        
+        // Handle Guide Page Anchor Links
+        guideLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = href.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
             });
         });
 
