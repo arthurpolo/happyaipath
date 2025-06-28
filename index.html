@@ -4,17 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- FIX: Content Security Policy (CSP) to allow required external resources -->
-    <meta http-equiv="Content-Security-Policy" content="
-        default-src 'self';
-        script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com;
-        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-        font-src 'self' https://fonts.gstatic.com;
-        img-src 'self' data: https://placehold.co;
-        frame-src 'self' https://form.jotform.com;
-        connect-src 'self';
-    ">
-    
     <!-- SEO Meta Tags -->
     <title>Happy AI Path | Executive AI Coaching & Team Training</title>
     <meta name="description" content="Expert executive AI coaching and team training to guide your organization from AI uncertainty to strategic advantage. Achieve confident AI adoption with a seasoned Fortune 100 technology leader.">
@@ -151,19 +140,19 @@
         #splash-screen.fade-out {
             opacity: 0;
         }
-        /* FIX: Moved inline style to CSS */
+        /* Moved inline style to CSS */
         #splash-screen img {
             height: 50vh;
             max-height: 400px;
             width: auto;
         }
 
-        /* FIX: Moved inline style to CSS */
+        /* Moved inline style to CSS */
         #site-wrapper {
             visibility: hidden;
         }
 
-        /* FIX: Moved inline style to CSS */
+        /* Moved inline style to CSS */
         #JotFormIFrame-251755448879072 {
             min-width: 100%;
             width: 100%;
@@ -257,14 +246,12 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex-shrink-0">
-                    <!-- FIX: Removed onclick, added data-page attribute -->
                     <a href="#" data-page="home" class="flex items-center">
                        <img src="HappyAIPath.png" alt="Happy AI Path Logo" class="h-10 w-auto">
                     </a>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
-                        <!-- FIX: Removed onclick, added data-page attribute -->
                         <a href="#" data-page="home" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Home</a>
                         <a href="#services" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Services</a>
                         <a href="#about" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About</a>
@@ -279,7 +266,6 @@
                             </button>
                             <div id="more-dropdown-menu" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden">
                                 <div class="py-1" role="none">
-                                    <!-- FIX: Removed onclick, added data-page attribute -->
                                     <a href="#" data-page="guide" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">How AI built this</a>
                                     <a href="#" data-page="about-site" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">About This Site</a>
                                 </div>
@@ -300,7 +286,6 @@
         </div>
         <div id="mobile-menu" class="md:hidden hidden">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-               <!-- FIX: Removed onclick, added data-page attribute -->
                <a href="#" data-page="home" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Home</a>
                 <a href="#services" class="nav-link text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Services</a>
                 <a href="#about" class="nav-link text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">About</a>
@@ -472,7 +457,6 @@
                 <div class="text-center">
                     <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">The Happy AI Path Blog</h1>
                     <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">Your path to AI fluency starts here. Explore insights, strategies, and practical tips for confident AI adoption.</p>
-                     <!-- FIX: Removed onclick, added data-page attribute -->
                      <button data-page="home" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</button>
                 </div>
 
@@ -570,7 +554,6 @@
                 </div>
 
                  <div class="text-center mt-8">
-                    <!-- FIX: Removed onclick, added data-page attribute -->
                     <button data-page="home" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</button>
                 </div>
             </div>
@@ -584,7 +567,6 @@
                 <div class="text-center">
                     <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">About This Site</h1>
                      <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">How this site was built and other curiosities.</p>
-                     <!-- FIX: Removed onclick, added data-page attribute -->
                      <button data-page="home" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</button>
                 </div>
 
@@ -619,11 +601,9 @@
         <main class="bg-white py-20">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 guide-content">
                 <div class="text-center">
-                    <!-- UPDATE: Changed this line to match your requested text -->
                     <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">Step-by-Step how I used AI to build this website for ≈$20</h1>
                      <h2 class="mt-4 text-2xl font-semibold text-gray-700">The Complete AI-Powered, Zero-Experience-Required Playbook</h2>
                      <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">This guide provides exact, click-by-click instructions for building and launching a professional website. Every step includes detailed explanations and assumes zero prior experience.</p>
-                     <!-- FIX: Removed onclick, added data-page attribute -->
                      <button data-page="home" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</button>
                 </div>
 
@@ -901,3 +881,4 @@
     </script>
 </body>
 </html>
+``` is stuck on the splash scr
