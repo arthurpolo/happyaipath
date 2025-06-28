@@ -867,13 +867,27 @@
             }
 
             // --- Splash Screen Logic ---
-            setTimeout(() => {
-                splashScreen.classList.add('fade-out');
+            const isWebView = () => {
+                const userAgent = navigator.userAgent.toLowerCase();
+                const webViewKeywords = ['linkedin', 'fbav', 'fban', 'twitter', 'wv'];
+                return webViewKeywords.some(keyword => userAgent.includes(keyword));
+            };
+
+            if (isWebView()) {
+                // If it's a webview, skip the splash screen immediately
+                splashScreen.style.display = 'none';
                 siteWrapper.style.visibility = 'visible';
-                splashScreen.addEventListener('transitionend', () => {
-                    splashScreen.style.display = 'none';
-                }, { once: true });
-            }, 2000);
+            } else {
+                // Otherwise, run the normal splash screen animation
+                setTimeout(() => {
+                    splashScreen.classList.add('fade-out');
+                    siteWrapper.style.visibility = 'visible';
+                    // Fallback to hide the splash screen after the animation duration
+                    setTimeout(() => {
+                        splashScreen.style.display = 'none';
+                    }, 1000); // This should match the CSS transition duration
+                }, 2000);
+            }
 
             // --- Initial Setup ---
             showPage('home');
@@ -881,4 +895,3 @@
     </script>
 </body>
 </html>
-``` is stuck on the splash scr
