@@ -31,7 +31,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FIX: Replaced CDN script with local stylesheet -->
+    <link rel="stylesheet" href="tailwind-output.css">
+    
     <style>
         /*
         Color Palette:
@@ -870,7 +872,11 @@
             const isWebView = () => {
                 const userAgent = navigator.userAgent.toLowerCase();
                 const webViewKeywords = ['linkedin', 'fbav', 'fban', 'twitter', 'wv'];
-                return webViewKeywords.some(keyword => userAgent.includes(keyword));
+                // Check if it's a mobile device and NOT a standard browser
+                const isMobile = /iphone|ipad|ipod|android/.test(userAgent);
+                const isStandardBrowser = /chrome|safari|firefox|edge/.test(userAgent) && !webViewKeywords.some(keyword => userAgent.includes(keyword));
+                
+                return isMobile && !isStandardBrowser || webViewKeywords.some(keyword => userAgent.includes(keyword));
             };
 
             if (isWebView()) {
