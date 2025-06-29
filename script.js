@@ -11,10 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const moreDropdownMenu = document.getElementById('more-dropdown-menu');
     const siteWrapper = document.getElementById('site-wrapper');
     const splashScreen = document.getElementById('splash-screen');
-    const guideLinks = document.querySelectorAll('.guide-content a[href^="#"]');
 
     // --- Page Navigation Logic ---
     const showPage = (pageId) => {
+        if (!pages || pages.length === 0) return;
         pages.forEach(page => page.classList.remove('active'));
         const targetPage = document.getElementById(pageId);
         if (targetPage) {
@@ -41,46 +41,45 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             showPage(pageTarget.dataset.page);
             closeMobileMenu();
-            return; // Stop further execution
+            return;
         }
 
         // Handle In-Page Anchor Links (nav-link)
         if (link && link.classList.contains('nav-link')) {
             e.preventDefault();
-            showPage('home');
-            setTimeout(() => {
-                const targetSection = document.querySelector(link.getAttribute('href'));
-                if (targetSection) {
-                    targetSection.scrollIntoView({ behavior: 'smooth' });
-                }
-                closeMobileMenu();
-            }, 0);
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                showPage('home'); // Ensure we are on the homepage to see the section
+                setTimeout(() => {
+                    const targetSection = document.querySelector(href);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                    closeMobileMenu();
+                }, 0);
+            }
             return;
         }
-
-        // Handle Guide Page Internal Links
-        if (link && guideLinks) {
-             const href = link.getAttribute('href');
-             if (href && href.startsWith('#')) {
-                 const parentGuide = link.closest('.guide-content');
-                 if(parentGuide){
-                     e.preventDefault();
-                     const targetElement = document.getElementById(href.substring(1));
-                     if (targetElement) {
-                         targetElement.scrollIntoView({ behavior: 'smooth' });
-                     }
-                 }
+        
+        // Handle Guide Page Internal Links specifically
+        const guideLink = target.closest('.guide-content a[href^="#"]');
+        if (guideLink) {
+             e.preventDefault();
+             const href = guideLink.getAttribute('href');
+             const targetElement = document.getElementById(href.substring(1));
+             if (targetElement) {
+                 targetElement.scrollIntoView({ behavior: 'smooth' });
              }
         }
-        
+
         // Handle Buttons by ID
         if (button) {
             switch (button.id) {
                 case 'mobile-menu-button':
-                    mobileMenu.classList.toggle('hidden');
+                    if (mobileMenu) mobileMenu.classList.toggle('hidden');
                     break;
                 case 'backToTopBtn':
-                     window.scrollTo({top: 0, behavior: 'smooth'});
+                    window.scrollTo({top: 0, behavior: 'smooth'});
                     break;
                 case 'cookie-accept':
                     handleCookieConsent(true);
@@ -93,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Handle Dropdown Menu
         if (moreDropdown && moreDropdown.contains(target)) {
-            moreDropdownMenu.classList.toggle('hidden');
+            if(moreDropdownMenu) moreDropdownMenu.classList.toggle('hidden');
         } else if(moreDropdownMenu && !moreDropdownMenu.classList.contains('hidden')) {
             moreDropdownMenu.classList.add('hidden');
         }
@@ -118,37 +117,44 @@ document.addEventListener('DOMContentLoaded', () => {
                 resultMessage = "You're well on your way to AI fluency! My executive coaching can help you optimize your strategy and lead your team to the next level of innovation.";
             }
 
-            quizResultsContainer.innerHTML = `<p class="text-lg text-gray-800">${resultMessage}</p> <a href="#contact" class="nav-link mt-4 inline-block bg-indigo-600 text-white font-semibold py-2 px-6 rounded-lg text-base cta-button">Schedule a Consultation</a>`;
-            quizResultsContainer.classList.remove('hidden');
+            if(quizResultsContainer){
+                quizResultsContainer.innerHTML = `<p class="text-lg text-gray-800">${resultMessage}</p> <a href="#contact" class="nav-link mt-4 inline-block bg-indigo-600 text-white font-semibold py-2 px-6 rounded-lg text-base cta-button">Schedule a Consultation</a>`;
+                quizResultsContainer.classList.remove('hidden');
+            }
         });
     }
 
     // --- Back to Top Button Scroll Listener ---
-    window.addEventListener('scroll', () => {
-        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-            backToTopBtn.style.display = "block";
-        } else {
-            backToTopBtn.style.display = "none";
-        }
-    });
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        });
+    }
     
     // --- Scroll Animation Logic ---
     const sectionsToAnimate = document.querySelectorAll('.animate-on-scroll');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-            }
-        });
-    }, { threshold: 0.1 });
-    sectionsToAnimate.forEach(section => observer.observe(section));
+    if (sectionsToAnimate.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        sectionsToAnimate.forEach(section => observer.observe(section));
+    }
 
     // --- Cookie Banner Logic ---
     const handleCookieConsent = (consent) => {
         localStorage.setItem('cookie_consent', consent.toString());
-        cookieBanner.classList.remove('show');
+        if (cookieBanner) cookieBanner.classList.remove('show');
     };
-    if (!localStorage.getItem('cookie_consent')) {
+    if (cookieBanner && !localStorage.getItem('cookie_consent')) {
         cookieBanner.classList.add('show');
     }
 
@@ -159,17 +165,19 @@ document.addEventListener('DOMContentLoaded', () => {
         return webViewKeywords.some(keyword => userAgent.includes(keyword));
     };
 
-    if (isWebView()) {
-        splashScreen.style.display = 'none';
-        siteWrapper.style.visibility = 'visible';
-    } else {
-        setTimeout(() => {
-            splashScreen.classList.add('fade-out');
+    if (splashScreen && siteWrapper) {
+        if (isWebView()) {
+            splashScreen.style.display = 'none';
             siteWrapper.style.visibility = 'visible';
+        } else {
             setTimeout(() => {
-                splashScreen.style.display = 'none';
-            }, 1000); 
-        }, 2000);
+                splashScreen.classList.add('fade-out');
+                siteWrapper.style.visibility = 'visible';
+                setTimeout(() => {
+                    splashScreen.style.display = 'none';
+                }, 1000); 
+            }, 2000);
+        }
     }
 
     // --- Initial Setup ---
