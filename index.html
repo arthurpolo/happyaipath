@@ -3,426 +3,381 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy AI Path | AI & Executive Coaching</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css">
+    
+    <!-- SEO Meta Tags -->
+    <title>Happy AI Path | Executive AI Coaching & Team Training</title>
+    <meta name="description" content="Expert executive AI coaching and team training to guide your organization from AI uncertainty to strategic advantage. Achieve confident AI adoption with a seasoned Fortune 100 technology leader.">
+    <meta name="keywords" content="Executive AI Coaching, AI Team Training, AI Adoption, AI Strategy, AI Leadership, Prompt Engineering, AI Readiness Quiz">
+    <meta name="author" content="Jim Perry, Happy AI Path">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://happyaipath.com/">
+    <meta property="og:title" content="Happy AI Path | Executive AI Coaching & Team Training">
+    <meta property="og:description" content="From AI uncertainty to strategic advantage. Expert coaching to guide your organization's AI transformation.">
+    <meta property="og:image" content="https://arthurpolo.github.io/happyaipath/social-preview.jpg">
 
-    <script>
-        // Overriding browser's default scroll restoration to ensure we always start at the top.
-        if (history.scrollRestoration) {
-            history.scrollRestoration = 'manual';
-        } else {
-            window.onbeforeunload = function () {
-                window.scrollTo(0, 0);
-            }
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://happyaipath.com/">
+    <meta property="twitter:title" content="Happy AI Path | Executive AI Coaching & Team Training">
+    <meta property="twitter:description" content="From AI uncertainty to strategic advantage. Expert coaching to guide your organization's AI transformation.">
+    <meta property="twitter:image" content="https://arthurpolo.github.io/happyaipath/social-preview.jpg">
+
+    <link rel="icon" href="HappyAIPath.png" type="image/png">
+    
+    <!-- Performance: Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS Framework -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Styles -->
+    <style>
+        /*
+        Color Palette:
+        - Dark Blue-Gray (Primary Background): #111827 (bg-gray-900)
+        - Indigo (Primary Accent): #4f46e5 (bg-indigo-600)
+        - Teal (Secondary Accent): #0d9488 (text-teal-600)
+        - Light Gray (Section Backgrounds): #f3f4f6 (bg-gray-100)
+        */
+        html {
+            scroll-behavior: smooth;
         }
-    </script>
+        @media (prefers-reduced-motion: reduce) {
+          html, .animated-path, #splash-screen, .animate-on-scroll {
+            scroll-behavior: auto !important;
+            animation: none !important;
+            transition: none !important;
+          }
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fff;
+            color: #1f2937;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hero-h1 { animation: fadeInUp 1s ease-out forwards; }
+        .hero-p { opacity: 0; animation: fadeInUp 1s ease-out 0.5s forwards; }
+
+        .hero-bg {
+            background-color: #111827;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Animated Path Styling */
+        .animated-path {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.5;
+        }
+        .path {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: draw-path 10s ease-out forwards;
+        }
+        @keyframes draw-path { to { stroke-dashoffset: 0; } }
+
+        .cta-button, .card-hover { transition: all 0.3s ease; }
+        .cta-button:hover, .card-hover:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        
+        /* Back to Top Button */
+        #backToTopBtn {
+            display: none; position: fixed; bottom: 20px; right: 30px; z-index: 99; border: none; outline: none; background-color: #4f46e5; color: white; cursor: pointer; padding: 12px; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: opacity 0.3s, visibility 0.3s;
+        }
+        #backToTopBtn:hover { background-color: #4338ca; }
+
+        /* Cookie Banner */
+        #cookie-banner {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #1f2937;
+            color: white;
+            padding: 1rem;
+            z-index: 100;
+        }
+        #cookie-banner.show {
+            display: block;
+        }
+
+        /* Hiding pages by default */
+        .page { display: none; }
+        .page.active { display: block; }
+        
+        /* Splash Screen */
+        #splash-screen {
+            position: fixed;
+            inset: 0;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 101;
+            transition: opacity 1s ease-out;
+        }
+        #splash-screen.fade-out {
+            opacity: 0;
+        }
+        #splash-screen img {
+            height: 50vh;
+            max-height: 400px;
+            width: auto;
+        }
+
+        #site-wrapper {
+            visibility: hidden;
+        }
+
+        #JotFormIFrame-251755448879072 {
+            min-width: 100%;
+            width: 100%;
+            height: 850px;
+            border: none;
+        }
+
+        /* Accessibility Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #4f46e5;
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+        
+        /* Styles for Guide Page */
+        .guide-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #111827;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 0.5rem;
+        }
+        .guide-content h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+        .guide-content p, .guide-content li {
+            color: #4b5563;
+            line-height: 1.7;
+        }
+        .guide-content ul {
+            list-style-type: disc;
+            padding-left: 2rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        .guide-content code {
+            background-color: #e5e7eb;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-size: 0.9em;
+            font-family: monospace;
+        }
+        .guide-content table {
+            width: 100%;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-collapse: collapse;
+        }
+        .guide-content th, .guide-content td {
+            border: 1px solid #d1d5db;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        .guide-content th {
+            background-color: #f3f4f6;
+        }
+        .guide-content a {
+            color: #4f46e5;
+            text-decoration: underline;
+        }
+        .guide-content a:hover {
+            color: #4338ca;
+        }
+    </style>
 </head>
 <body class="bg-white text-gray-800">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <div id="splash-screen" class="fixed inset-0 bg-gray-900 flex justify-center items-center z-[100]">
-        <img src="HappyAIPath.png" alt="Happy AI Path Logo" class="w-48 h-48">
-    </div>
-
-    <div id="site-wrapper" class="hidden">
-        <nav class="bg-white shadow-md sticky top-0 z-50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between items-center h-16">
-                    <div class="flex-shrink-0">
-                        <a href="#home" class="nav-link text-2xl font-bold text-gray-900 flex items-center">
-                            <img src="HappyAIPath.png" alt="Logo" class="h-10 w-auto mr-2">
-                            <span>Happy AI Path</span>
-                        </a>
-                    </div>
-                    <div class="hidden md:block">
-                        <div class="ml-10 flex items-baseline space-x-4">
-                            <a href="#services" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Services</a>
-                            <a href="#about" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About</a>
-                            <a href="#testimonials" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Testimonials</a>
-                            <div class="relative">
-                                <button id="more-dropdown-button" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex items-center">
-                                    <span>More</span>
-                                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                </button>
-                                <div id="more-dropdown-menu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20">
-                                    <a href="#blog" class="nav-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Blog</a>
-                                    <a href="#guide" class="nav-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Website Guide</a>
-                                    <a href="#quiz" class="nav-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">AI Assessment</a>
-                                </div>
-                            </div>
-                            <a href="#contact" class="nav-link ml-4 bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700">Contact</a>
-                        </div>
-                    </div>
-                    <div class="md:hidden">
-                        <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-700 focus:outline-none">
-                            <span class="sr-only">Open main menu</span>
-                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div id="mobile-menu" class="md:hidden hidden">
-                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                    <a href="#services" class="nav-link text-gray-500 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Services</a>
-                    <a href="#about" class="nav-link text-gray-500 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">About</a>
-                    <a href="#testimonials" class="nav-link text-gray-500 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Testimonials</a>
-                    <a href="#blog" class="nav-link text-gray-500 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
-                    <a href="#guide" class="nav-link text-gray-500 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Website Guide</a>
-                    <a href="#quiz" class="nav-link text-gray-500 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">AI Assessment</a>
-                    <a href="#contact" class="nav-link text-gray-500 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
-                </div>
-            </div>
-        </nav>
-
-        <header id="home" class="hero-bg text-white">
-            <div class="max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8 text-center animate-on-scroll">
-                <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">Your Path to Confident AI Adoption Starts Here</h1>
-                <p class="mt-6 max-w-3xl mx-auto text-xl text-gray-300">Leveraging 20+ years of enterprise tech leadership to guide your organization through a successful, human-centered AI transformation.</p>
-                <div class="mt-10">
-                    <a href="#contact" class="nav-link bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block cta-button hover:bg-indigo-700">Schedule a Consultation</a>
-                </div>
-            </div>
-        </header>
-
-        <main>
-            <section id="services" class="py-20 bg-gray-50">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-on-scroll">
-                    <div class="text-center">
-                        <h2 class="text-base font-semibold text-indigo-600 tracking-wide uppercase">Our Services</h2>
-                        <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">Corporate Training & Executive Coaching</p>
-                    </div>
-                    <div class="mt-12 grid gap-10 md:grid-cols-2 lg:gap-12">
-                        <div class="bg-white rounded-lg shadow-lg p-8 card-hover">
-                            <h3 class="mt-6 text-2xl font-bold text-gray-900">AI & Data Mining Team Training</h3>
-                            <p class="mt-4 text-gray-600">Empower your teams with cutting-edge skills. Our workshops are designed to equip your professionals to harness AI effectively.</p>
-                            <ul class="mt-6 space-y-2 text-gray-600">
-                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-green-500"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg></span><span class="ml-2">AI Prompt Engineering</span></li>
-                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-green-500"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg></span><span class="ml-2">Data Mining Using AI</span></li>
-                            </ul>
-                        </div>
-                        <div class="bg-white rounded-lg shadow-lg p-8 card-hover">
-                            <h3 class="mt-6 text-2xl font-bold text-gray-900">Technology Leadership Coaching</h3>
-                            <p class="mt-4 text-gray-600">Navigate complex business transformations with a seasoned partner. My coaching empowers executives to lead with clarity and confidence.</p>
-                            <ul class="mt-6 space-y-2 text-gray-600">
-                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-green-500"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg></span><span class="ml-2">Lead through tech transitions</span></li>
-                                <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-green-500"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg></span><span class="ml-2">Develop data-driven strategy</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="about" class="py-20 bg-white">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-on-scroll">
-                    <div class="lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center">
-                        <div>
-                            <h2 class="text-base font-semibold text-indigo-600 tracking-wide uppercase">About Jim Perry</h2>
-                            <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">A Leader at the Intersection of Technology, Education, and Wellness</p>
-                            <p class="mt-4 text-xl text-gray-500">Jim Perry is a seasoned data and technology leader with over 20 years of experience driving business transformation for Fortune 100 companies.</p>
-                        </div>
-                        <div class="mt-10 lg:mt-0 flex justify-center">
-                            <img class="rounded-lg shadow-xl object-cover w-full max-w-md" src="DSC00498 (Small).jpg" alt="Headshot of Jim Perry, founder of Happy AI Path">
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="testimonials" class="py-20 bg-gray-50">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-on-scroll">
-                    <div class="text-center">
-                        <h2 class="text-base font-semibold text-indigo-600 tracking-wide uppercase">Testimonials</h2>
-                        <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">What Our Clients Say</p>
-                    </div>
-                    <div class="mt-12 grid gap-8 md:grid-cols-1 lg:grid-cols-2">
-                        <div class="bg-white rounded-lg shadow p-6">
-                            <p class="text-gray-600 italic">"Jim's AI training was a game-changer for our product team. His ability to simplify complex topics was outstanding."</p>
-                            <div class="mt-4 font-semibold text-gray-900">- Alex Johnson, CTO, Innovate Corp</div>
-                        </div>
-                        <div class="bg-white rounded-lg shadow p-6">
-                            <p class="text-gray-600 italic">"I gained so much clarity on my leadership style and how to effectively guide my team. I'm a more confident leader because of his guidance."</p>
-                            <div class="mt-4 font-semibold text-gray-900">- Sarah Chen, VP of Operations, Future Solutions</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="blog" class="py-20 bg-white">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-on-scroll">
-                    <div class="text-center">
-                        <h2 class="text-base font-semibold text-indigo-600 tracking-wide uppercase">Our Blog</h2>
-                        <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">Insights on AI, Data & Leadership</p>
-                    </div>
-                    <div class="mt-12 grid gap-10 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-                        <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
-                            <div class="p-6">
-                                <h3 class="mt-2 text-xl font-semibold text-gray-900">5 Mistakes to Avoid in Your AI Adoption Strategy</h3>
-                                <div class="mt-4"><a href="#" class="text-indigo-600 hover:text-indigo-800 font-semibold">Read More &rarr;</a></div>
-                            </div>
-                        </div>
-                        <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
-                            <div class="p-6">
-                                <h3 class="mt-2 text-xl font-semibold text-gray-900">The Mindful Leader: Applying Yoga Principles to Tech Teams</h3>
-                                <div class="mt-4"><a href="#" class="text-indigo-600 hover:text-indigo-800 font-semibold">Read More &rarr;</a></div>
-                            </div>
-                        </div>
-                        <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
-                            <div class="p-6">
-                                <h3 class="mt-2 text-xl font-semibold text-gray-900">Unlocking Potential: An Intro to Prompt Engineering</h3>
-                                <div class="mt-4"><a href="#" class="text-indigo-600 hover:text-indigo-800 font-semibold">Read More &rarr;</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="guide" class="py-20 bg-gray-50">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-on-scroll">
-                    <div class="text-center">
-                        <h2 class="text-base font-semibold text-indigo-600 tracking-wide uppercase">How This Site Is Built</h2>
-                    </div>
-                    <div class="mt-12 grid gap-10 md:grid-cols-3">
-                        <div class="bg-white rounded-lg shadow p-8">
-                            <h3 class="text-2xl font-bold text-gray-900">1. HTML (The Structure)</h3>
-                            <p class="mt-4 text-gray-600">The `index.html` file organizes all the content, such as text, images, and links, into a logical structure.</p>
-                        </div>
-                        <div class="bg-white rounded-lg shadow p-8">
-                            <h3 class="text-2xl font-bold text-gray-900">2. CSS (The Design)</h3>
-                            <p class="mt-4 text-gray-600">The `styles.css` file contains all the rules for colors, fonts, spacing, and layout.</p>
-                        </div>
-                        <div class="bg-white rounded-lg shadow p-8">
-                            <h3 class="text-2xl font-bold text-gray-900">3. JavaScript (The Interactivity)</h3>
-                            <p class="mt-4 text-gray-600">The `script.js` file handles all the dynamic features, like menus and animations.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="quiz" class="py-20 bg-white">
-                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 animate-on-scroll">
-                    <div class="text-center">
-                        <h2 class="text-base font-semibold text-indigo-600 tracking-wide uppercase">AI Readiness Assessment</h2>
-                    </div>
-                    <div class="mt-12 bg-gray-50 rounded-lg shadow-xl p-8">
-                        <form id="aiQuiz" class="space-y-10">
-                            <div>
-                                <p class="text-lg font-medium text-gray-900">1. How familiar is your leadership team with the strategic implications of AI?</p>
-                                <fieldset class="mt-4 space-y-2"><div class="flex items-center"><input type="radio" id="q1a1" name="q1" value="1" class="h-4 w-4"><label for="q1a1" class="ml-3 text-gray-700">Not familiar at all.</label></div><div class="flex items-center"><input type="radio" id="q1a2" name="q1" value="2" class="h-4 w-4"><label for="q1a2" class="ml-3 text-gray-700">Somewhat familiar, but no formal strategy.</label></div><div class="flex items-center"><input type="radio" id="q1a3" name="q1" value="3" class="h-4 w-4"><label for="q1a3" class="ml-3 text-gray-700">Very familiar, with a clear AI strategy in place.</label></div></fieldset>
-                            </div>
-                            <div>
-                                <p class="text-lg font-medium text-gray-900">2. How would you describe your organization's data infrastructure?</p>
-                                <fieldset class="mt-4 space-y-2"><div class="flex items-center"><input type="radio" id="q2a1" name="q2" value="1" class="h-4 w-4"><label for="q2a1" class="ml-3 text-gray-700">Siloed and difficult to access.</label></div><div class="flex items-center"><input type="radio" id="q2a2" name="q2" value="2" class="h-4 w-4"><label for="q2a2" class="ml-3 text-gray-700">Partially integrated, data is somewhat accessible.</label></div><div class="flex items-center"><input type="radio" id="q2a3" name="q2" value="3" class="h-4 w-4"><label for="q2a3" class="ml-3 text-gray-700">Unified and easily accessible for analysis.</label></div></fieldset>
-                            </div>
-                            <div>
-                                <p class="text-lg font-medium text-gray-900">3. To what extent are your teams currently using AI tools?</p>
-                                <fieldset class="mt-4 space-y-2"><div class="flex items-center"><input type="radio" id="q3a1" name="q3" value="1" class="h-4 w-4"><label for="q3a1" class="ml-3 text-gray-700">Very little or no usage.</label></div><div class="flex items-center"><input type="radio" id="q3a2" name="q3" value="2" class="h-4 w-4"><label for="q3a2" class="ml-3 text-gray-700">Sporadic usage by a few individuals or teams.</label></div><div class="flex items-center"><input type="radio" id="q3a3" name="q3" value="3" class="h-4 w-4"><label for="q3a3" class="ml-3 text-gray-700">Widespread and integrated into daily workflows.</label></div></fieldset>
-                            </div>
-                            <div class="text-center"><button type="submit" class="cta-button bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block hover:bg-indigo-700">See Your Results</button></div>
-                        </form>
-                        <div id="quiz-results" class="hidden mt-10 text-center p-6 bg-indigo-100 rounded-lg"></div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="contact" class="py-20 bg-gray-50">
-                <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 animate-on-scroll">
-                    <div class="text-center">
-                        <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Ready to Transform Your Business?</h2>
-                        <p class="mt-4 text-lg text-gray-500">Let's connect. Schedule a complimentary consultation.</p>
-                    </div>
-                    <form action="#" method="POST" class="mt-12 grid grid-cols-1 gap-y-6">
-                        <div><input type="text" name="full-name" id="full-name" autocomplete="name" class="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" placeholder="Full name"></div>
-                        <div><input id="email" name="email" type="email" autocomplete="email" class="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" placeholder="Email"></div>
-                        <div><textarea id="message" name="message" rows="4" class="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" placeholder="How can I help you?"></textarea></div>
-                        <div><button type="submit" class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cta-button">Send Message</button></div>
-                    </form>
-                </div>
-            </section>
-        </main>
-
-        <footer class="bg-gray-800">
-            <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-                <div class="text-center text-base text-gray-400">&copy; 2025 Happy AI Path. All rights reserved.</div>
-            </div>
-        </footer>
-
-        <button id="backToTopBtn" class="hidden fixed bottom-5 right-5 bg-indigo-600 text-white rounded-full p-3 shadow-lg hover:bg-indigo-700 focus:outline-none"><svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" /></svg></button>
-        <div id="cookie-banner" class="hidden fixed bottom-0 left-0 right-0 bg-gray-900 text-white p-4 text-center z-[60]"><p>This site uses cookies to enhance your experience. <a href="#" class="underline">Learn more</a>.</p><div class="mt-2"><button id="cookie-accept" class="bg-indigo-600 px-4 py-2 rounded mr-2">Accept</button><button id="cookie-reject" class="bg-gray-700 px-4 py-2 rounded">Reject</button></div></div>
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <img src="HappyAIPath.png" alt="Happy AI Path Logo">
     </div>
     
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
+    <div id="site-wrapper">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" data-page="home" class="flex items-center">
+                        <img src="HappyAIPath.png" alt="Happy AI Path Logo" class="h-10 w-auto">
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#" data-page="home" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="#services" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Services</a>
+                        <a href="#about" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                        <a href="#" data-page="quiz" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Quiz</a>
+                        <a href="#" data-page="blog" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Blog</a>
+                        <div class="relative" id="more-dropdown">
+                            <button class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex items-center">
+                                <span>More</span>
+                                <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                            <div id="more-dropdown-menu" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden">
+                                <div class="py-1" role="none">
+                                    <a href="#" data-page="guide" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">How AI built this</a>
+                                    <a href="#" data-page="about-site" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">About This Site</a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#contact" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+               <a href="#" data-page="home" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="#services" class="nav-link text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Services</a>
+                <a href="#about" class="nav-link text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#" data-page="quiz" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Quiz</a>
+                <a href="#" data-page="blog" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
+                <a href="#" data-page="guide" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">The Playbook</a>
+                <a href="#" data-page="about-site" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">About This Site</a>
+                <a href="#contact" class="nav-link text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- This div contains all the "pages" of your single-page application -->
+    <div id="page-container">
+        <!-- Main Home Page Content -->
+        <div id="home" class="page active">
+            <main id="main-content">
+                <!-- All sections for the homepage go here -->
+                <header class="hero-bg text-white"><!-- ... --></header>
+                <div class="bg-gray-100"><!-- Authority Banner --></div>
+                <section id="services" class="animate-on-scroll py-20 bg-gray-100"><!-- ... --></section>
+                <section id="about" class="animate-on-scroll py-20 bg-white"><!-- ... --></section>
+                <section id="events" class="animate-on-scroll py-20 bg-white"><!-- ... --></section>
+                <section id="testimonials" class="animate-on-scroll py-20 bg-gray-100"><!-- ... --></section>
+                <section id="contact" class="animate-on-scroll py-20 bg-gray-100"><!-- ... --></section>
+            </main>
+        </div>
 
-            // --- Caching DOM Elements ---
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const backToTopBtn = document.getElementById('backToTopBtn');
-            const cookieBanner = document.getElementById('cookie-banner');
-            const siteWrapper = document.getElementById('site-wrapper');
-            const splashScreen = document.getElementById('splash-screen');
-            const sectionsToAnimate = document.querySelectorAll('.animate-on-scroll');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const moreDropdownButton = document.getElementById('more-dropdown-button');
-            const moreDropdownMenu = document.getElementById('more-dropdown-menu');
-            const quizForm = document.getElementById('aiQuiz');
-            const quizResultsContainer = document.getElementById('quiz-results');
+        <!-- Blog Page Content -->
+        <div id="blog" class="page">
+            <!-- Full blog page content here -->
+        </div>
 
-            // --- Splash Screen & Initial Load Logic ---
-            const showSiteContent = () => {
-                if (splashScreen) {
-                    splashScreen.style.opacity = '0';
-                    // Wait for fade out animation to finish
-                    setTimeout(() => {
-                        splashScreen.style.display = 'none';
-                        if (siteWrapper) {
-                            siteWrapper.classList.remove('hidden');
-                        }
-                        // After splash screen, check for a hash in the URL and smoothly scroll to it.
-                        const hash = window.location.hash;
-                        if (hash) {
-                            const targetElement = document.querySelector(hash);
-                            if (targetElement) {
-                                setTimeout(() => {
-                                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                                }, 100); // Short delay to ensure the page layout is stable.
-                            }
-                        }
-                    }, 750);
-                }
-            };
-            
-            // **MODIFIED BEHAVIOR**
-            // Listen for the window to be fully loaded (including images, css, etc.)
-            // This provides a much better UX than a fixed timer.
-            window.onload = () => {
-                // Use a short timeout to ensure the fade-out animation is smooth.
-                setTimeout(showSiteContent, 250);
-            };
+        <!-- AI Readiness Quiz Page -->
+        <div id="quiz" class="page">
+            <!-- Quiz content here -->
+        </div>
 
-            // --- Mobile Menu ---
-            const closeMobileMenu = () => {
-                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                }
-            };
+        <!-- "About This Site" Page Content -->
+        <div id="about-site" class="page">
+            <!-- About this site content here -->
+        </div>
 
-            if (mobileMenuButton) {
-                mobileMenuButton.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                });
-            }
+        <!-- Guide Page Content -->
+        <div id="guide" class="page">
+            <!-- Guide content here -->
+        </div>
+    </div>
 
-            // --- Smooth Scrolling for Nav Links ---
-            navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const targetId = link.getAttribute('href');
-                    const targetSection = document.querySelector(targetId);
 
-                    if (targetSection) {
-                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        // Update URL hash without jumping
-                        if (history.pushState) {
-                            history.pushState(null, null, targetId);
-                        } else {
-                            location.hash = targetId;
-                        }
-                    }
-                    closeMobileMenu();
-                });
-            });
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" title="Go to top">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+        </svg>
+    </button>
+    
+    <!-- Cookie Banner -->
+    <div id="cookie-banner">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <p class="text-sm">This website uses cookies to ensure you get the best experience on our website.</p>
+            <div class="flex space-x-2">
+                 <button id="cookie-accept" class="bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg text-sm">Accept</button>
+                 <button id="cookie-reject" class="bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg text-sm">Reject</button>
+            </div>
+        </div>
+    </div>
 
-            // --- Dropdown Menu Logic ---
-            if (moreDropdownButton) {
-                moreDropdownButton.addEventListener('click', (event) => {
-                    event.stopPropagation();
-                    moreDropdownMenu.classList.toggle('hidden');
-                });
-            }
-
-            // --- Hide dropdown if clicking outside ---
-            window.addEventListener('click', (event) => {
-                if (moreDropdownMenu && !moreDropdownMenu.classList.contains('hidden')) {
-                    if (!moreDropdownButton.contains(event.target)) {
-                        moreDropdownMenu.classList.add('hidden');
-                    }
-                }
-            });
-
-            // --- Back to Top Button ---
-            if (backToTopBtn) {
-                window.addEventListener('scroll', () => {
-                    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                        backToTopBtn.classList.add('show');
-                    } else {
-                        backToTopBtn.classList.remove('show');
-                    }
-                });
-                backToTopBtn.addEventListener('click', () => {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            }
-
-            // --- Scroll Animation Logic (Intersection Observer) ---
-            if (sectionsToAnimate.length > 0) {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('is-visible');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.1 });
-                sectionsToAnimate.forEach(section => observer.observe(section));
-            }
-
-            // --- Cookie Banner Logic ---
-            const handleCookieConsent = (consent) => {
-                localStorage.setItem('cookie_consent', consent.toString());
-                if (cookieBanner) cookieBanner.classList.remove('show');
-            };
-
-            if (cookieBanner) {
-                if (!localStorage.getItem('cookie_consent')) {
-                    setTimeout(() => {
-                        cookieBanner.classList.add('show');
-                    }, 3000);
-                }
-                document.getElementById('cookie-accept')?.addEventListener('click', () => handleCookieConsent(true));
-                document.getElementById('cookie-reject')?.addEventListener('click', () => handleCookieConsent(false));
-            }
-
-            // --- AI Quiz Logic ---
-            if (quizForm) {
-                quizForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const formData = new FormData(quizForm);
-                    let score = 0;
-                    if (formData.has('q1') && formData.has('q2') && formData.has('q3')) {
-                        for (const value of formData.values()) {
-                            score += parseInt(value, 10) || 0;
-                        }
-                        let resultMessage = '';
-                        if (score <= 4) {
-                            resultMessage = "You're at the beginning of your AI path. This is the perfect time to build a strong foundation. My coaching can help chart your course.";
-                        } else if (score <= 7) {
-                            resultMessage = "You have a solid base! Now is the time to refine your strategy and accelerate adoption. My training and coaching can provide the targeted guidance you need.";
-                        } else {
-                            resultMessage = "You're well on your way to AI fluency! My executive coaching can help you optimize your strategy and lead your team to the next level of innovation.";
-                        }
-                        if (quizResultsContainer) {
-                            quizResultsContainer.innerHTML = `<p class="text-lg text-gray-900">${resultMessage}</p> <a href="#contact" class="nav-link mt-4 inline-block bg-indigo-600 text-white font-semibold py-2 px-6 rounded-lg text-base cta-button">Schedule a Consultation</a>`;
-                            quizResultsContainer.classList.remove('hidden');
-                            quizResultsContainer.scrollIntoView({ behavior: 'smooth' });
-                        }
-                    } else {
-                        if (quizResultsContainer) {
-                            quizResultsContainer.innerHTML = `<p class="text-lg text-red-700 font-semibold">Please answer all questions to see your results.</p>`;
-                            quizResultsContainer.classList.remove('hidden');
-                        }
-                    }
-                });
-            }
-        });
-    </script>
+    <!-- Footer -->
+    <footer class="bg-gray-900">
+        <div class="max-w-6xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-center space-x-6">
+                <a href="mailto:JimPerry@happyaipath.com" class="text-gray-400 hover:text-white" rel="noopener">
+                    <span class="sr-only">Email</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/jimperry" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white">
+                    <span class="sr-only">LinkedIn</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="mt-8 text-center text-base text-gray-400">
+                &copy; 2025 Happy AI Path. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    </div>
+    
+    <!-- Link to the new JavaScript file -->
+    <script src="/script.js"></script>
 </body>
 </html>
