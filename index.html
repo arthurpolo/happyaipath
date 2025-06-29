@@ -1,185 +1,132 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // --- Caching DOM Elements ---
-    const pages = document.querySelectorAll('.page');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const quizForm = document.getElementById('aiQuiz');
-    const quizResultsContainer = document.getElementById('quiz-results');
-    const backToTopBtn = document.getElementById('backToTopBtn');
-    const cookieBanner = document.getElementById('cookie-banner');
-    const moreDropdown = document.getElementById('more-dropdown');
-    const moreDropdownMenu = document.getElementById('more-dropdown-menu');
-    const siteWrapper = document.getElementById('site-wrapper');
-    const splashScreen = document.getElementById('splash-screen');
-
-    // --- Page Navigation Logic ---
-    const showPage = (pageId) => {
-        if (!pages || pages.length === 0) return;
-        pages.forEach(page => page.classList.remove('active'));
-        const targetPage = document.getElementById(pageId);
-        if (targetPage) {
-            targetPage.classList.add('active');
-        }
-        window.scrollTo(0, 0);
-    };
-
-    const closeMobileMenu = () => {
-        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-            mobileMenu.classList.add('hidden');
-        }
-    };
-
-    // --- Event Delegation for Clicks ---
-    document.body.addEventListener('click', (e) => {
-        const target = e.target;
-        const link = target.closest('a');
-        const button = target.closest('button');
-
-        // Handle Page-Switching Links & Buttons with data-page attribute
-        const pageTarget = target.closest('[data-page]');
-        if (pageTarget) {
-            e.preventDefault();
-            showPage(pageTarget.dataset.page);
-            closeMobileMenu();
-            return;
-        }
-
-        // Handle In-Page Anchor Links (nav-link)
-        if (link && link.classList.contains('nav-link')) {
-            e.preventDefault();
-            const href = link.getAttribute('href');
-            if (href && href.startsWith('#')) {
-                showPage('home'); // Ensure we are on the homepage to see the section
-                setTimeout(() => {
-                    const targetSection = document.querySelector(href);
-                    if (targetSection) {
-                        targetSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                    closeMobileMenu();
-                }, 0);
-            }
-            return;
-        }
-        
-        // Handle Guide Page Internal Links specifically
-        const guideLink = target.closest('.guide-content a[href^="#"]');
-        if (guideLink) {
-             e.preventDefault();
-             const href = guideLink.getAttribute('href');
-             const targetElement = document.getElementById(href.substring(1));
-             if (targetElement) {
-                 targetElement.scrollIntoView({ behavior: 'smooth' });
-             }
-        }
-
-        // Handle Buttons by ID
-        if (button) {
-            switch (button.id) {
-                case 'mobile-menu-button':
-                    if (mobileMenu) mobileMenu.classList.toggle('hidden');
-                    break;
-                case 'backToTopBtn':
-                    window.scrollTo({top: 0, behavior: 'smooth'});
-                    break;
-                case 'cookie-accept':
-                    handleCookieConsent(true);
-                    break;
-                case 'cookie-reject':
-                    handleCookieConsent(false);
-                    break;
-            }
-        }
-
-        // Handle Dropdown Menu
-        if (moreDropdown && moreDropdown.contains(target)) {
-            if(moreDropdownMenu) moreDropdownMenu.classList.toggle('hidden');
-        } else if(moreDropdownMenu && !moreDropdownMenu.classList.contains('hidden')) {
-            moreDropdownMenu.classList.add('hidden');
-        }
-    });
-
-    // --- Quiz Logic ---
-    if (quizForm) {
-        quizForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const formData = new FormData(quizForm);
-            let score = 0;
-            for (const value of formData.values()) {
-                score += parseInt(value, 10) || 0;
-            }
-
-            let resultMessage = '';
-            if (score <= 4) {
-                resultMessage = "You're at the beginning of your AI path. This is the perfect time to build a strong foundation. My coaching can help chart your course.";
-            } else if (score <= 7) {
-                resultMessage = "You have a solid base! Now is the time to refine your strategy and accelerate adoption. My training and coaching can provide the targeted guidance you need.";
-            } else {
-                resultMessage = "You're well on your way to AI fluency! My executive coaching can help you optimize your strategy and lead your team to the next level of innovation.";
-            }
-
-            if(quizResultsContainer){
-                quizResultsContainer.innerHTML = `<p class="text-lg text-gray-800">${resultMessage}</p> <a href="#contact" class="nav-link mt-4 inline-block bg-indigo-600 text-white font-semibold py-2 px-6 rounded-lg text-base cta-button">Schedule a Consultation</a>`;
-                quizResultsContainer.classList.remove('hidden');
-            }
-        });
-    }
-
-    // --- Back to Top Button Scroll Listener ---
-    if (backToTopBtn) {
-        window.addEventListener('scroll', () => {
-            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                backToTopBtn.style.display = "block";
-            } else {
-                backToTopBtn.style.display = "none";
-            }
-        });
-    }
-    
-    // --- Scroll Animation Logic ---
-    const sectionsToAnimate = document.querySelectorAll('.animate-on-scroll');
-    if (sectionsToAnimate.length > 0) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        sectionsToAnimate.forEach(section => observer.observe(section));
-    }
-
-    // --- Cookie Banner Logic ---
-    const handleCookieConsent = (consent) => {
-        localStorage.setItem('cookie_consent', consent.toString());
-        if (cookieBanner) cookieBanner.classList.remove('show');
-    };
-    if (cookieBanner && !localStorage.getItem('cookie_consent')) {
-        cookieBanner.classList.add('show');
-    }
-
-    // --- Splash Screen Logic ---
-    const isWebView = () => {
-        const userAgent = navigator.userAgent.toLowerCase();
-        const webViewKeywords = ['linkedin', 'fbav', 'fban', 'twitter', 'wv'];
-        return webViewKeywords.some(keyword => userAgent.includes(keyword));
-    };
-
-    if (splashScreen && siteWrapper) {
-        if (isWebView()) {
-            splashScreen.style.display = 'none';
-            siteWrapper.style.visibility = 'visible';
-        } else {
-            setTimeout(() => {
-                splashScreen.classList.add('fade-out');
-                siteWrapper.style.visibility = 'visible';
-                setTimeout(() => {
-                    splashScreen.style.display = 'none';
-                }, 1000); 
-            }, 2000);
-        }
-    }
-
-    // --- Initial Setup ---
-    showPage('home');
-});
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy AI Path | Executive AI Coaching & Team Training</title>
+    <meta name="description" content="Expert executive AI coaching and team training to guide your organization from AI uncertainty to strategic advantage. Achieve confident AI adoption with a seasoned Fortune 100 technology leader.">
+    <meta name="keywords" content="Executive AI Coaching, AI Team Training, AI Adoption, AI Strategy, AI Leadership, Prompt Engineering, AI Readiness Quiz">
+    <meta name="author" content="Jim Perry, Happy AI Path">
+    <link rel="canonical" href="https://happyaipath.com/">
+    <link rel="icon" href="HappyAIPath.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="hero">
+        <h1>From AI Uncertainty to Strategic Advantage</h1>
+        <p>Leveraging 20+ years of enterprise tech leadership to guide your organization through a successful, human-centered AI transformation.</p>
+        <a href="#contact" class="cta">Schedule a Consultation</a>
+    </header>
+    <nav>
+        <ul id="nav-menu">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#quiz">Quiz</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="services">
+            <h2>My Services</h2>
+            <div class="service">
+                <h3>AI Team Training</h3>
+                <p>Hands-on workshops for real business outcomes.</p>
+                <ul>
+                    <li>Turn generic prompts into actionable outputs</li>
+                    <li>Replace AI anxiety with confident application</li>
+                    <li>Role-specific skills development</li>
+                </ul>
+            </div>
+            <div class="service">
+                <h3>Executive AI Coaching</h3>
+                <p>Confidential strategic sessions for leaders.</p>
+                <ul>
+                    <li>Clarify and implement AI strategy</li>
+                    <li>Align initiatives to business goals</li>
+                    <li>Expert, independent sounding board</li>
+                </ul>
+            </div>
+        </section>
+        <section id="about">
+            <h2>About Jim Perry</h2>
+            <div class="card">
+                <img src="DSC00498 (Small).jpg" alt="Jim Perry Headshot">
+                <p>Seasoned technology leader, 20+ years, Fortune 100 experience. Adjunct Lecturer at The Ohio State University Fisher College of Business. Specialist in demystifying technology and enabling real business results through AI education and adoption.</p>
+            </div>
+        </section>
+        <section id="quiz">
+            <h2>AI Readiness Quiz</h2>
+            <form id="aiQuiz">
+                <label>What is your biggest concern about adopting AI?
+                    <select name="q1" required>
+                        <option value="1">Wasting money or choosing the wrong technology</option>
+                        <option value="2">Team resistance or skills gap</option>
+                        <option value="3">Security, ethics, or value</option>
+                    </select>
+                </label>
+                <label>Most common challenge your team faces?
+                    <select name="q2" required>
+                        <option value="1">Don't use it/don't know where to start</option>
+                        <option value="2">Results are generic/not useful</option>
+                        <option value="3">Lack a consistent approach</option>
+                    </select>
+                </label>
+                <label>Your current approach to AI?
+                    <select name="q3" required>
+                        <option value="1">Need to understand fundamentals</option>
+                        <option value="2">Have a vision, need a roadmap</option>
+                        <option value="3">Already using, want to maximize value</option>
+                    </select>
+                </label>
+                <button type="submit">See My Results</button>
+            </form>
+            <div id="quiz-results" style="display:none;"></div>
+        </section>
+        <section id="blog">
+            <h2>The Happy AI Path Blog</h2>
+            <div class="card">
+                <h3>Gemini 2.5 is Now Enterprise-Ready</h3>
+                <p>Google's Gemini 2.5 Pro and Flash are now "Generally Available." For business, this means real, reliable foundation for AI initiatives. Stability, enterprise security, and scalability are here. Adopt with confidence.</p>
+            </div>
+            <div class="card">
+                <h3>Is AI Coming for Your Meetings? ChatGPT Says Yes.</h3>
+                <p>ChatGPT Record for macOS automates transcription and meeting summaries. Frees executive time, ensures accuracy, drives focus. Human participation augmented, not replaced.</p>
+            </div>
+            <div class="card">
+                <h3>5 Mistakes to Avoid in Your AI Adoption Strategy</h3>
+                <p>AI is a business transformation, not just a technical one. Align goals, address team concerns, avoid common pitfalls. Ensure sustainable, strategic adoption.</p>
+            </div>
+        </section>
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="card">
+                <p>Fill out the form below or email <a href="mailto:JimPerry@happyaipath.com">JimPerry@happyaipath.com</a>.</p>
+                <iframe
+                  id="JotFormIFrame-251755448879072"
+                  title="Contact Form"
+                  allowtransparency="true"
+                  allowfullscreen="true"
+                  allow="geolocation; microphone; camera"
+                  src="https://form.jotform.com/251755448879072"
+                  frameborder="0"
+                  scrolling="yes"
+                  style="min-width:100%;width:100%;height:500px;border:none;">
+                </iframe>
+            </div>
+        </section>
+    </main>
+    <button id="backToTopBtn" title="Go to top" style="display:none;position:fixed;bottom:20px;right:30px;z-index:99;border:none;background:#4f46e5;color:white;padding:12px;border-radius:50%;">↑</button>
+    <footer>
+        <div>
+            &copy; 2025 Happy AI Path. All rights reserved.
+        </div>
+        <div>
+            <a href="mailto:JimPerry@happyaipath.com">Email</a> |
+            <a href="https://www.linkedin.com/in/jimperry" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+    </footer>
+</body>
+</html>
