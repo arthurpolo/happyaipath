@@ -20,6 +20,8 @@
     <meta name="twitter:image" content="happyaipath.png">
 
     <link rel="icon" href="happyaipath.png" type="image/png">
+    
+    <link rel="preload" as="image" href="HappyAIPath.svg" type="image/svg+xml">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -186,7 +188,11 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <div id="splash-screen">
-        <img src="HappyAIPath.png" alt="Happy AI Path Logo" style="height: 50vh; max-height: 400px; width: auto;">
+        <picture>
+          <source srcset="HappyAIPath.svg" type="image/svg+xml">
+          <source srcset="HappyAIPath-large.webp" type="image/webp">
+          <img src="HappyAIPath-large.png" alt="Happy AI Path Logo" style="height: 50vh; max-height: 400px; width: auto;">
+        </picture>
     </div>
     
     <div id="site-wrapper" style="visibility: hidden;">
@@ -195,7 +201,13 @@
             <div class="flex justify-between items-center h-16">
                 <div class="flex-shrink-0">
                     <a href="#" onclick="showPage('home')" class="flex items-center">
-                       <img src="HappyAIPath.png" alt="Happy AI Path Logo" class="h-10 w-auto">
+                        <picture>
+                            <source srcset="HappyAIPath.svg" type="image/svg+xml">
+                            <source srcset="HappyAIPath-small.webp" type="image/webp">
+                            <img src="HappyAIPath-small.png" 
+                                 srcset="HappyAIPath-small-2x.png 2x" 
+                                 alt="Happy AI Path Logo" class="h-10 w-auto">
+                        </picture>
                     </a>
                 </div>
                 <div class="hidden md:block">
@@ -258,8 +270,8 @@
                     <p class="mt-4 max-w-2xl mx-auto text-lg text-indigo-300 hero-p italic">A safe, inclusive learning environment for confident AI adoption.</p>
                     <div class="mt-10 flex flex-wrap justify-center gap-4 hero-p">
                          <a href="#contact" class="nav-link bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block text-center cta-button hover:bg-indigo-700">Schedule a Consultation</a>
-                         <a href="#" onclick="showPage('quiz')" class="bg-transparent border-2 border-white text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block text-center cta-button hover:bg-white hover:text-gray-900">Take the AI Readiness Quiz</a>
-                         <a href="#events" class="nav-link bg-teal-600 text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block text-center cta-button hover:bg-teal-700">View Upcoming Trainings</a>
+                          <a href="#" onclick="showPage('quiz')" class="bg-transparent border-2 border-white text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block text-center cta-button hover:bg-white hover:text-gray-900">Take the AI Readiness Quiz</a>
+                          <a href="#events" class="nav-link bg-teal-600 text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block text-center cta-button hover:bg-teal-700">View Upcoming Trainings</a>
                     </div>
                 </div>
             </header>
@@ -319,47 +331,47 @@
 
             <section id="events" class="animate-on-scroll py-20 bg-white">
                 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                     <div class="text-center">
-                        <h2 class="text-base font-semibold text-teal-600 tracking-wide uppercase">Upcoming Events</h2>
-                        <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">Join Me for a Live Session</p>
-                    </div>
-                    <div class="mt-12 grid gap-8 md:grid-cols-1 lg:grid-cols-2">
-                        <div class="bg-gray-100 rounded-lg p-6">
-                            <p class="text-sm text-indigo-600 font-semibold">July 29-30, 2025 - The Ohio State University</p>
-                            <h3 class="mt-2 text-xl font-bold text-gray-900">AI Prompt Engineering Workshop</h3>
-                            <p class="mt-2 text-gray-600">An immersive, in-person workshop at the OSU Fisher College of Business designed to equip professionals with the skills to leverage generative AI for strategic advantage.</p>
-                            <a href="https://fisher.osu.edu/executive-education/programs-individuals/ai-prompt-engineering" target="_blank" rel="noopener noreferrer" class="mt-4 inline-block text-indigo-700 hover:text-indigo-900 font-semibold">Learn More &rarr;</a>
+                       <div class="text-center">
+                            <h2 class="text-base font-semibold text-teal-600 tracking-wide uppercase">Upcoming Events</h2>
+                            <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">Join Me for a Live Session</p>
                         </div>
-                        <div class="bg-gray-100 rounded-lg p-6">
-                           <p class="text-sm text-indigo-600 font-semibold">September 5, 2025 - Online Webinar</p>
-                            <h3 class="mt-2 text-xl font-bold text-gray-900">AI for Small Business Leaders</h3>
-                            <p class="mt-2 text-gray-600">A 60-minute session covering practical AI use cases for marketing, sales, and operations that you can implement immediately.</p>
-                            <a href="#" class="mt-4 inline-block text-gray-500 font-semibold cursor-not-allowed">Registration Coming Soon</a>
+                        <div class="mt-12 grid gap-8 md:grid-cols-1 lg:grid-cols-2">
+                            <div class="bg-gray-100 rounded-lg p-6">
+                                <p class="text-sm text-indigo-600 font-semibold">July 29-30, 2025 - The Ohio State University</p>
+                                <h3 class="mt-2 text-xl font-bold text-gray-900">AI Prompt Engineering Workshop</h3>
+                                <p class="mt-2 text-gray-600">An immersive, in-person workshop at the OSU Fisher College of Business designed to equip professionals with the skills to leverage generative AI for strategic advantage.</p>
+                                <a href="https://fisher.osu.edu/executive-education/programs-individuals/ai-prompt-engineering" target="_blank" rel="noopener noreferrer" class="mt-4 inline-block text-indigo-700 hover:text-indigo-900 font-semibold">Learn More &rarr;</a>
+                            </div>
+                            <div class="bg-gray-100 rounded-lg p-6">
+                               <p class="text-sm text-indigo-600 font-semibold">September 5, 2025 - Online Webinar</p>
+                                <h3 class="mt-2 text-xl font-bold text-gray-900">AI for Small Business Leaders</h3>
+                                <p class="mt-2 text-gray-600">A 60-minute session covering practical AI use cases for marketing, sales, and operations that you can implement immediately.</p>
+                                <a href="#" class="mt-4 inline-block text-gray-500 font-semibold cursor-not-allowed">Registration Coming Soon</a>
+                            </div>
                         </div>
-                    </div>
                 </div>
             </section>
             
             <section id="testimonials" class="animate-on-scroll py-20 bg-gray-100">
                 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                     <div class="text-center">
-                        <h2 class="text-base font-semibold text-teal-600 tracking-wide uppercase">What My Clients Say</h2>
-                        <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">AI Coaching & Training Testimonials</p>
-                    </div>
-                    <div class="mt-12 grid gap-8 md:grid-cols-1 lg:grid-cols-3">
-                        <div class="bg-white rounded-lg p-6">
-                            <p class="text-gray-600 italic">"This session was amazing and I learned so much. It was an amazing use of 2 hours and I would love to sign up for additional courses when available. Thank you so much Jim!"</p>
-                            <div class="mt-4 font-semibold text-gray-900">- Training Attendee</div>
+                       <div class="text-center">
+                            <h2 class="text-base font-semibold text-teal-600 tracking-wide uppercase">What My Clients Say</h2>
+                            <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">AI Coaching & Training Testimonials</p>
                         </div>
-                        <div class="bg-white rounded-lg p-6">
-                            <p class="text-gray-600 italic">"Well paced session, starting with the basics and working up. Engaging presenter. Learnt lots. Time well spent - left me wanting more (in a good way!)"</p>
-                            <div class="mt-4 font-semibold text-gray-900">- Workshop Participant</div>
+                        <div class="mt-12 grid gap-8 md:grid-cols-1 lg:grid-cols-3">
+                            <div class="bg-white rounded-lg p-6">
+                                <p class="text-gray-600 italic">"This session was amazing and I learned so much. It was an amazing use of 2 hours and I would love to sign up for additional courses when available. Thank you so much Jim!"</p>
+                                <div class="mt-4 font-semibold text-gray-900">- Training Attendee</div>
+                            </div>
+                            <div class="bg-white rounded-lg p-6">
+                                <p class="text-gray-600 italic">"Well paced session, starting with the basics and working up. Engaging presenter. Learnt lots. Time well spent - left me wanting more (in a good way!)"</p>
+                                <div class="mt-4 font-semibold text-gray-900">- Workshop Participant</div>
+                            </div>
+                            <div class="bg-white rounded-lg p-6">
+                                <p class="text-gray-600 italic">"This training was very helpful... I specifically liked how he did the preparation and provided us with the persona based on our role."</p>
+                                <div class="mt-4 font-semibold text-gray-900">- Pilot Program Member</div>
+                            </div>
                         </div>
-                        <div class="bg-white rounded-lg p-6">
-                            <p class="text-gray-600 italic">"This training was very helpful... I specifically liked how he did the preparation and provided us with the persona based on our role."</p>
-                            <div class="mt-4 font-semibold text-gray-900">- Pilot Program Member</div>
-                        </div>
-                    </div>
                 </div>
             </section>
 
@@ -395,7 +407,7 @@
                 <div class="text-center">
                     <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">The Happy AI Path Blog</h1>
                     <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">Your path to AI fluency starts here. Explore insights, strategies, and practical tips for confident AI adoption.</p>
-                     <button onclick="showPage('home')" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</button>
+                       <button onclick="showPage('home')" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</button>
                 </div>
 
                 <div class="mt-16 space-y-16">
@@ -417,7 +429,7 @@
                         </div>
                     </article>
                     
-                     <article class="flex flex-col md:flex-row items-center gap-8 animate-on-scroll">
+                    <article class="flex flex-col md:flex-row items-center gap-8 animate-on-scroll">
                         <img class="w-full md:w-1/3 rounded-lg shadow-lg" src="https://placehold.co/600x400/111827/ffffff?text=AI+Strategy" alt="A person planning an AI strategy on a whiteboard" loading="lazy" decoding="async">
                         <div class="md:w-2/3">
                             <p class="text-sm text-gray-500">JUNE 10, 2025</p>
@@ -497,8 +509,8 @@
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center">
                     <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">About This Site</h1>
-                     <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">How this site was built and other curiosities.</p>
-                     <button onclick="showPage('home')" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</button>
+                       <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">How this site was built and other curiosities.</p>
+                       <button onclick="showPage('home')" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</button>
                 </div>
 
                  <div class="mt-12 space-y-10 text-lg text-gray-600">
@@ -532,9 +544,9 @@
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 guide-content">
                 <div class="text-center">
                     <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">Build & Launch Your Professional Website for ≈$20</h1>
-                     <h2 class="mt-4 text-2xl font-semibold text-gray-700">The Complete AI-Powered, Zero-Experience-Required Playbook</h2>
-                     <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">This guide provides exact, click-by-click instructions for building and launching a professional website. Every step includes detailed explanations and assumes zero prior experience.</p>
-                     <button onclick="showPage('home')" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</button>
+                       <h2 class="mt-4 text-2xl font-semibold text-gray-700">The Complete AI-Powered, Zero-Experience-Required Playbook</h2>
+                       <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">This guide provides exact, click-by-click instructions for building and launching a professional website. Every step includes detailed explanations and assumes zero prior experience.</p>
+                       <button onclick="showPage('home')" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</button>
                 </div>
 
                 <div class="mt-12 text-lg">
@@ -806,6 +818,5 @@
         // Set the initial page
         showPage('home');
     </script>
-</div>
 </body>
 </html>
