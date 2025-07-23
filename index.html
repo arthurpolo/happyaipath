@@ -690,205 +690,156 @@
     </div> <!-- End of site-wrapper -->
 
     <script>
-        // --- DOM Element Selection ---
-        const pages = document.querySelectorAll('.page');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const quizForm = document.getElementById('aiQuiz');
-        const quizResults = document.getElementById('quiz-results');
-        const scoreText = document.getElementById('score-text');
-        const backToTopBtn = document.getElementById('backToTopBtn');
-        const cookieBanner = document.getElementById('cookie-banner');
-        const cookieAcceptBtn = document.getElementById('cookie-accept');
-        const cookieRejectBtn = document.getElementById('cookie-reject');
-        const moreDropdown = document.getElementById('more-dropdown');
-        const moreDropdownMenu = document.getElementById('more-dropdown-menu');
-        const siteWrapper = document.getElementById('site-wrapper');
-        const splashScreen = document.getElementById('splash-screen');
-        const geminiButton = document.getElementById('gemini-button');
-        const geminiResultsContainer = document.getElementById('gemini-results');
-        const geminiActionsContainer = document.getElementById('gemini-actions');
-        
-        // --- State ---
-        let blogPostsLoaded = false;
-
-        // --- Core Functions ---
-        function showPage(pageId) {
-            pages.forEach(page => page.classList.remove('active'));
-            const targetPage = document.getElementById(pageId);
-            if (targetPage) {
-                targetPage.classList.add('active');
-            }
-            if (pageId === 'blog' && !blogPostsLoaded) {
-                loadPosts();
-            }
-            window.scrollTo(0, 0);
-        }
-
-        function closeMobileMenu() {
-            if (!mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.add('hidden');
-            }
-        }
-
-        async function loadPosts() {
-            const postsContainer = document.getElementById("blog-posts-container");
-            if (!postsContainer) {
-                console.error("Fatal Error: Blog posts container not found.");
-                return;
-            }
-            const rssToJsonApi = "https://api.rss2json.com/v1/api.json";
-            const blogspotFeedUrl = "https://happyaipath.blogspot.com/feeds/posts/default";
-            const fetchUrl = `${rssToJsonApi}?rss_url=${encodeURIComponent(blogspotFeedUrl)}`;
-
-            try {
-                const response = await fetch(fetchUrl);
-                if (!response.ok) throw new Error(`Network response was not ok: ${response.statusText}`);
-                const data = await response.json();
-                if (data.status !== 'ok') throw new Error(`API returned an error: ${data.message}`);
-                
-                postsContainer.innerHTML = '';
-                
-                if (data.items && data.items.length > 0) {
-                    blogPostsLoaded = true;
-                    data.items.forEach(post => {
-                        const article = document.createElement('article');
-                        article.className = "bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-300 flex flex-col";
-
-                        if (post.thumbnail && post.thumbnail.length > 0) {
-                            const img = document.createElement('img');
-                            img.src = post.thumbnail;
-                            img.alt = post.title;
-                            img.className = "h-48 w-full object-cover";
-                            img.loading = "lazy";
-                            article.appendChild(img);
-                        }
-
-                        const contentDiv = document.createElement('div');
-                        contentDiv.className = "p-6 flex flex-col flex-grow";
-                        const dateP = document.createElement('p');
-                        dateP.className = "text-sm text-gray-500 mb-2";
-                        dateP.textContent = new Date(post.pubDate).toLocaleDateString();
-                        const titleH3 = document.createElement('h3');
-                        titleH3.className = "text-xl font-bold mb-3 flex-grow";
-                        const titleLink = document.createElement('a');
-                        titleLink.href = post.link;
-                        titleLink.target = "_blank";
-                        titleLink.rel = "noopener noreferrer";
-                        titleLink.className = "text-gray-900 hover:text-indigo-600 transition-colors duration-200";
-                        titleLink.textContent = post.title;
-                        titleH3.appendChild(titleLink);
-                        const tempDiv = document.createElement('div');
-                        tempDiv.innerHTML = post.content;
-                        const snippetText = (tempDiv.textContent || tempDiv.innerText || "").trim().substring(0, 150) + '...';
-                        const snippetP = document.createElement('p');
-                        snippetP.className = "text-gray-700 mb-4";
-                        snippetP.textContent = snippetText;
-                        const readMoreLink = document.createElement('a');
-                        readMoreLink.href = post.link;
-                        readMoreLink.target = "_blank";
-                        readMoreLink.rel = "noopener noreferrer";
-                        readMoreLink.className = "font-semibold text-indigo-600 hover:text-indigo-800 transition-colors duration-200 mt-auto";
-                        readMoreLink.textContent = "Read More →";
-                        contentDiv.append(dateP, titleH3, snippetP, readMoreLink);
-                        article.appendChild(contentDiv);
-                        postsContainer.appendChild(article);
-                    });
-                } else {
-                    postsContainer.innerHTML = "<p class='col-span-full text-center'>No posts found.</p>";
-                }
-            } catch (error) {
-                console.error("Error fetching blog posts:", error);
-                postsContainer.innerHTML = `
-                    <div class="col-span-full bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg text-center">
-                        <p>Sorry, we couldn't load the posts right now. Please try again later.</p>
-                    </div>`;
-            }
-        }
-        
-        async function getAIPoweredSteps(resultText) {
-            geminiResultsContainer.innerHTML = '<p>✨ Generating personalized advice...</p>';
-            geminiButton.disabled = true;
-            geminiButton.classList.add('opacity-50', 'cursor-not-allowed');
-
-            const prompt = `As an expert AI adoption consultant, you are advising a business leader whose current AI readiness profile is: "${resultText}". 
-            First, place them on a 2x2 AI Readiness Matrix with a title and a one-sentence description. The matrix archetypes are:
-            - AI Skeptic: Low strategy, low execution.
-            - AI Explorer: Low strategy, high execution.
-            - AI Strategist: High strategy, low execution.
-            - AI Innovator: High strategy, high execution.
-            
-            After identifying their matrix placement, provide three actionable, concise, and encouraging next steps to help them advance. 
-            Format the entire response clearly, starting with the Matrix placement, followed by the numbered list of next steps.`;
-            
-            let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
-            const payload = { contents: chatHistory };
-            const apiKey = ""; 
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    throw new Error(`API request failed with status ${response.status}`);
-                }
-
-                const result = await response.json();
-                
-                if (result.candidates && result.candidates[0]?.content?.parts?.[0]?.text) {
-                    const text = result.candidates[0].content.parts[0].text;
-                    const formattedText = text
-                        .replace(/\*\*(.*?)\*\*/g, '<strong class="text-teal-700">$1</strong>') // Bold text
-                        .replace(/(\d\.)/g, '<br><br><strong>$1</strong>'); // Numbered list
-                    geminiResultsContainer.innerHTML = `<h4 class="font-bold text-lg mb-2">Your Personalized AI Roadmap:</h4><p>${formattedText}</p>`;
-                } else {
-                    throw new Error("Invalid response structure from API.");
-                }
-            } catch (error) {
-                console.error("Gemini API error:", error);
-                geminiResultsContainer.innerHTML = '<p class="text-red-500">Sorry, we couldn\'t generate AI recommendations at this time. Please try again later.</p>';
-            } finally {
-                geminiButton.disabled = false;
-                 geminiButton.classList.remove('opacity-50', 'cursor-not-allowed');
-            }
-        }
-
-        // --- Event Listener Setup ---
         document.addEventListener('DOMContentLoaded', () => {
+            // --- DOM Element Selection ---
+            const pages = document.querySelectorAll('.page');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const quizForm = document.getElementById('aiQuiz');
+            const quizResults = document.getElementById('quiz-results');
+            const scoreText = document.getElementById('score-text');
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            const cookieBanner = document.getElementById('cookie-banner');
+            const cookieAcceptBtn = document.getElementById('cookie-accept');
+            const cookieRejectBtn = document.getElementById('cookie-reject');
+            const moreDropdown = document.getElementById('more-dropdown');
+            const moreDropdownMenu = document.getElementById('more-dropdown-menu');
+            const siteWrapper = document.getElementById('site-wrapper');
+            const splashScreen = document.getElementById('splash-screen');
+            const geminiButton = document.getElementById('gemini-button');
+            const geminiResultsContainer = document.getElementById('gemini-results');
+            const geminiActionsContainer = document.getElementById('gemini-actions');
             
-            const allNavTriggers = document.querySelectorAll('.nav-trigger');
-            allNavTriggers.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const href = link.getAttribute('href');
-                    if (!href || !href.startsWith('#')) return;
+            // --- State ---
+            let blogPostsLoaded = false;
 
-                    const targetId = href.substring(1);
-                    const targetElement = document.getElementById(targetId);
+            // --- Core Functions ---
+            function showPage(pageId) {
+                pages.forEach(page => page.classList.remove('active'));
+                const targetPage = document.getElementById(pageId);
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                }
+                if (pageId === 'blog' && !blogPostsLoaded) {
+                    loadPosts();
+                }
+                window.scrollTo(0, 0);
+            }
 
-                    if (targetElement && targetElement.classList.contains('page')) {
-                        showPage(targetId);
-                    } else if (targetElement) {
-                        const homePage = document.getElementById('home');
-                        if (!homePage.classList.contains('active')) {
-                            showPage('home');
-                            setTimeout(() => {
-                                targetElement.scrollIntoView({ behavior: 'smooth' });
-                            }, 100);
-                        } else {
+            function closeMobileMenu() {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            }
+
+            async function loadPosts() {
+                const postsContainer = document.getElementById("blog-posts-container");
+                if (!postsContainer) {
+                    console.error("Fatal Error: Blog posts container not found.");
+                    return;
+                }
+                const rssToJsonApi = "https://api.rss2json.com/v1/api.json";
+                const blogspotFeedUrl = "https://happyaipath.blogspot.com/feeds/posts/default";
+                const fetchUrl = `${rssToJsonApi}?rss_url=${encodeURIComponent(blogspotFeedUrl)}`;
+
+                try {
+                    const response = await fetch(fetchUrl);
+                    if (!response.ok) throw new Error(`Network response was not ok: ${response.statusText}`);
+                    const data = await response.json();
+                    if (data.status !== 'ok') throw new Error(`API returned an error: ${data.message}`);
+                    
+                    postsContainer.innerHTML = '';
+                    
+                    if (data.items && data.items.length > 0) {
+                        blogPostsLoaded = true;
+                        data.items.forEach(post => {
+                            const article = document.createElement('article');
+                            article.className = "bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-300 flex flex-col";
+
+                            if (post.thumbnail && post.thumbnail.length > 0) {
+                                const img = document.createElement('img');
+                                img.src = post.thumbnail;
+                                img.alt = post.title;
+                                img.className = "h-48 w-full object-cover";
+                                img.loading = "lazy";
+                                article.appendChild(img);
+                            }
+
+                            const contentDiv = document.createElement('div');
+                            contentDiv.className = "p-6 flex flex-col flex-grow";
+                            const dateP = document.createElement('p');
+                            dateP.className = "text-sm text-gray-500 mb-2";
+                            dateP.textContent = new Date(post.pubDate).toLocaleDateString();
+                            const titleH3 = document.createElement('h3');
+                            titleH3.className = "text-xl font-bold mb-3 flex-grow";
+                            const titleLink = document.createElement('a');
+                            titleLink.href = post.link;
+                            titleLink.target = "_blank";
+                            titleLink.rel = "noopener noreferrer";
+                            titleLink.className = "text-gray-900 hover:text-indigo-600 transition-colors duration-200";
+                            titleLink.textContent = post.title;
+                            titleH3.appendChild(titleLink);
+                            const tempDiv = document.createElement('div');
+                            tempDiv.innerHTML = post.content;
+                            const snippetText = (tempDiv.textContent || tempDiv.innerText || "").trim().substring(0, 150) + '...';
+                            const snippetP = document.createElement('p');
+                            snippetP.className = "text-gray-700 mb-4";
+                            snippetP.textContent = snippetText;
+                            const readMoreLink = document.createElement('a');
+                            readMoreLink.href = post.link;
+                            readMoreLink.target = "_blank";
+                            readMoreLink.rel = "noopener noreferrer";
+                            readMoreLink.className = "font-semibold text-indigo-600 hover:text-indigo-800 transition-colors duration-200 mt-auto";
+                            readMoreLink.textContent = "Read More →";
+                            contentDiv.append(dateP, titleH3, snippetP, readMoreLink);
+                            article.appendChild(contentDiv);
+                            postsContainer.appendChild(article);
+                        });
+                    } else {
+                        postsContainer.innerHTML = "<p class='col-span-full text-center'>No posts found.</p>";
+                    }
+                } catch (error) {
+                    console.error("Error fetching blog posts:", error);
+                    postsContainer.innerHTML = `
+                        <div class="col-span-full bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg text-center">
+                            <p>Sorry, we couldn't load the posts right now. Please try again later.</p>
+                        </div>`;
+                }
+            }
+            
+            // --- UNIFIED NAVIGATION LOGIC ---
+            function handleNavClick(e) {
+                const link = e.target.closest('.nav-trigger');
+                if (!link) return;
+
+                e.preventDefault();
+                const href = link.getAttribute('href');
+                if (!href || !href.startsWith('#')) return;
+
+                const targetId = href.substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement && targetElement.classList.contains('page')) {
+                    showPage(targetId);
+                } else if (targetElement) {
+                    const homePage = document.getElementById('home');
+                    if (!homePage.classList.contains('active')) {
+                        showPage('home');
+                        setTimeout(() => {
                             targetElement.scrollIntoView({ behavior: 'smooth' });
-                        }
+                        }, 100);
+                    } else {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
                     }
-                    closeMobileMenu();
-                    if (!moreDropdownMenu.classList.contains('hidden')) {
-                        moreDropdownMenu.classList.add('hidden');
-                    }
-                });
-            });
+                }
+                closeMobileMenu();
+                if (!moreDropdownMenu.classList.contains('hidden')) {
+                    moreDropdownMenu.classList.add('hidden');
+                }
+            }
+
+            // --- Event Listener Setup ---
+            document.body.addEventListener('click', handleNavClick);
 
             mobileMenuButton.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -911,7 +862,6 @@
                     e.preventDefault();
                     const formData = new FormData(quizForm);
                     let score = 0;
-                    // Sum scores from all 7 questions
                     for (let i = 1; i <= 7; i++) {
                         const value = formData.get(`q${i}`);
                         if (value === 'a') score += 1;
@@ -920,7 +870,6 @@
                     }
 
                     let resultMessage = '';
-                    // Adjusted scoring thresholds for 7 questions (max score 21)
                     if (score <= 10) {
                         resultMessage = "You're at the foundational stage of your AI journey, focusing on understanding the core concepts and potential risks. This is the perfect time to build a strong base.";
                     } else if (score <= 16) {
@@ -930,14 +879,6 @@
                     }
                     scoreText.textContent = resultMessage;
                     quizResults.classList.remove('hidden');
-                    geminiActionsContainer.classList.remove('hidden');
-                });
-            }
-            
-            if(geminiButton){
-                geminiButton.addEventListener('click', () => {
-                    const resultText = scoreText.textContent;
-                    getAIPoweredSteps(resultText);
                 });
             }
 
