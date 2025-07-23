@@ -408,7 +408,7 @@
                 <div class="text-center">
                     <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">The Happy AI Path Blog</h1>
                     <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">Your path to AI fluency starts here. Explore insights, strategies, and practical tips for confident AI adoption.</p>
-                        <button onclick="showPage('home')" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</button>
+                    <a href="#home" class="nav-trigger mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</a>
                 </div>
 
                 <!-- This container will be filled with blog posts from Blogspot -->
@@ -478,7 +478,7 @@
                 </div>
 
                  <div class="text-center mt-8">
-                    <button onclick="showPage('home')" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</button>
+                    <a href="#home" class="nav-trigger mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</a>
                 </div>
             </div>
         </main>
@@ -490,7 +490,7 @@
                 <div class="text-center">
                     <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">About This Site</h1>
                         <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">How this site was built and other curiosities.</p>
-                        <button onclick="showPage('home')" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</button>
+                        <a href="#home" class="nav-trigger mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</a>
                 </div>
 
                  <div class="mt-12 space-y-10 text-lg text-gray-600">
@@ -526,7 +526,7 @@
                     <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">Build & Launch Your Professional Website for ≈$20</h1>
                         <h2 class="mt-4 text-2xl font-semibold text-gray-700">The Complete AI-Powered, Zero-Experience-Required Playbook</h2>
                         <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">This guide provides exact, click-by-click instructions for building and launching a professional website. Every step includes detailed explanations and assumes zero prior experience.</p>
-                        <button onclick="showPage('home')" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</button>
+                        <a href="#home" class="nav-trigger mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</a>
                 </div>
 
                 <div class="mt-12 text-lg">
@@ -753,51 +753,51 @@
             }
         }
 
-        // --- UNIFIED NAVIGATION LOGIC ---
-        function handleNavClick(e) {
-            const link = e.target.closest('.nav-trigger');
-            if (!link) return;
-
-            e.preventDefault();
-            const href = link.getAttribute('href');
-            if (!href || !href.startsWith('#')) return;
-
-            const targetId = href.substring(1);
-            const targetElement = document.getElementById(targetId);
-
-            if (targetElement && targetElement.classList.contains('page')) {
-                showPage(targetId);
-            } else if (targetElement) {
-                const homePage = document.getElementById('home');
-                if (!homePage.classList.contains('active')) {
-                    showPage('home');
-                    setTimeout(() => {
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
-                    }, 100);
-                } else {
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                }
-            }
-            closeMobileMenu();
-        }
-
         // --- Event Listener Setup ---
         document.addEventListener('DOMContentLoaded', () => {
-            // Use event delegation on the body for all nav clicks
-            document.body.addEventListener('click', handleNavClick);
+            
+            // --- CORRECTED NAVIGATION LOGIC ---
+            const allNavTriggers = document.querySelectorAll('.nav-trigger');
+            allNavTriggers.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const href = link.getAttribute('href');
+                    if (!href || !href.startsWith('#')) return;
+
+                    const targetId = href.substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement && targetElement.classList.contains('page')) {
+                        showPage(targetId);
+                    } else if (targetElement) {
+                        const homePage = document.getElementById('home');
+                        if (!homePage.classList.contains('active')) {
+                            showPage('home');
+                            setTimeout(() => {
+                                targetElement.scrollIntoView({ behavior: 'smooth' });
+                            }, 100);
+                        } else {
+                            targetElement.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+                    closeMobileMenu();
+                    if (!moreDropdownMenu.classList.contains('hidden')) {
+                        moreDropdownMenu.classList.add('hidden');
+                    }
+                });
+            });
 
             mobileMenuButton.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent body click handler from closing it immediately
+                e.stopPropagation();
                 mobileMenu.classList.toggle('hidden');
             });
         
             moreDropdown.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent body click handler
+                e.stopPropagation();
                 moreDropdownMenu.classList.toggle('hidden');
             });
         
             document.addEventListener('click', () => {
-                // Close dropdown if click is outside
                 if (!moreDropdownMenu.classList.contains('hidden')) {
                     moreDropdownMenu.classList.add('hidden');
                 }
