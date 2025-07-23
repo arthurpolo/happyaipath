@@ -302,6 +302,7 @@
                         <div class="bg-white rounded-lg p-8 card-hover">
                              <img class="h-48 w-full object-cover rounded-md" src="https://placehold.co/600x400/6ee7b7/333333?text=Executive+Coaching" alt="Stylized graphic representing focused one-on-one executive AI coaching.">
                             <h3 class="mt-6 text-2xl font-bold text-gray-900">Executive AI Coaching</h3>
+                            <p class="mt-2 text-lg font-semibold text-teal-700">Coaching leaders on AI adoption.</p>
                             <p class="mt-4 text-gray-600">For leaders who feel behind on AI, my coaching provides a confidential, strategic path from uncertainty to clear, decisive action.</p>
                              <ul class="mt-6 space-y-2 text-gray-600">
                                 <li class="flex items-start"><span class="flex-shrink-0 h-6 w-6 text-teal-600" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></span><span class="ml-2">Go from AI curiosity to a clear, strategic roadmap.</span></li>
@@ -392,7 +393,6 @@
                           frameborder="0"
                           style="min-width: 100%; width: 100%; height:850px; border:none;"
                           scrolling="yes"
-                          rel="noopener"
                         >
                         </iframe>
                     </div>
@@ -691,7 +691,7 @@
                 if (data.items && data.items.length > 0) {
                     blogPostsLoaded = true;
                     data.items.forEach(post => {
-                        // --- Secure DOM Creation ---
+                        // --- Secure DOM Creation (XSS Prevention) ---
                         const article = document.createElement('article');
                         article.className = "bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-300 flex flex-col";
 
@@ -787,7 +787,7 @@
             document.body.addEventListener('click', handleNavClick);
 
             mobileMenuButton.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent body click handler
+                e.stopPropagation(); // Prevent body click handler from closing it immediately
                 mobileMenu.classList.toggle('hidden');
             });
         
