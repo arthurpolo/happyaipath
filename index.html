@@ -200,7 +200,7 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex-shrink-0">
-                    <a href="#" onclick="showPage('home')" class="flex items-center">
+                    <a href="#home" class="nav-trigger flex items-center">
                         <picture>
                             <source srcset="HappyAIPath.svg" type="image/svg+xml">
                             <source srcset="HappyAIPath-small.webp" type="image/webp">
@@ -212,11 +212,11 @@
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#" onclick="showPage('home')" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                        <a href="#services" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Services</a>
-                        <a href="#about" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About</a>
-                        <a href="#" onclick="showPage('quiz')" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Quiz</a>
-                        <a href="#" onclick="showPage('blog')" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Blog</a>
+                        <a href="#home" class="nav-trigger text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="#services" class="nav-trigger text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Services</a>
+                        <a href="#about" class="nav-trigger text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                        <a href="#quiz" class="nav-trigger text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Quiz</a>
+                        <a href="#blog" class="nav-trigger text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Blog</a>
                         <div class="relative" id="more-dropdown">
                             <button class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex items-center">
                                 <span>More</span>
@@ -226,12 +226,12 @@
                             </button>
                             <div id="more-dropdown-menu" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden">
                                 <div class="py-1" role="none">
-                                    <a href="#" onclick="showPage('guide')" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">How AI built this</a>
-                                    <a href="#" onclick="showPage('about-site')" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">About This Site</a>
+                                    <a href="#guide" class="nav-trigger text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">How AI built this</a>
+                                    <a href="#about-site" class="nav-trigger text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">About This Site</a>
                                 </div>
                             </div>
                         </div>
-                        <a href="#contact" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                        <a href="#contact" class="nav-trigger text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
                     </div>
                 </div>
                 <div class="md:hidden">
@@ -246,14 +246,14 @@
         </div>
         <div id="mobile-menu" class="md:hidden hidden">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-               <a href="#" onclick="showPage('home'); closeMobileMenu();" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Home</a>
-                <a href="#services" class="nav-link text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Services</a>
-                <a href="#about" class="nav-link text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">About</a>
-                <a href="#" onclick="showPage('quiz'); closeMobileMenu();" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Quiz</a>
-                <a href="#" onclick="showPage('blog'); closeMobileMenu();" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
-                <a href="#" onclick="showPage('guide'); closeMobileMenu();" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">The Playbook</a>
-                <a href="#" onclick="showPage('about-site'); closeMobileMenu();" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">About This Site</a>
-                <a href="#contact" class="nav-link text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+               <a href="#home" class="nav-trigger text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="#services" class="nav-trigger text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Services</a>
+                <a href="#about" class="nav-trigger text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#quiz" class="nav-trigger text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Quiz</a>
+                <a href="#blog" class="nav-trigger text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
+                <a href="#guide" class="nav-trigger text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">The Playbook</a>
+                <a href="#about-site" class="nav-trigger text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">About This Site</a>
+                <a href="#contact" class="nav-trigger text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
             </div>
         </div>
     </nav>
@@ -269,9 +269,9 @@
                     <p class="mt-6 max-w-2xl mx-auto text-xl text-gray-300 hero-p">Leveraging my 20+ years of enterprise tech leadership to guide your organization through a successful, human-centered AI transformation.</p>
                     <p class="mt-4 max-w-2xl mx-auto text-lg text-indigo-300 hero-p italic">A safe, inclusive learning environment for confident AI adoption.</p>
                     <div class="mt-10 flex flex-wrap justify-center gap-4 hero-p">
-                         <a href="#contact" class="nav-link bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block text-center cta-button hover:bg-indigo-700">Schedule a Consultation</a>
-                          <a href="#" onclick="showPage('quiz')" class="bg-transparent border-2 border-white text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block text-center cta-button hover:bg-white hover:text-gray-900">Take the AI Readiness Quiz</a>
-                          <a href="#events" class="nav-link bg-teal-600 text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block text-center cta-button hover:bg-teal-700">View Upcoming Trainings</a>
+                         <a href="#contact" class="nav-trigger bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block text-center cta-button hover:bg-indigo-700">Schedule a Consultation</a>
+                          <a href="#quiz" class="nav-trigger bg-transparent border-2 border-white text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block text-center cta-button hover:bg-white hover:text-gray-900">Take the AI Readiness Quiz</a>
+                          <a href="#events" class="nav-trigger bg-teal-600 text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block text-center cta-button hover:bg-teal-700">View Upcoming Trainings</a>
                     </div>
                 </div>
             </header>
@@ -331,7 +331,7 @@
 
             <section id="events" class="animate-on-scroll py-20 bg-white">
                 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                       <div class="text-center">
+                        <div class="text-center">
                             <h2 class="text-base font-semibold text-teal-600 tracking-wide uppercase">Upcoming Events</h2>
                             <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">Join Me for a Live Session</p>
                         </div>
@@ -354,7 +354,7 @@
             
             <section id="testimonials" class="animate-on-scroll py-20 bg-gray-100">
                 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                       <div class="text-center">
+                        <div class="text-center">
                             <h2 class="text-base font-semibold text-teal-600 tracking-wide uppercase">What My Clients Say</h2>
                             <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">AI Coaching & Training Testimonials</p>
                         </div>
@@ -401,17 +401,22 @@
         </main>
     </div>
 
+    <!-- BLOG PAGE: Content is now loaded dynamically -->
     <div id="blog" class="page">
         <main class="bg-white py-20">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center">
                     <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">The Happy AI Path Blog</h1>
                     <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">Your path to AI fluency starts here. Explore insights, strategies, and practical tips for confident AI adoption.</p>
-                       <button onclick="showPage('home')" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</button>
+                        <button onclick="showPage('home')" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</button>
                 </div>
 
-                <div id="blog-posts" class="mt-16 space-y-16" aria-live="polite" role="status">
-                    <p class="text-center text-gray-500">Loading blog posts...</p>
+                <!-- This container will be filled with blog posts from Blogspot -->
+                <div id="blog-posts-container" class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    <!-- Loading State Indicator -->
+                    <div id="loading-indicator" class="col-span-full text-center py-12">
+                        <p class="text-lg text-gray-500">Loading latest posts...</p>
+                    </div>
                 </div>
             </div>
         </main>
@@ -484,8 +489,8 @@
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center">
                     <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">About This Site</h1>
-                       <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">How this site was built and other curiosities.</p>
-                       <button onclick="showPage('home')" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</button>
+                        <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">How this site was built and other curiosities.</p>
+                        <button onclick="showPage('home')" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</button>
                 </div>
 
                  <div class="mt-12 space-y-10 text-lg text-gray-600">
@@ -519,9 +524,9 @@
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 guide-content">
                 <div class="text-center">
                     <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">Build & Launch Your Professional Website for ≈$20</h1>
-                       <h2 class="mt-4 text-2xl font-semibold text-gray-700">The Complete AI-Powered, Zero-Experience-Required Playbook</h2>
-                       <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">This guide provides exact, click-by-click instructions for building and launching a professional website. Every step includes detailed explanations and assumes zero prior experience.</p>
-                       <button onclick="showPage('home')" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</button>
+                        <h2 class="mt-4 text-2xl font-semibold text-gray-700">The Complete AI-Powered, Zero-Experience-Required Playbook</h2>
+                        <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">This guide provides exact, click-by-click instructions for building and launching a professional website. Every step includes detailed explanations and assumes zero prior experience.</p>
+                        <button onclick="showPage('home')" class="mt-6 text-indigo-700 hover:text-indigo-900 font-semibold">&larr; Back to Home</button>
                 </div>
 
                 <div class="mt-12 text-lg">
@@ -624,10 +629,10 @@
             </div>
         </div>
     </footer>
+    </div> <!-- End of site-wrapper -->
 
     <script>
         const pages = document.querySelectorAll('.page');
-        const navLinks = document.querySelectorAll('.nav-link');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const quizForm = document.getElementById('aiQuiz');
@@ -639,121 +644,138 @@
         const cookieRejectBtn = document.getElementById('cookie-reject');
         const moreDropdown = document.getElementById('more-dropdown');
         const moreDropdownMenu = document.getElementById('more-dropdown-menu');
-        const blogPostsContainer = document.getElementById('blog-posts');
-
         const siteWrapper = document.getElementById('site-wrapper');
         const splashScreen = document.getElementById('splash-screen');
-        const guideLinks = document.querySelectorAll('.guide-content a[href^="#"]');
+        
+        // Flag to check if blog posts have been loaded
+        let blogPostsLoaded = false;
 
         function showPage(pageId) {
-            // Hide all pages
             pages.forEach(page => {
                 page.classList.remove('active');
             });
-
-            // Show the target page
             const targetPage = document.getElementById(pageId);
-            if(targetPage) {
-                 targetPage.classList.add('active');
+            if (targetPage) {
+                targetPage.classList.add('active');
             }
-            
+            if (pageId === 'blog' && !blogPostsLoaded) {
+                loadPosts();
+            }
             window.scrollTo(0, 0);
         }
-        
+
         function closeMobileMenu() {
-            if(!mobileMenu.classList.contains('hidden')) {
+            if (!mobileMenu.classList.contains('hidden')) {
                 mobileMenu.classList.add('hidden');
             }
         }
 
-        function loadBlogPosts() {
-            if(!blogPostsContainer) return;
-            const script = document.createElement('script');
-            script.id = 'blog-feed-script';
-            script.src = 'https://happyaipath.blogspot.com/feeds/posts/default?alt=json-in-script&max-results=5&callback=handleBlogPosts';
-            document.body.appendChild(script);
-        }
+        async function loadPosts() {
+            const postsContainer = document.getElementById("blog-posts-container");
+            if (!postsContainer) {
+                console.error("Fatal Error: Blog posts container not found in the DOM.");
+                return;
+            }
+            const rssToJsonApi = "https://api.rss2json.com/v1/api.json";
+            const blogspotFeedUrl = "https://happyaipath.blogspot.com/feeds/posts/default";
+            const fetchUrl = `${rssToJsonApi}?rss_url=${encodeURIComponent(blogspotFeedUrl)}`;
 
-        function handleBlogPosts(data) {
-            const script = document.getElementById('blog-feed-script');
-            if(script) script.remove();
             try {
-                const entries = data.feed.entry || [];
-                blogPostsContainer.innerHTML = '';
-                entries.forEach(entry => {
-                    const title = entry.title.$t;
-                    const published = new Date(entry.published.$t).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-                    const linkObj = entry.link.find(l => l.rel === 'alternate');
-                    const url = linkObj ? linkObj.href : '#';
-                    const content = entry.content ? entry.content.$t : '';
-                    const imgMatch = content.match(/<img[^>]*src="([^"]+)"/i);
-                    const imgSrc = imgMatch ? imgMatch[1] : '';
-                    const snippet = content.replace(/<[^>]+>/g, '').substring(0, 200) + '...';
-
-                    const article = document.createElement('article');
-                    article.className = 'flex flex-col md:flex-row items-center gap-8 animate-on-scroll';
-                    article.innerHTML = `
-                        ${imgSrc ? `<img class="w-full md:w-1/3 rounded-lg shadow-lg" src="${imgSrc}" alt="${title}" loading="lazy" decoding="async">` : ''}
-                        <div class="md:w-2/3">
-                            <p class="text-sm text-gray-500">${published}</p>
-                            <h2 class="mt-2 text-3xl font-bold text-gray-900"><a href="${url}" target="_blank" rel="noopener">${title}</a></h2>
-                            <p class="mt-4 text-lg text-gray-600">${snippet}</p>
-                        </div>
-                    `;
-                    blogPostsContainer.appendChild(article);
-                });
-            } catch (err) {
-                blogPostsContainer.innerHTML = '<p class="text-red-500">Unable to load blog posts at this time.</p>';
+                const response = await fetch(fetchUrl);
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok: ${response.statusText}`);
+                }
+                const data = await response.json();
+                if (data.status !== 'ok') {
+                    throw new Error(`API returned an error: ${data.message}`);
+                }
+                postsContainer.innerHTML = '';
+                if (data.items && data.items.length > 0) {
+                    blogPostsLoaded = true;
+                    data.items.forEach(post => {
+                        const tempDiv = document.createElement('div');
+                        tempDiv.innerHTML = post.content;
+                        const snippet = (tempDiv.textContent || tempDiv.innerText || "").trim().substring(0, 150) + '...';
+                        const postCard = document.createElement('article');
+                        postCard.className = "bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-300 flex flex-col";
+                        postCard.innerHTML = `
+                            <div class="p-6 flex flex-col flex-grow">
+                                <p class="text-sm text-gray-500 mb-2">Published: ${new Date(post.pubDate).toLocaleDateString()}</p>
+                                <h3 class="text-xl font-bold mb-3 flex-grow">
+                                    <a href="${post.link}" target="_blank" rel="noopener noreferrer" class="text-gray-900 hover:text-indigo-600 transition-colors duration-200">
+                                        ${post.title}
+                                    </a>
+                                </h3>
+                                <p class="text-gray-700 mb-4">${snippet}</p>
+                                <a href="${post.link}" target="_blank" rel="noopener noreferrer" class="font-semibold text-indigo-600 hover:text-indigo-800 transition-colors duration-200 mt-auto">
+                                    Read More &rarr;
+                                </a>
+                            </div>`;
+                        postsContainer.appendChild(postCard);
+                    });
+                } else {
+                    postsContainer.innerHTML = "<p class='col-span-full text-center'>No posts found.</p>";
+                }
+            } catch (error) {
+                console.error("Error fetching blog posts:", error);
+                postsContainer.innerHTML = `
+                    <div class="col-span-full bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg text-center">
+                        <p>Sorry, we couldn't load the posts right now. Please try again later.</p>
+                    </div>`;
             }
         }
 
-        // Mobile menu toggle
+        // --- UNIFIED NAVIGATION LOGIC ---
+        function handleNavClick(e) {
+            // Find the clicked link, even if the click was on an element inside the link (like an image)
+            const link = e.target.closest('.nav-trigger');
+            if (!link) return;
+
+            e.preventDefault();
+            const href = link.getAttribute('href');
+            if (!href || !href.startsWith('#')) return;
+
+            const targetId = href.substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement && targetElement.classList.contains('page')) {
+                showPage(targetId);
+            } else if (targetElement) {
+                const homePage = document.getElementById('home');
+                if (!homePage.classList.contains('active')) {
+                    showPage('home');
+                    setTimeout(() => {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                } else {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+            closeMobileMenu();
+        }
+
+        // Attach the single handler to the nav container
+        document.querySelector('nav').addEventListener('click', handleNavClick);
+        // Also attach to hero buttons that act as nav triggers
+        document.querySelector('.hero-p').addEventListener('click', handleNavClick);
+
+
+        // --- OTHER EVENT LISTENERS ---
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
         
-        // Dropdown Menu Toggle
-        moreDropdown.addEventListener('click', () => {
+        moreDropdown.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent the document click listener from firing immediately
             moreDropdownMenu.classList.toggle('hidden');
         });
+        
         document.addEventListener('click', function(event) {
             if (!moreDropdown.contains(event.target)) {
                 moreDropdownMenu.classList.add('hidden');
             }
         });
 
-        // Event listeners for nav links to scroll on the home page
-        navLinks.forEach(link => {
-            link.addEventListener('click', function (e) {
-                e.preventDefault();
-                showPage('home');
-                // We need to wait a tick for the page to become visible before scrolling
-                setTimeout(() => {
-                    const targetSection = document.querySelector(this.getAttribute('href'));
-                    if(targetSection) {
-                        targetSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                    closeMobileMenu();
-                }, 0);
-            });
-        });
-        
-        // Handle Guide Page Anchor Links
-        guideLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href.startsWith('#')) {
-                    e.preventDefault();
-                    const targetId = href.substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }
-            });
-        });
-
-        // Handle Quiz Submission
         if(quizForm) {
             quizForm.addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -764,7 +786,6 @@
                     else if (value === 'b') score += 2;
                     else if (value === 'c') score += 3;
                 }
-
                 let resultMessage = '';
                 if (score <= 4) {
                     resultMessage = "You're at the beginning of your AI path. This is the perfect time to build a strong foundation. My coaching can help chart your course.";
@@ -778,7 +799,6 @@
             });
         }
 
-        // Back to Top Button Logic
         window.onscroll = function() {
             if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
                 backToTopBtn.style.display = "block";
@@ -790,7 +810,6 @@
             window.scrollTo({top: 0, behavior: 'smooth'});
         });
         
-        // Scroll Animation Logic
         const sectionsToAnimate = document.querySelectorAll('.animate-on-scroll');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -798,44 +817,33 @@
                     entry.target.classList.add('is-visible');
                 }
             });
-        }, {
-            threshold: 0.1
-        });
-
+        }, { threshold: 0.1 });
         sectionsToAnimate.forEach(section => {
             observer.observe(section);
         });
 
-        // Cookie Banner Logic
         const handleCookieConsent = (consent) => {
             localStorage.setItem('cookie_consent', consent);
             cookieBanner.classList.remove('show');
         };
-
         if (!localStorage.getItem('cookie_consent')) {
             cookieBanner.classList.add('show');
         }
-
         cookieAcceptBtn.addEventListener('click', () => handleCookieConsent(true));
         cookieRejectBtn.addEventListener('click', () => handleCookieConsent(false));
 
-        // Splash Screen Logic
         document.addEventListener('DOMContentLoaded', () => {
-            // This will now run every time the page is loaded.
             setTimeout(() => {
                 splashScreen.classList.add('fade-out');
                 siteWrapper.style.visibility = 'visible';
                 setTimeout(() => {
                     splashScreen.style.display = 'none';
-                }, 1000); // This inner timeout matches the CSS transition duration
-            }, 2000); // 2-second delay before the fade-out starts
+                }, 1000);
+            }, 2000);
 
-            loadBlogPosts();
+            // Set the initial page on load
+            showPage('home');
         });
-
-
-        // Set the initial page
-        showPage('home');
     </script>
 </body>
 </html>
