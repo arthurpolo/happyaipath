@@ -666,11 +666,18 @@
             }
         }
 
-        async function loadBlogPosts() {
+        function loadBlogPosts() {
             if(!blogPostsContainer) return;
+            const script = document.createElement('script');
+            script.id = 'blog-feed-script';
+            script.src = 'https://happyaipath.blogspot.com/feeds/posts/default?alt=json-in-script&max-results=5&callback=handleBlogPosts';
+            document.body.appendChild(script);
+        }
+
+        function handleBlogPosts(data) {
+            const script = document.getElementById('blog-feed-script');
+            if(script) script.remove();
             try {
-                const res = await fetch('https://happyaipath.blogspot.com/feeds/posts/default?alt=json&max-results=5');
-                const data = await res.json();
                 const entries = data.feed.entry || [];
                 blogPostsContainer.innerHTML = '';
                 entries.forEach(entry => {
