@@ -39,7 +39,10 @@
         .animate-on-scroll { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
         .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
         .hero-h1 { animation: fadeInUp 1s ease-out forwards; }
-        .hero-p { opacity: 0; animation: fadeInUp 1s ease-out 0.5s forwards; }
+        .hero-p { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: no-preference) {
+          .hero-p { opacity: 0; transform: translateY(20px); animation: fadeInUp 1s ease-out 0.5s forwards; }
+        }
         .hero-bg { background-color: #111827; position: relative; overflow: hidden; }
         .animated-path { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.5; }
         .path { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: draw-path 10s ease-out forwards; }
