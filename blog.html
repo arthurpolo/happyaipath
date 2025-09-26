@@ -84,13 +84,92 @@
                 <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">Your path to AI fluency starts here. Explore insights, strategies, and practical tips for confident AI adoption.</p>
             </div>
 
+            <section id="featured-static-posts" class="mt-16">
+                <h2 class="text-2xl font-semibold text-gray-900 text-center">Start with these featured reads</h2>
+                <p class="mt-2 text-center text-gray-500 max-w-2xl mx-auto">We hand-picked a few timeless guides so you have something meaningful to explore even before the latest feed loads.</p>
+                <div class="mt-8 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    <article class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                        <div class="p-6 flex flex-col flex-grow">
+                            <p class="text-sm text-gray-500 mb-2">Featured Strategy</p>
+                            <h3 class="text-xl font-bold mb-3 flex-grow">
+                                <a href="https://happyaipath.blogspot.com/2024/07/30-day-ai-strategy-sprint.html" target="_blank" rel="noopener noreferrer" class="text-gray-900 hover:text-indigo-600 transition-colors duration-200">The 30-Day AI Strategy Sprint</a>
+                            </h3>
+                            <p class="text-gray-700 mb-4">Follow a four-week roadmap to align executives, surface high-impact use cases, and build momentum for responsible AI adoption.</p>
+                            <a href="https://happyaipath.blogspot.com/2024/07/30-day-ai-strategy-sprint.html" target="_blank" rel="noopener noreferrer" class="font-semibold text-indigo-600 hover:text-indigo-800 transition-colors duration-200 mt-auto">Read More →</a>
+                        </div>
+                    </article>
+                    <article class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                        <div class="p-6 flex flex-col flex-grow">
+                            <p class="text-sm text-gray-500 mb-2">Featured Playbook</p>
+                            <h3 class="text-xl font-bold mb-3 flex-grow">
+                                <a href="https://happyaipath.blogspot.com/2024/06/prompt-engineering-ops-playbook.html" target="_blank" rel="noopener noreferrer" class="text-gray-900 hover:text-indigo-600 transition-colors duration-200">Prompt Engineering for Ops Teams</a>
+                            </h3>
+                            <p class="text-gray-700 mb-4">Use ready-to-run prompt templates to streamline reporting, customer support, and knowledge sharing without sacrificing compliance.</p>
+                            <a href="https://happyaipath.blogspot.com/2024/06/prompt-engineering-ops-playbook.html" target="_blank" rel="noopener noreferrer" class="font-semibold text-indigo-600 hover:text-indigo-800 transition-colors duration-200 mt-auto">Read More →</a>
+                        </div>
+                    </article>
+                    <article class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                        <div class="p-6 flex flex-col flex-grow">
+                            <p class="text-sm text-gray-500 mb-2">Featured Workshop</p>
+                            <h3 class="text-xl font-bold mb-3 flex-grow">
+                                <a href="https://happyaipath.blogspot.com/2024/05/how-to-run-ai-pilot-without-blowing.html" target="_blank" rel="noopener noreferrer" class="text-gray-900 hover:text-indigo-600 transition-colors duration-200">Run an AI Pilot Without Blowing the Budget</a>
+                            </h3>
+                            <p class="text-gray-700 mb-4">Learn the lean experimentation tactics we use with clients to validate value quickly while protecting time, talent, and trust.</p>
+                            <a href="https://happyaipath.blogspot.com/2024/05/how-to-run-ai-pilot-without-blowing.html" target="_blank" rel="noopener noreferrer" class="font-semibold text-indigo-600 hover:text-indigo-800 transition-colors duration-200 mt-auto">Read More →</a>
+                        </div>
+                    </article>
+                </div>
+                <script type="application/ld+json">
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "ItemList",
+                        "name": "Happy AI Path Featured Blog Posts",
+                        "itemListElement": [
+                            {
+                                "@type": "ListItem",
+                                "position": 1,
+                                "item": {
+                                    "@type": "BlogPosting",
+                                    "headline": "The 30-Day AI Strategy Sprint",
+                                    "datePublished": "2024-07-08",
+                                    "url": "https://happyaipath.blogspot.com/2024/07/30-day-ai-strategy-sprint.html",
+                                    "description": "A four-week roadmap to align executives, surface use cases, and launch responsible AI initiatives."
+                                }
+                            },
+                            {
+                                "@type": "ListItem",
+                                "position": 2,
+                                "item": {
+                                    "@type": "BlogPosting",
+                                    "headline": "Prompt Engineering for Ops Teams",
+                                    "datePublished": "2024-06-17",
+                                    "url": "https://happyaipath.blogspot.com/2024/06/prompt-engineering-ops-playbook.html",
+                                    "description": "Templates and guardrails to help operations teams ship reliable AI-assisted workflows."
+                                }
+                            },
+                            {
+                                "@type": "ListItem",
+                                "position": 3,
+                                "item": {
+                                    "@type": "BlogPosting",
+                                    "headline": "Run an AI Pilot Without Blowing the Budget",
+                                    "datePublished": "2024-05-22",
+                                    "url": "https://happyaipath.blogspot.com/2024/05/how-to-run-ai-pilot-without-blowing.html",
+                                    "description": "Lean experimentation tactics for validating AI value quickly while protecting time, talent, and trust."
+                                }
+                            }
+                        ]
+                    }
+                </script>
+            </section>
+
             <div id="blog-posts-container" class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                <div id="loading-indicator" class="col-span-full text-center py-12">
+                <div id="loading-indicator" class="col-span-full text-center py-12" aria-live="polite">
                     <p class="text-lg text-gray-500">Loading latest posts...</p>
                 </div>
                 <noscript>
                     <div class="col-span-full bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded-lg text-center">
-                        <p>This page requires JavaScript to load blog posts. Please enable it in your browser or visit our blog directly at <a href="https://happyaipath.blogspot.com/" target="_blank" rel="noopener noreferrer" class="font-bold underline">happyaipath.blogspot.com</a>.</p>
+                        <p>This page requires JavaScript to load additional blog posts. Please enable it in your browser or visit our blog directly at <a href="https://happyaipath.blogspot.com/" target="_blank" rel="noopener noreferrer" class="font-bold underline">happyaipath.blogspot.com</a>.</p>
                     </div>
                 </noscript>
             </div>
@@ -122,7 +201,10 @@
             async function loadPosts() {
                 const postsContainer = document.getElementById("blog-posts-container");
                 const loadingIndicator = document.getElementById("loading-indicator");
+                const fallbackSection = document.getElementById("featured-static-posts");
                 if (!postsContainer || !loadingIndicator) return;
+
+                loadingIndicator.setAttribute('aria-busy', 'true');
 
                 const rssToJsonApi = "https://api.rss2json.com/v1/api.json";
                 const blogspotFeedUrl = "https://happyaipath.blogspot.com/feeds/posts/default";
@@ -134,9 +216,8 @@
                     const data = await response.json();
                     if (data.status !== 'ok') throw new Error(`API returned an error: ${data.message}`);
 
-                    loadingIndicator.style.display = 'none';
-
                     if (data.items && data.items.length > 0) {
+                        const fragment = document.createDocumentFragment();
                         data.items.forEach(post => {
                             const article = document.createElement('article');
                             article.className = "bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-300 flex flex-col";
@@ -183,18 +264,29 @@
 
                             contentDiv.append(dateP, titleH3, snippetP, readMoreLink);
                             article.appendChild(contentDiv);
-                            postsContainer.appendChild(article);
+                            fragment.appendChild(article);
                         });
+                        loadingIndicator.style.display = 'none';
+                        loadingIndicator.removeAttribute('aria-busy');
+                        postsContainer.appendChild(fragment);
+                        if (fallbackSection) fallbackSection.remove();
                     } else {
-                        postsContainer.innerHTML = "<p class='col-span-full text-center'>No posts found.</p>";
+                        loadingIndicator.style.display = 'none';
+                        loadingIndicator.removeAttribute('aria-busy');
+                        const noPostsMessage = document.createElement('p');
+                        noPostsMessage.className = 'col-span-full text-center text-gray-500';
+                        noPostsMessage.textContent = 'No additional posts found right now. Explore our featured articles above while we add more insights soon!';
+                        postsContainer.appendChild(noPostsMessage);
                     }
                 } catch (error) {
                     console.error("Error fetching blog posts:", error);
                     loadingIndicator.style.display = 'none';
-                    postsContainer.innerHTML = `
-                        <div class="col-span-full bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg text-center">
-                            <p>Sorry, we couldn't load the posts right now. Please try again later or visit our blog directly at <a href="https://happyaipath.blogspot.com/" target="_blank" rel="noopener noreferrer" class="font-bold underline">happyaipath.blogspot.com</a>.</p>
-                        </div>`;
+                    loadingIndicator.removeAttribute('aria-busy');
+                    const errorAlert = document.createElement('div');
+                    errorAlert.className = 'col-span-full bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg text-center';
+                    errorAlert.innerHTML = `
+                        <p>Sorry, we couldn't load more posts right now. Please try again later or visit our blog directly at <a href="https://happyaipath.blogspot.com/" target="_blank" rel="noopener noreferrer" class="font-bold underline">happyaipath.blogspot.com</a>.</p>`;
+                    postsContainer.appendChild(errorAlert);
                 }
             }
 
