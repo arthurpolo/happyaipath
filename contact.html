@@ -85,18 +85,150 @@
                     <p class="mt-4 text-lg text-gray-500">Let's connect. Fill out the form below to schedule a complimentary consultation and discover how we can work together.</p>
                 </div>
                 <div class="mt-12">
-                   <iframe
-                      id="JotFormIFrame-251755448879072"
-                      title="Contact Form"
-                      allowtransparency="true"
-                      allowfullscreen="true"
-                      allow="geolocation; microphone; camera"
-                      src="https://form.jotform.com/251755448879072"
-                      frameborder="0"
-                      style="min-width: 100%; width: 100%; height:850px; border:none;"
-                      scrolling="yes"
+                    <iframe
+                        id="JotFormIFrame-251755448879072"
+                        title="Contact Form"
+                        allowtransparency="true"
+                        allowfullscreen="true"
+                        allow="geolocation; microphone; camera"
+                        src="https://form.jotform.com/251755448879072?isIframeEmbed=1"
+                        frameborder="0"
+                        style="min-width: 100%; width: 100%; height: 850px; border: none;"
+                        scrolling="no"
                     >
                     </iframe>
+                    <script type="text/javascript">
+                        (function () {
+                            const iframe = document.getElementById('JotFormIFrame-251755448879072');
+                            if (!iframe) {
+                                return;
+                            }
+
+                            const iframeParamMap = {};
+                            const appendParam = (param) => {
+                                if (!param) {
+                                    return;
+                                }
+                                const pair = param.split('=');
+                                const key = pair.shift();
+                                if (!key) {
+                                    return;
+                                }
+                                const value = pair.length ? pair.join('=') : '';
+                                iframeParamMap[key] = value;
+                            };
+
+                            const srcParts = iframe.src.split('?');
+                            const baseSrc = srcParts[0];
+                            if (srcParts[1]) {
+                                srcParts[1].split('&').forEach(appendParam);
+                            }
+
+                            if (window.location.search.length > 1) {
+                                window.location.search.substring(1).split('&').forEach(appendParam);
+                            }
+
+                            iframeParamMap.isIframeEmbed = '1';
+                            iframeParamMap.parentURL = encodeURIComponent(window.location.href);
+
+                            const updatedParams = Object.keys(iframeParamMap)
+                                .map((key) => `${key}=${iframeParamMap[key]}`)
+                                .join('&');
+
+                            iframe.src = `${baseSrc}?${updatedParams}`;
+
+                            function handleIFrameMessage(e) {
+                                if (!e || typeof e.data !== 'string') {
+                                    return;
+                                }
+
+                                if (!isPermitted(e.origin, ['jotform.com', 'jotform.us', 'jotform.pro'])) {
+                                    return;
+                                }
+
+                                const args = e.data.split(':');
+                                if (!args.length) {
+                                    return;
+                                }
+
+                                const iframeId = args.length > 2
+                                    ? `JotFormIFrame-${args[args.length - 1]}`
+                                    : 'JotFormIFrame-251755448879072';
+                                const currentIframe = document.getElementById(iframeId);
+                                if (!currentIframe) {
+                                    return;
+                                }
+
+                                switch (args[0]) {
+                                    case 'scrollIntoView':
+                                        currentIframe.scrollIntoView();
+                                        break;
+                                    case 'setHeight':
+                                        currentIframe.style.height = `${args[1]}px`;
+                                        break;
+                                    case 'collapseErrorPage':
+                                        if (currentIframe.clientHeight > window.innerHeight) {
+                                            currentIframe.style.height = `${window.innerHeight}px`;
+                                        }
+                                        break;
+                                    case 'reloadPage':
+                                        window.location.reload();
+                                        break;
+                                    case 'loadScript':
+                                        if (!args[1]) {
+                                            break;
+                                        }
+                                        (function () {
+                                            let scriptSrc = args[1];
+                                            if (args.length > 3) {
+                                                scriptSrc = `${args[1]}:${args[2]}`;
+                                            }
+                                            const script = document.createElement('script');
+                                            script.src = scriptSrc;
+                                            script.type = 'text/javascript';
+                                            document.body.appendChild(script);
+                                        })();
+                                        break;
+                                    case 'exitFullscreen':
+                                        if (document.exitFullscreen) {
+                                            document.exitFullscreen();
+                                        } else if (document.mozCancelFullScreen) {
+                                            document.mozCancelFullScreen();
+                                        } else if (document.webkitExitFullscreen) {
+                                            document.webkitExitFullscreen();
+                                        } else if (document.msExitFullscreen) {
+                                            document.msExitFullscreen();
+                                        }
+                                        break;
+                                }
+
+                                if (e.origin.indexOf('jotform') > -1 && currentIframe.contentWindow && currentIframe.contentWindow.postMessage) {
+                                    const urls = {
+                                        docurl: encodeURIComponent(document.URL),
+                                        referrer: encodeURIComponent(document.referrer),
+                                    };
+                                    currentIframe.contentWindow.postMessage(JSON.stringify({ type: 'urls', value: urls }), '*');
+                                }
+                            }
+
+                            function isPermitted(originUrl, whitelistedDomains) {
+                                const anchor = document.createElement('a');
+                                anchor.href = originUrl;
+                                if (!anchor.hostname) {
+                                    return false;
+                                }
+                                return whitelistedDomains.some((domain) => anchor.hostname === domain || anchor.hostname.endsWith(`.${domain}`));
+                            }
+
+                            window.handleIFrameMessage = handleIFrameMessage;
+
+                            if (window.addEventListener) {
+                                window.addEventListener('message', handleIFrameMessage, false);
+                            } else if (window.attachEvent) {
+                                window.attachEvent('onmessage', handleIFrameMessage);
+                            }
+                        })();
+                    </script>
                 </div>
             </div>
         </section>
