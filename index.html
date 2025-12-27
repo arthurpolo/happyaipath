@@ -124,7 +124,9 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            animation: float 16s ease-in-out infinite;
+            will-change: transform;
         }
         .ai-bubble::before {
             content: "";
@@ -142,12 +144,33 @@
             transform: translateY(-4px);
             box-shadow: 0 16px 30px rgba(79, 70, 229, 0.24), inset 0 2px 0 rgba(255, 255, 255, 0.9);
         }
+        .ai-bubble:focus-visible {
+            outline: 2px solid #818cf8;
+            outline-offset: 3px;
+        }
+        .ai-bubble-active {
+            border-color: rgba(16, 185, 129, 0.5);
+            box-shadow: 0 16px 30px rgba(16, 185, 129, 0.24), inset 0 2px 0 rgba(255, 255, 255, 0.95);
+            background: linear-gradient(135deg, #ecfeff, #d1fae5);
+        }
+        .ai-bubble:nth-child(2) { animation-duration: 18s; animation-delay: 2s; }
+        .ai-bubble:nth-child(3) { animation-duration: 20s; animation-delay: 4s; }
+        @keyframes float {
+            0% { transform: translate3d(0, 0, 0); }
+            25% { transform: translate3d(12px, -10px, 0); }
+            50% { transform: translate3d(-8px, 14px, 0); }
+            75% { transform: translate3d(-16px, -8px, 0); }
+            100% { transform: translate3d(0, 0, 0); }
+        }
         #backToTopBtn { display: none; position: fixed; bottom: 20px; right: 30px; z-index: 99; border: none; outline: none; background-color: #4f46e5; color: white; cursor: pointer; padding: 12px; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: opacity 0.3s, visibility 0.3s; }
         #backToTopBtn:hover { background-color: #4338ca; }
         #cookie-banner { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background-color: #1f2937; color: white; padding: 1rem; z-index: 100; }
         #cookie-banner.show { display: block; }
         #splash-screen { position: fixed; inset: 0; background-color: #ffffff; display: flex; align-items: center; justify-content: center; z-index: 101; transition: opacity 1s ease-out; }
         #splash-screen.fade-out { opacity: 0; }
+        @media (prefers-reduced-motion: reduce) {
+          .ai-bubble { animation: none !important; }
+        }
     </style>
 </head>
 
@@ -215,11 +238,12 @@
                     </div>
                     <div class="mt-8 flex flex-col items-center gap-3 hero-p" aria-label="AI tools I help teams master">
                         <p class="text-sm uppercase tracking-wide text-indigo-200 font-semibold">Training built for the tools you use</p>
-                        <div class="flex flex-wrap justify-center ai-bubbles">
-                            <span class="ai-bubble" aria-label="Copilot badge">Copilot</span>
-                            <span class="ai-bubble" aria-label="ChatGPT badge">ChatGPT</span>
-                            <span class="ai-bubble" aria-label="Gemini badge">Gemini</span>
+                        <div class="flex flex-wrap justify-center ai-bubbles" aria-live="polite">
+                            <span class="ai-bubble" aria-label="Copilot badge" role="button" tabindex="0" data-blurb="Design custom Copilot agents and notebooks that sit beside your everyday work—drafting decks, summarizing meetings, and routing approvals—without needing a developer." data-tool="Copilot">Copilot</span>
+                            <span class="ai-bubble" aria-label="ChatGPT badge" role="button" tabindex="0" data-blurb="Turn ChatGPT Projects and custom GPTs into reusable playbooks that capture prompts, drafts, and handoffs for every team." data-tool="ChatGPT">ChatGPT</span>
+                            <span class="ai-bubble" aria-label="Gemini badge" role="button" tabindex="0" data-blurb="Prototype in Google AI Studio, ship Gems, and summarize research with NotebookLM so docs, decks, and emails stay on-message." data-tool="Gemini">Gemini</span>
                         </div>
+                        <div id="tool-blurb" class="mt-5 max-w-3xl mx-auto bg-indigo-900/60 border border-indigo-500/40 rounded-xl px-4 py-3 text-indigo-50 text-sm sm:text-base shadow-lg hidden" role="status" aria-live="polite"></div>
                     </div>
                     <p class="mt-6 text-base text-indigo-100 hero-p">Want ready-to-use prompts? Visit our <a href="tips.html" class="font-semibold underline hover:text-indigo-200" title="AI Prompting Lab with copy-ready templates">AI Prompting Lab</a> for keyword-rich templates tailored to leaders and teams.</p>
                 </div>
@@ -307,6 +331,8 @@
             const cookieBanner = document.getElementById('cookie-banner');
             const cookieAcceptBtn = document.getElementById('cookie-accept');
             const cookieRejectBtn = document.getElementById('cookie-reject');
+            const aiBubbles = document.querySelectorAll('.ai-bubble');
+            const toolBlurb = document.getElementById('tool-blurb');
 
             mobileMenuButton.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -343,6 +369,29 @@
             }
             cookieAcceptBtn.addEventListener('click', () => handleCookieConsent(true));
             cookieRejectBtn.addEventListener('click', () => handleCookieConsent(false));
+
+            const showBlurb = (bubble) => {
+                const blurbText = bubble.getAttribute('data-blurb');
+                if (!blurbText || !toolBlurb) return;
+                aiBubbles.forEach(item => item.classList.remove('ai-bubble-active'));
+                bubble.classList.add('ai-bubble-active');
+                toolBlurb.textContent = blurbText;
+                toolBlurb.classList.remove('hidden');
+            };
+
+            aiBubbles.forEach(bubble => {
+                bubble.addEventListener('click', () => showBlurb(bubble));
+                bubble.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        showBlurb(bubble);
+                    }
+                });
+            });
+
+            if (aiBubbles.length > 0) {
+                showBlurb(aiBubbles[0]);
+            }
         });
     </script>
 </body>
