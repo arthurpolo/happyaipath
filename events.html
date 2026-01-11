@@ -7,6 +7,8 @@
     <meta name="description" content="Join Jim Perry for upcoming AI workshops, webinars, and training sessions. See the schedule and register for events at The Ohio State University and online.">
     <meta name="keywords" content="AI Events, AI Workshops, AI Training, Prompt Engineering Workshop, AI Webinars, Ohio State University AI">
     <meta name="author" content="Jim Perry, Happy AI Path">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.happyaipath.com/events.html">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.happyaipath.com/events.html">
@@ -31,6 +33,57 @@
         #backToTopBtn { display: none; position: fixed; bottom: 20px; right: 30px; z-index: 99; border: none; outline: none; background-color: #4f46e5; color: white; cursor: pointer; padding: 12px; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: opacity 0.3s, visibility 0.3s; }
         #backToTopBtn:hover { background-color: #4338ca; }
     </style>
+
+    <!-- Structured Data - Events -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Upcoming AI Events and Workshops",
+      "description": "AI workshops, webinars, and training sessions by Jim Perry at The Ohio State University and online",
+      "url": "https://www.happyaipath.com/events.html",
+      "itemListElement": [
+        {
+          "@type": "Event",
+          "name": "AI Workshops at Ohio State University",
+          "description": "Hands-on AI training sessions for professionals at The Ohio State University Fisher College of Business",
+          "organizer": {
+            "@type": "Person",
+            "name": "Jim Perry",
+            "url": "https://www.happyaipath.com/about.html"
+          },
+          "location": {
+            "@type": "Place",
+            "name": "The Ohio State University Fisher College of Business",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Columbus",
+              "addressRegion": "OH",
+              "addressCountry": "US"
+            }
+          },
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled"
+        },
+        {
+          "@type": "Event",
+          "name": "Online AI Training Webinars",
+          "description": "Virtual AI coaching and training sessions for executives and teams",
+          "organizer": {
+            "@type": "Person",
+            "name": "Jim Perry",
+            "url": "https://www.happyaipath.com/about.html"
+          },
+          "location": {
+            "@type": "VirtualLocation",
+            "url": "https://www.happyaipath.com/events.html"
+          },
+          "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+          "eventStatus": "https://schema.org/EventScheduled"
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-white text-gray-800">
     <a href="#main-content" class="absolute top-[-40px] left-0 bg-indigo-600 text-white p-2 z-50 focus:top-0 transition-all">Skip to main content</a>
