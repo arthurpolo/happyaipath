@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "Welcome to Happy AI Path Local Blog",
+      "slug": "welcome-to-happy-ai-path",
+      "author": "Jim Perry",
+      "date": "2025-01-11",
+      "thumbnail": "HappyAIPath.png",
+      "excerpt": "Welcome to the new local blog system. This is a sample post to demonstrate the functionality of our self-hosted blog platform.",
+      "content": "<h2>Welcome to Your Local Blog</h2><p>Welcome to the Happy AI Path local blog! This is your first post using the new local blog system.</p><p>You can now manage all your blog posts locally without relying on external platforms like Blogger. Use the blog admin interface to create, edit, and delete posts easily.</p><p>This local blog system gives you complete control over your content while maintaining all the SEO benefits and beautiful design you're accustomed to.</p><h2>Features</h2><ul><li>Local data storage using JSON</li><li>Easy-to-use admin interface</li><li>SEO-optimized blog post pages</li><li>Responsive design</li><li>No external dependencies</li></ul><p>Start creating your own content by visiting the <a href='blog-admin.html'>blog admin page</a>!</p>",
+      "categories": ["Announcements", "Getting Started"],
+      "published": true
+    }
+  ]
+}
