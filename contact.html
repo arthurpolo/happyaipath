@@ -25,15 +25,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background-color: #fff; color: #1f2937; }
-        #backToTopBtn { display: none; position: fixed; bottom: 20px; right: 30px; z-index: 99; border: none; outline: none; background-color: #4f46e5; color: white; cursor: pointer; padding: 12px; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: opacity 0.3s, visibility 0.3s; }
-        #backToTopBtn:hover { background-color: #4338ca; }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-white text-gray-800">
-    <a href="#main-content" class="absolute top-[-40px] left-0 bg-indigo-600 text-white p-2 z-50 focus:top-0 transition-all">Skip to main content</a>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <nav class="bg-white shadow-md sticky top-0 z-40">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -47,13 +42,11 @@
                     <div class="ml-10 flex items-baseline space-x-4">
                         <a href="index.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Home</a>
                         <a href="services.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Services</a>
-                        <a href="about.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About</a>
-                        <a href="quiz.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Quiz</a>
-                        <a href="tips.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Prompting Lab</a>
+                        <a href="tips.html" class="text-[#0E7490] font-bold px-3 py-2 rounded-md text-sm nav-prompting-lab">Prompting Lab</a>
                         <a href="blog.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Blog</a>
                         <a href="events.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Events</a>
-                        <a href="contact.html" class="text-indigo-600 font-semibold px-3 py-2 rounded-md text-sm" aria-current="page">Contact</a>
-                        <a href="guide.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Playbook</a>
+                        <a href="about.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                        <a href="contact.html" class="text-[#0E7490] font-semibold px-3 py-2 rounded-md text-sm" aria-current="page">Contact</a>
                     </div>
                 </div>
                 <div class="md:hidden">
@@ -68,23 +61,21 @@
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="index.html" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Home</a>
                 <a href="services.html" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Services</a>
-                <a href="about.html" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">About</a>
-                <a href="quiz.html" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Quiz</a>
-                <a href="tips.html" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Prompting Lab</a>
+                <a href="tips.html" class="text-[#0E7490] font-semibold bg-[#0E7490]/10 block px-3 py-2 rounded-md text-base">Prompting Lab</a>
                 <a href="blog.html" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
                 <a href="events.html" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Events</a>
-                <a href="contact.html" class="text-indigo-600 bg-indigo-50 block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Contact</a>
-                <a href="guide.html" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Playbook</a>
+                <a href="about.html" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="contact.html" class="text-[#0E7490] bg-[#0E7490]/10 block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Contact</a>
             </div>
         </div>
     </nav>
 
     <main id="main-content">
-        <section id="contact" class="py-20 bg-gray-100">
+        <section id="contact" class="py-20 section-gray">
             <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center">
-                    <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Ready to Start Your Journey?</h1>
-                    <p class="mt-4 text-lg text-gray-500">Let's connect. Fill out the form below to schedule a complimentary consultation and discover how we can work together.</p>
+                    <h1 class="text-3xl font-bold text-gray-900 sm:text-4xl" style="line-height: 1.2;">Ready to Start Your Journey?</h1>
+                    <p class="mt-4 text-lg text-gray-500" style="line-height: 1.6;">Let's connect. Fill out the form below to schedule a complimentary consultation and discover how we can work together.</p>
                 </div>
                 <div class="mt-12">
                     <iframe

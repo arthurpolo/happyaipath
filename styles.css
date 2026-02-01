@@ -1,0 +1,634 @@
+/* Happy AI Path - Global Styles
+   Professional redesign with Deep Teal color scheme
+   ================================================ */
+
+/* ===========================================
+   1. CSS CUSTOM PROPERTIES (Design Tokens)
+   =========================================== */
+:root {
+    /* Primary Brand Colors - Deep Teal */
+    --color-primary: #0E7490;
+    --color-primary-dark: #0C6880;
+    --color-primary-light: #14B8A6;
+
+    /* Secondary Colors */
+    --color-accent: #0D9488;
+    --color-accent-dark: #0B7A70;
+
+    /* Neutral Colors */
+    --color-gray-50: #F9FAFB;
+    --color-gray-100: #F3F4F6;
+    --color-gray-200: #E5E7EB;
+    --color-gray-300: #D1D5DB;
+    --color-gray-500: #6B7280;
+    --color-gray-600: #4B5563;
+    --color-gray-700: #374151;
+    --color-gray-800: #1F2937;
+    --color-gray-900: #111827;
+
+    /* Shadows */
+    --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-card-hover: 0 10px 20px rgba(0, 0, 0, 0.12);
+    --shadow-testimonial: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+
+    /* Typography */
+    --font-family: 'Inter', sans-serif;
+    --line-height-heading: 1.2;
+    --line-height-body: 1.6;
+}
+
+/* ===========================================
+   2. BASE TYPOGRAPHY
+   =========================================== */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: #fff;
+    color: var(--color-gray-800);
+    line-height: var(--line-height-body);
+}
+
+/* Heading Hierarchy */
+h1, h2, .heading-primary, .heading-secondary {
+    font-weight: 700;
+    line-height: var(--line-height-heading);
+}
+
+h1, .heading-primary {
+    letter-spacing: -0.02em;
+}
+
+h2, .heading-secondary {
+    letter-spacing: -0.01em;
+}
+
+/* ===========================================
+   3. PRIMARY BUTTONS (Deep Teal)
+   =========================================== */
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: 600;
+    padding: 0.875rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-card);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+/* Large Primary Button (Hero CTA) */
+.btn-primary-lg {
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: 600;
+    padding: 1rem 2.5rem;
+    border-radius: 0.5rem;
+    font-size: 1.25rem;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 12px rgba(14, 116, 144, 0.3);
+}
+
+.btn-primary-lg:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(14, 116, 144, 0.35);
+}
+
+/* ===========================================
+   4. SECONDARY BUTTONS (Outline Style)
+   =========================================== */
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Hero Secondary Button (White outline for dark bg) */
+.btn-secondary-hero {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary-hero:hover {
+    background-color: white;
+    color: var(--color-gray-900);
+    transform: translateY(-2px);
+}
+
+/* ===========================================
+   5. TERTIARY BUTTONS (Text Link Style)
+   =========================================== */
+.btn-tertiary {
+    color: white;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    padding: 0.5rem 0;
+    display: inline-block;
+    transition: all 0.2s ease;
+}
+
+.btn-tertiary:hover {
+    color: var(--color-primary-light);
+    text-underline-offset: 6px;
+}
+
+/* ===========================================
+   6. CARD STYLES WITH SHADOWS
+   =========================================== */
+.card {
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: var(--shadow-card);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+/* Service Cards */
+.service-card {
+    background-color: white;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--color-gray-200);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: var(--color-primary);
+}
+
+.service-card h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-gray-900);
+    line-height: var(--line-height-heading);
+}
+
+.service-card .btn-book {
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    text-decoration: none;
+    margin-top: auto;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.service-card .btn-book:hover {
+    background-color: var(--color-primary-dark);
+}
+
+/* ===========================================
+   7. TESTIMONIAL SECTION
+   =========================================== */
+.testimonials-section {
+    background-color: var(--color-gray-50);
+}
+
+.testimonial-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-testimonial);
+}
+
+/* ===========================================
+   8. PROMPTING LAB - FILTER PILLS
+   =========================================== */
+.filter-pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.filter-pill {
+    padding: 0.5rem 1.25rem;
+    border-radius: 9999px;
+    border: 1px solid var(--color-gray-200);
+    background-color: white;
+    color: var(--color-gray-700);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-pill:hover {
+    background-color: var(--color-gray-100);
+    border-color: var(--color-gray-300);
+}
+
+.filter-pill.active {
+    background-color: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+/* ===========================================
+   9. PROMPTING LAB - PROMPT CARDS
+   =========================================== */
+.prompt-card-styled {
+    background-color: var(--color-gray-100);
+    border-radius: 0.75rem;
+    border-left: 4px solid var(--color-primary);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.prompt-card-styled:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+    border-left-color: var(--color-primary-dark);
+}
+
+/* ===========================================
+   10. NAVIGATION - PROMPTING LAB HIGHLIGHT
+   =========================================== */
+.nav-prompting-lab {
+    color: var(--color-primary) !important;
+    font-weight: 700 !important;
+}
+
+.nav-prompting-lab:hover {
+    color: var(--color-primary-dark) !important;
+}
+
+/* Mobile Nav - Prompting Lab Highlight */
+.mobile-nav-prompting-lab {
+    color: var(--color-primary) !important;
+    font-weight: 600 !important;
+    background-color: rgba(14, 116, 144, 0.1) !important;
+}
+
+/* ===========================================
+   11. SECTION BACKGROUNDS
+   =========================================== */
+.section-gray {
+    background-color: var(--color-gray-50);
+}
+
+.section-white {
+    background-color: white;
+}
+
+/* ===========================================
+   12. BACK TO TOP BUTTON
+   =========================================== */
+#backToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: var(--color-primary);
+    color: white;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+#backToTopBtn:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+}
+
+/* ===========================================
+   13. ANIMATIONS
+   =========================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===========================================
+   14. CARD HOVER EFFECTS
+   =========================================== */
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+/* CTA Button Hover */
+.cta-button {
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ===========================================
+   15. SKIP LINK
+   =========================================== */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background-color: var(--color-primary);
+    color: white;
+    padding: 0.5rem;
+    z-index: 50;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* ===========================================
+   16. HERO SECTION STYLES
+   =========================================== */
+.hero-bg {
+    background-color: var(--color-gray-900);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-h1 {
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.hero-p {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .hero-p {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 1s ease-out 0.5s forwards;
+    }
+}
+
+/* ===========================================
+   17. AI BUBBLES
+   =========================================== */
+.ai-bubbles {
+    gap: 0.75rem;
+}
+
+.ai-bubble {
+    background: linear-gradient(135deg, #eef2ff, #e0f2fe);
+    color: var(--color-gray-900);
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    box-shadow: 0 12px 24px rgba(14, 116, 144, 0.18), inset 0 2px 0 rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(14, 116, 144, 0.25);
+    letter-spacing: 0.02em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    animation: float 16s ease-in-out infinite;
+    will-change: transform;
+}
+
+.ai-bubble::before {
+    content: "";
+    position: absolute;
+    top: 20%;
+    left: 18%;
+    right: 18%;
+    height: 45%;
+    border-radius: 9999px;
+    background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+    opacity: 0.95;
+    pointer-events: none;
+}
+
+.ai-bubble:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 30px rgba(14, 116, 144, 0.24), inset 0 2px 0 rgba(255, 255, 255, 0.9);
+}
+
+.ai-bubble:focus-visible {
+    outline: 2px solid var(--color-primary-light);
+    outline-offset: 3px;
+}
+
+.ai-bubble-active {
+    border-color: rgba(16, 185, 129, 0.5);
+    box-shadow: 0 16px 30px rgba(16, 185, 129, 0.24), inset 0 2px 0 rgba(255, 255, 255, 0.95);
+    background: linear-gradient(135deg, #ecfeff, #d1fae5);
+}
+
+.ai-bubble:nth-child(2) {
+    animation-duration: 18s;
+    animation-delay: 2s;
+}
+
+.ai-bubble:nth-child(3) {
+    animation-duration: 20s;
+    animation-delay: 4s;
+}
+
+@keyframes float {
+    0% { transform: translate3d(0, 0, 0); }
+    25% { transform: translate3d(12px, -10px, 0); }
+    50% { transform: translate3d(-8px, 14px, 0); }
+    75% { transform: translate3d(-16px, -8px, 0); }
+    100% { transform: translate3d(0, 0, 0); }
+}
+
+/* ===========================================
+   18. ANIMATED PATH
+   =========================================== */
+.animated-path {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.5;
+}
+
+.path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw-path 10s ease-out forwards;
+}
+
+@keyframes draw-path {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* ===========================================
+   19. COOKIE BANNER
+   =========================================== */
+#cookie-banner {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-gray-800);
+    color: white;
+    padding: 1rem;
+    z-index: 100;
+}
+
+#cookie-banner.show {
+    display: block;
+}
+
+/* ===========================================
+   20. REDUCED MOTION
+   =========================================== */
+@media (prefers-reduced-motion: reduce) {
+    html, .animated-path, #splash-screen, .animate-on-scroll, .ai-bubble {
+        scroll-behavior: auto;
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* ===========================================
+   21. GRADIENT TEXT
+   =========================================== */
+.gradient-text {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ===========================================
+   22. TOAST NOTIFICATION
+   =========================================== */
+#toast {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    padding: 16px;
+    position: fixed;
+    z-index: 100;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s, bottom 0.3s;
+}
+
+#toast.show {
+    visibility: visible;
+    opacity: 1;
+    bottom: 50px;
+}
+
+/* ===========================================
+   23. NAV LINK STYLES
+   =========================================== */
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: var(--color-primary);
+}
+
+.nav-link.active::after {
+    width: 100%;
+}
