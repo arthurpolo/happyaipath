@@ -1,0 +1,12 @@
+{
+  "name": "happyaipath",
+  "version": "1.0.0",
+  "description": "Happy AI Path — Executive AI Coaching and Team Training",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./tailwind.output.css --minify",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./tailwind.output.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
