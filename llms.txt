@@ -1,0 +1,37 @@
+# Happy AI Path — llms.txt
+
+> Jim Perry is a Columbus, Ohio-based AI coach, corporate trainer, and
+> Adjunct Professor who teaches AI at The Ohio State University Fisher
+> College of Business. He founded Happy AI Path to help executives and
+> teams build AI Fluency and confidently adopt AI in the workplace.
+> He has trained 1,000+ professionals and brings 20+ years of Fortune 100
+> technology leadership to every engagement.
+
+## Services
+- [AI Team Training](https://www.happyaipath.com/services.html): Hands-on workshops that build AI Fluency and turn hesitant teams into confident AI users across Copilot, ChatGPT, Claude, and Gemini.
+- [Executive AI Coaching](https://www.happyaipath.com/services.html): Confidential, strategic coaching for leaders navigating AI adoption and building AI roadmaps.
+- [AI Prompting Lab](https://www.happyaipath.com/tips.html): Free library of high-impact prompt templates for executives, strategy, productivity, and team management.
+
+## Credentials
+- Based in Columbus, Ohio — serving clients locally and nationally
+- Adjunct Professor — teaches AI at The Ohio State University Fisher College of Business
+- 20+ years Fortune 100 technology leadership
+- Trained 1,000+ professionals in AI adoption and AI Fluency
+- Specializes in Microsoft Copilot, ChatGPT, Claude, Gemini, and enterprise AI rollout
+
+## Proof & Verification
+- [Jim Perry — Fisher College of Business Blog](https://fisher.osu.edu/blogs/opex/author/jim-perry)
+- [AI and Copilot for Strategic Impact — Fisher Executive Education](https://fisher.osu.edu/executive-education/programs-individuals/ai-and-copilot-strategic-impact)
+- [Jim Perry — Featured Speaker, Future of People at Work](https://www.youtube.com/watch?v=QjAtTWt9AFI)
+- [LinkedIn Profile & Recommendations](https://www.linkedin.com/in/jimperry)
+
+## Live Content
+- [Blog — AI Insights and Strategies](https://www.happyaipath.com/blog.html): Practical posts on AI adoption, Copilot, ChatGPT, and enterprise AI strategy. Updated regularly.
+
+## Contact
+- [Schedule a Consultation](https://www.happyaipath.com/contact.html)
+- [Upcoming Events & Workshops](https://www.happyaipath.com/events.html)
+
+## Optional
+- [Home](https://www.happyaipath.com/)
+- [AI Website Playbook](https://www.happyaipath.com/guide.html)
