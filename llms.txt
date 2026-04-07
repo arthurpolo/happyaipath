@@ -8,8 +8,8 @@
 > technology leadership to every engagement.
 
 ## Services
-- [AI Team Training](https://www.happyaipath.com/services.html): Hands-on workshops that build AI Fluency and turn hesitant teams into confident AI users across Copilot, ChatGPT, Claude, and Gemini.
-- [Executive AI Coaching](https://www.happyaipath.com/services.html): Confidential, strategic coaching for leaders navigating AI adoption and building AI roadmaps.
+- [AI Team Training](https://www.happyaipath.com/services.html#team-training)
+- [Executive AI Coaching](https://www.happyaipath.com/services.html#executive-coaching)
 - [AI Prompting Lab](https://www.happyaipath.com/tips.html): Free library of high-impact prompt templates for executives, strategy, productivity, and team management.
 
 ## Credentials
