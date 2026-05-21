@@ -104,21 +104,115 @@
         @media (prefers-reduced-motion: no-preference) {
           .hero-p { opacity: 0; transform: translateY(20px); animation: fadeInUp 1s ease-out 0.5s forwards; }
         }
-        .hero-bg { background-color: #111827; position: relative; overflow: hidden; }
+        .hero-bg {
+            background:
+                radial-gradient(circle at 18% 18%, rgba(46, 211, 157, 0.18), transparent 26%),
+                radial-gradient(circle at 82% 8%, rgba(21, 101, 242, 0.18), transparent 28%),
+                linear-gradient(135deg, #08111f 0%, #111827 54%, #0a2336 100%);
+            min-height: calc(100vh - 4rem);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        .hero-bg::after {
+            content: "";
+            position: absolute;
+            inset: auto -8% -32% -8%;
+            height: 46%;
+            background: linear-gradient(90deg, rgba(45, 212, 191, 0), rgba(45, 212, 191, 0.13), rgba(37, 99, 235, 0));
+            filter: blur(54px);
+            pointer-events: none;
+        }
         .animated-path { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.5; }
         .path { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: draw-path 10s ease-out forwards; }
         @keyframes draw-path { to { stroke-dashoffset: 0; } }
+        .hero-content { width: 100%; }
+        .hero-stage {
+            position: relative;
+            width: min(76vw, 34rem);
+            height: clamp(10rem, 25vw, 16rem);
+            margin: 0 auto 2rem;
+        }
+        .smile-orbit {
+            position: absolute;
+            inset: 0;
+            transform-origin: center;
+            animation: orbitSpin 6.8s cubic-bezier(0.65, 0, 0.35, 1) both;
+        }
+        .smile-face {
+            --face-color: #2ed39d;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: clamp(4.5rem, 12vw, 7.2rem);
+            aspect-ratio: 1;
+            color: var(--face-color);
+            filter: drop-shadow(0 1rem 2rem rgba(0, 0, 0, 0.24));
+            transform-origin: center;
+        }
+        .smile-face svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .smile-mouth {
+            fill: none;
+            stroke: currentColor;
+            stroke-linecap: round;
+            stroke-width: 10;
+        }
+        .smile-eye {
+            fill: currentColor;
+            transform-box: fill-box;
+            transform-origin: center;
+            animation: blink 6.8s ease-in-out both;
+        }
+        .smile-face:nth-child(1) {
+            --face-color: #2ed39d;
+            animation: smileOne 6.8s cubic-bezier(0.65, 0, 0.35, 1) both;
+        }
+        .smile-face:nth-child(2) {
+            --face-color: #1565f2;
+            animation: smileTwo 6.8s cubic-bezier(0.65, 0, 0.35, 1) both;
+        }
+        .smile-face:nth-child(3) {
+            --face-color: #f3b63f;
+            animation: smileThree 6.8s cubic-bezier(0.65, 0, 0.35, 1) both;
+        }
+        @keyframes orbitSpin {
+            0% { transform: rotate(0deg) scale(0.86); opacity: 0; }
+            10% { opacity: 1; }
+            30% { transform: rotate(360deg) scale(1); opacity: 1; }
+            100% { transform: rotate(360deg) scale(1); opacity: 1; }
+        }
+        @keyframes smileOne {
+            0%, 30%, 78%, 100% { transform: translate(calc(-50% + 0rem), calc(-50% - 4.6rem)) rotate(0deg); }
+            42%, 56% { transform: translate(calc(-50% - 10rem), -50%) rotate(0deg); }
+        }
+        @keyframes smileTwo {
+            0%, 30%, 78%, 100% { transform: translate(calc(-50% + 5rem), calc(-50% + 3.2rem)) rotate(120deg); }
+            42%, 56% { transform: translate(-50%, -50%) rotate(0deg); }
+        }
+        @keyframes smileThree {
+            0%, 30%, 78%, 100% { transform: translate(calc(-50% - 5rem), calc(-50% + 3.2rem)) rotate(-120deg); }
+            42%, 56% { transform: translate(calc(-50% + 10rem), -50%) rotate(0deg); }
+        }
+        @keyframes blink {
+            0%, 43%, 46%, 50%, 100% { transform: scaleY(1); }
+            44%, 48% { transform: scaleY(0.12); }
+        }
         .cta-button, .card-hover { transition: all 0.3s ease; }
         .cta-button:hover, .card-hover:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         .ai-bubbles { gap: 0.75rem; }
         .ai-bubble {
-            background: linear-gradient(135deg, #eef2ff, #e0f2fe);
-            color: #111827;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
             font-weight: 700;
             padding: 0.75rem 1.5rem;
             border-radius: 9999px;
-            box-shadow: 0 12px 24px rgba(79, 70, 229, 0.18), inset 0 2px 0 rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(79, 70, 229, 0.25);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             letter-spacing: 0.02em;
             display: inline-flex;
             align-items: center;
@@ -143,16 +237,16 @@
         }
         .ai-bubble:hover {
             transform: translateY(-4px);
-            box-shadow: 0 16px 30px rgba(79, 70, 229, 0.24), inset 0 2px 0 rgba(255, 255, 255, 0.9);
+            box-shadow: 0 16px 30px rgba(14, 116, 144, 0.24), inset 0 2px 0 rgba(255, 255, 255, 0.24);
         }
         .ai-bubble:focus-visible {
             outline: 2px solid #818cf8;
             outline-offset: 3px;
         }
         .ai-bubble-active {
-            border-color: rgba(16, 185, 129, 0.5);
-            box-shadow: 0 16px 30px rgba(16, 185, 129, 0.24), inset 0 2px 0 rgba(255, 255, 255, 0.95);
-            background: linear-gradient(135deg, #ecfeff, #d1fae5);
+            border-color: rgba(46, 211, 157, 0.72);
+            box-shadow: 0 16px 30px rgba(16, 185, 129, 0.24), inset 0 2px 0 rgba(255, 255, 255, 0.24);
+            background: rgba(14, 116, 144, 0.46);
         }
         .ai-bubble:nth-child(2) { animation-duration: 18s; animation-delay: 2s; }
         .ai-bubble:nth-child(3) { animation-duration: 20s; animation-delay: 4s; }
@@ -163,6 +257,25 @@
             75% { transform: translate3d(-16px, -8px, 0); }
             100% { transform: translate3d(0, 0, 0); }
         }
+        @media (max-width: 640px) {
+            .hero-bg { min-height: auto; }
+            .hero-stage {
+                width: min(88vw, 22rem);
+                height: 11rem;
+            }
+            @keyframes smileOne {
+                0%, 30%, 78%, 100% { transform: translate(calc(-50% + 0rem), calc(-50% - 3.7rem)) rotate(0deg); }
+                42%, 56% { transform: translate(calc(-50% - 6.8rem), -50%) rotate(0deg); }
+            }
+            @keyframes smileTwo {
+                0%, 30%, 78%, 100% { transform: translate(calc(-50% + 4rem), calc(-50% + 2.6rem)) rotate(120deg); }
+                42%, 56% { transform: translate(-50%, -50%) rotate(0deg); }
+            }
+            @keyframes smileThree {
+                0%, 30%, 78%, 100% { transform: translate(calc(-50% - 4rem), calc(-50% + 2.6rem)) rotate(-120deg); }
+                42%, 56% { transform: translate(calc(-50% + 6.8rem), -50%) rotate(0deg); }
+            }
+        }
         #backToTopBtn { display: none; position: fixed; bottom: 20px; right: 30px; z-index: 99; border: none; outline: none; background-color: #4f46e5; color: white; cursor: pointer; padding: 12px; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: opacity 0.3s, visibility 0.3s; }
         #backToTopBtn:hover { background-color: #4338ca; }
         #cookie-banner { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background-color: #1f2937; color: white; padding: 1rem; z-index: 100; }
@@ -170,7 +283,15 @@
         #splash-screen { position: fixed; inset: 0; background-color: #ffffff; display: flex; align-items: center; justify-content: center; z-index: 101; transition: opacity 1s ease-out; }
         #splash-screen.fade-out { opacity: 0; }
         @media (prefers-reduced-motion: reduce) {
-          .ai-bubble { animation: none !important; }
+          .smile-orbit,
+          .smile-face,
+          .smile-eye,
+          .ai-bubble {
+            animation: none !important;
+          }
+          .smile-face:nth-child(1) { transform: translate(calc(-50% + 0rem), calc(-50% - 4.6rem)); }
+          .smile-face:nth-child(2) { transform: translate(calc(-50% + 5rem), calc(-50% + 3.2rem)) rotate(120deg); }
+          .smile-face:nth-child(3) { transform: translate(calc(-50% - 5rem), calc(-50% + 3.2rem)) rotate(-120deg); }
         }
     </style>
 <!-- Google tag (gtag.js) -->
@@ -233,25 +354,50 @@
                  <svg class="animated-path" viewBox="0 0 1000 300" preserveAspectRatio="none">
                     <path class="path" d="M -100 150 Q 250 50 500 150 T 1100 150" fill="none" stroke="rgba(79, 70, 229, 0.2)" stroke-width="2"/>
                 </svg>
-                <div class="max-w-6xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8 relative z-10 text-center">
-                    <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl hero-h1">Unlock Your Team's Potential with AI</h1>
-                    <p class="mt-6 max-w-2xl mx-auto text-xl text-gray-300 hero-p">I empower your teams with the skills and confidence to use AI effectively, turning uncertainty into a competitive advantage.</p>
-                    <p class="mt-4 max-w-2xl mx-auto text-lg text-indigo-300 hero-p">Leveraging 20+ years of enterprise tech leadership, I deliver practical, hands-on <a href="services.html" class="text-white underline hover:text-indigo-200" title="Explore our AI training services">training that gets results</a>.</p>
+                <div class="hero-content max-w-6xl mx-auto py-20 px-4 sm:py-28 sm:px-6 lg:px-8 relative z-10 text-center">
+                    <div class="hero-stage" aria-hidden="true">
+                        <div class="smile-orbit">
+                            <span class="smile-face">
+                                <svg viewBox="0 0 100 100" focusable="false">
+                                    <circle class="smile-eye" cx="36" cy="34" r="6"></circle>
+                                    <circle class="smile-eye" cx="64" cy="34" r="6"></circle>
+                                    <path class="smile-mouth" d="M24 54 Q50 78 76 54"></path>
+                                </svg>
+                            </span>
+                            <span class="smile-face">
+                                <svg viewBox="0 0 100 100" focusable="false">
+                                    <circle class="smile-eye" cx="36" cy="34" r="6"></circle>
+                                    <circle class="smile-eye" cx="64" cy="34" r="6"></circle>
+                                    <path class="smile-mouth" d="M24 54 Q50 78 76 54"></path>
+                                </svg>
+                            </span>
+                            <span class="smile-face">
+                                <svg viewBox="0 0 100 100" focusable="false">
+                                    <circle class="smile-eye" cx="36" cy="34" r="6"></circle>
+                                    <circle class="smile-eye" cx="64" cy="34" r="6"></circle>
+                                    <path class="smile-mouth" d="M24 54 Q50 78 76 54"></path>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl hero-h1">AI training that gets people moving.</h1>
+                    <p class="mt-6 max-w-2xl mx-auto text-xl text-gray-300 hero-p">Workshops and executive coaching for teams that need fewer demos and more useful reps in Copilot, ChatGPT, and Gemini.</p>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-teal-100 hero-p">Led by Jim Perry, an Ohio State Fisher lecturer and enterprise tech leader who turns uncertainty into practical workflow habits.</p>
                     <div id="hero-buttons" class="mt-10 flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 hero-p">
                          <a href="contact.html" class="btn-primary-lg">Meet with us!</a>
                          <a href="quiz.html" class="btn-secondary-hero">Take the AI Readiness Quiz</a>
                          <a href="events.html" class="btn-tertiary">View Upcoming Trainings</a>
                     </div>
                     <div class="mt-8 flex flex-col items-center gap-3 hero-p" aria-label="AI tools I help teams master">
-                        <p class="text-sm uppercase tracking-wide text-indigo-200 font-semibold">Training built for the tools you use</p>
+                        <p class="text-sm uppercase tracking-wide text-teal-100 font-semibold">Practice with the tools already on your desktop</p>
                         <div class="flex flex-wrap justify-center ai-bubbles" aria-live="polite">
-                            <span class="ai-bubble" aria-label="Copilot badge" role="button" tabindex="0" data-blurb="Guide your associates to use Agents, Notebooks, and AI in Excel, Powerpoint and Word streamlining their workflow." data-tool="Copilot">Copilot</span>
-                            <span class="ai-bubble" aria-label="ChatGPT badge" role="button" tabindex="0" data-blurb="Teach your teams about ChatGPT connectors, Projects, and Custom GPT's to supercharge their capabilities." data-tool="ChatGPT">ChatGPT</span>
-                            <span class="ai-bubble" aria-label="Gemini badge" role="button" tabindex="0" data-blurb="Learn about Google's AI ecosphere from Notebook LM, Gems, to ai.studio." data-tool="Gemini">Gemini</span>
+                            <span class="ai-bubble" aria-label="Copilot badge" role="button" tabindex="0" data-blurb="Turn long email threads, meeting notes, and spreadsheets into usable first drafts without losing judgment." data-tool="Copilot">Copilot</span>
+                            <span class="ai-bubble" aria-label="ChatGPT badge" role="button" tabindex="0" data-blurb="Build custom assistants, repeatable prompts, and research workflows for the work your team actually does." data-tool="ChatGPT">ChatGPT</span>
+                            <span class="ai-bubble" aria-label="Gemini badge" role="button" tabindex="0" data-blurb="Use NotebookLM, Gems, and AI Studio for research-heavy, creative, and operational work." data-tool="Gemini">Gemini</span>
                         </div>
-                        <div id="tool-blurb" class="mt-5 max-w-3xl mx-auto bg-indigo-900/60 border border-indigo-500/40 rounded-xl px-4 py-3 text-indigo-50 text-sm sm:text-base shadow-lg hidden" role="status" aria-live="polite"></div>
+                        <div id="tool-blurb" class="mt-5 max-w-3xl mx-auto bg-slate-950/60 border border-teal-300/30 rounded-xl px-4 py-3 text-teal-50 text-sm sm:text-base shadow-lg hidden" role="status" aria-live="polite"></div>
                     </div>
-                    <p class="mt-6 text-base text-indigo-100 hero-p">Want ready-to-use prompts? Visit our <a href="tips.html" class="font-semibold underline hover:text-indigo-200" title="AI Prompting Lab with copy-ready templates">AI Prompting Lab</a> for keyword-rich templates tailored to leaders and teams.</p>
+                    <p class="mt-6 text-base text-teal-100 hero-p">Want ready-to-use prompts? Visit the <a href="tips.html" class="font-semibold underline hover:text-white" title="AI Prompting Lab with copy-ready templates">AI Prompting Lab</a> for templates tailored to leaders and teams.</p>
                 </div>
             </header>
             
