@@ -1,0 +1,40 @@
+[build]
+  publish = "."
+
+# Keep company pages private until they are approved for publication.
+# Remove these redirects when the page is ready to go live.
+[[redirects]]
+  from = "/company"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/company.html"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/company/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/companies"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/companies.html"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/companies/*"
+  to = "/404.html"
+  status = 404
+  force = true

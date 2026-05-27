@@ -25,7 +25,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -39,10 +39,24 @@
             transition: none !important;
           }
         }
+        :root {
+            --surface: #f8f5ef;
+            --surface-2: #f2ece1;
+            --ink: #171717;
+            --muted: #57534e;
+            --navy: #0d1b2f;
+            --navy-soft: #132844;
+            --brand-blue: #2663ff;
+            --brand-green: #34d399;
+            --warm-white: rgba(255, 255, 255, 0.86);
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #fff;
-            color: #1f2937;
+            background-color: var(--surface);
+            color: var(--ink);
+        }
+        .display-face {
+            font-family: 'Fraunces', Georgia, serif;
         }
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
@@ -60,9 +74,12 @@
         .hero-h1 { animation: fadeInUp 1s ease-out forwards; }
         .hero-p { opacity: 0; animation: fadeInUp 1s ease-out 0.5s forwards; }
         .hero-bg {
-            background-color: #111827;
             position: relative;
             overflow: hidden;
+            background:
+                radial-gradient(circle at 18% 18%, rgba(52, 211, 153, 0.14), transparent 26%),
+                radial-gradient(circle at 84% 16%, rgba(38, 99, 255, 0.16), transparent 28%),
+                linear-gradient(135deg, #08111f 0%, #0d1b2f 54%, #152b46 100%);
         }
         .animated-path {
             position: absolute;
@@ -104,15 +121,174 @@
         #splash-screen {
             position: fixed;
             inset: 0;
-            background-color: #ffffff;
+            background-color: #05080f;
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 101;
-            transition: opacity 1s ease-out;
+            transition: opacity 0.8s ease-out;
         }
         #splash-screen.fade-out {
             opacity: 0;
+            pointer-events: none;
+        }
+        #splash-screen video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .intro-skip {
+            position: absolute;
+            right: 1.5rem;
+            bottom: 1.5rem;
+            background: rgba(255, 255, 255, 0.12);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 999px;
+            padding: 0.65rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            backdrop-filter: blur(14px);
+        }
+        .hero-shell {
+            min-height: 88vh;
+            display: flex;
+            align-items: center;
+        }
+        .hero-grid {
+            display: grid;
+            gap: 3rem;
+        }
+        .hero-copy {
+            max-width: 44rem;
+        }
+        .hero-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.88);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+        .hero-kicker::before {
+            content: "";
+            display: block;
+            width: 0.65rem;
+            height: 0.65rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--brand-green), var(--brand-blue));
+            box-shadow: 0 0 18px rgba(52, 211, 153, 0.4);
+        }
+        .hero-title {
+            font-size: clamp(3rem, 6vw, 5.6rem);
+            line-height: 0.96;
+            letter-spacing: -0.04em;
+        }
+        .hero-lead {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            line-height: 1.75;
+            max-width: 40rem;
+        }
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .hero-secondary-link {
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            padding: 0.95rem 1.25rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            background: rgba(255, 255, 255, 0.06);
+        }
+        .hero-secondary-link:hover {
+            color: white;
+            text-decoration: none;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        .hero-proof {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+        .hero-chip {
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.88);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 999px;
+            padding: 0.65rem 1rem;
+            font-size: 0.9rem;
+        }
+        .hero-media {
+            position: relative;
+            min-height: 28rem;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .hero-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .hero-quote-card {
+            position: absolute;
+            left: 1.25rem;
+            bottom: 1.25rem;
+            max-width: 22rem;
+            padding: 1.25rem 1.4rem;
+            border-radius: 1.5rem;
+            background: rgba(12, 24, 41, 0.76);
+            color: white;
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .hero-quote-card p {
+            margin: 0;
+        }
+        .hero-quote-card .quote-text {
+            font-size: 1.15rem;
+            line-height: 1.45;
+        }
+        .hero-quote-card .quote-meta {
+            margin-top: 0.75rem;
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .section-intro {
+            max-width: 44rem;
+            margin: 0 auto;
+        }
+        @media (min-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.9fr);
+                align-items: center;
+            }
+        }
+        @media (max-width: 768px) {
+            .hero-shell {
+                min-height: auto;
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+            .hero-media {
+                min-height: 20rem;
+            }
+            .hero-quote-card {
+                max-width: calc(100% - 2rem);
+            }
         }
         .skip-link {
             position: absolute;
@@ -188,14 +364,13 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <div id="splash-screen">
-        <picture>
-          <source srcset="HappyAIPath.svg" type="image/svg+xml">
-          <source srcset="HappyAIPath-large.webp" type="image/webp">
-          <img src="HappyAIPath-large.png" alt="Happy AI Path Logo" style="height: 50vh; max-height: 400px; width: auto;">
-        </picture>
+        <video id="intro-video" autoplay muted playsinline preload="auto" poster="hero-intro-poster.png">
+            <source src="hero-intro.mp4" type="video/mp4">
+        </video>
+        <button id="skip-intro" class="intro-skip" type="button">Skip intro</button>
     </div>
     
-    <div id="site-wrapper" style="visibility: hidden;">
+    <div id="site-wrapper">
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
@@ -215,22 +390,6 @@
                         <a href="#" onclick="showPage('home')" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Home</a>
                         <a href="#services" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Services</a>
                         <a href="#about" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About</a>
-                        <a href="#" onclick="showPage('quiz')" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Quiz</a>
-                        <a href="#" onclick="showPage('blog')" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Blog</a>
-                        <div class="relative" id="more-dropdown">
-                            <button class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex items-center">
-                                <span>More</span>
-                                <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </button>
-                            <div id="more-dropdown-menu" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden">
-                                <div class="py-1" role="none">
-                                    <a href="#" onclick="showPage('guide')" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">How AI built this</a>
-                                    <a href="#" onclick="showPage('about-site')" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1">About This Site</a>
-                                </div>
-                            </div>
-                        </div>
                         <a href="#contact" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
                     </div>
                 </div>
@@ -249,10 +408,6 @@
                <a href="#" onclick="showPage('home'); closeMobileMenu();" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Home</a>
                 <a href="#services" class="nav-link text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Services</a>
                 <a href="#about" class="nav-link text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">About</a>
-                <a href="#" onclick="showPage('quiz'); closeMobileMenu();" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Quiz</a>
-                <a href="#" onclick="showPage('blog'); closeMobileMenu();" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
-                <a href="#" onclick="showPage('guide'); closeMobileMenu();" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">The Playbook</a>
-                <a href="#" onclick="showPage('about-site'); closeMobileMenu();" class="text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">About This Site</a>
                 <a href="#contact" class="nav-link text-gray-600 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
             </div>
         </div>
@@ -260,37 +415,44 @@
     
     <div id="home" class="page active">
         <main id="main-content">
-            <header class="hero-bg text-white">
+            <header class="hero-bg text-white hero-shell">
                  <svg class="animated-path" viewBox="0 0 1000 300" preserveAspectRatio="none">
                     <path class="path" d="M -100 150 Q 250 50 500 150 T 1100 150" fill="none" stroke="rgba(79, 70, 229, 0.2)" stroke-width="2"/>
                 </svg>
-                <div class="max-w-6xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8 relative z-10 text-center">
-                    <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl hero-h1">From AI Uncertainty to Strategic Advantage</h1>
-                    <p class="mt-6 max-w-2xl mx-auto text-xl text-gray-300 hero-p">Leveraging my 20+ years of enterprise tech leadership to guide your organization through a successful, human-centered AI transformation.</p>
-                    <p class="mt-4 max-w-2xl mx-auto text-lg text-indigo-300 hero-p italic">A safe, inclusive learning environment for confident AI adoption.</p>
-                    <div class="mt-10 flex flex-wrap justify-center gap-4 hero-p">
-                         <a href="#contact" class="nav-link bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block text-center cta-button hover:bg-indigo-700">Schedule a Consultation</a>
-                          <a href="#" onclick="showPage('quiz')" class="bg-transparent border-2 border-white text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block text-center cta-button hover:bg-white hover:text-gray-900">Take the AI Readiness Quiz</a>
-                          <a href="#events" class="nav-link bg-teal-600 text-white font-semibold py-3 px-8 rounded-lg text-lg inline-block text-center cta-button hover:bg-teal-700">View Upcoming Trainings</a>
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 hero-grid">
+                    <div class="hero-copy">
+                        <p class="hero-kicker hero-p">Fortune 100 leadership meets real AI teaching</p>
+                        <h1 class="display-face hero-title mt-6 hero-h1">Lead your team into AI with calm authority.</h1>
+                        <p class="mt-6 hero-lead hero-p">I help executives and teams move from AI curiosity to confident execution through live training, executive coaching, and practical implementation grounded in the real work of modern organizations.</p>
+                        <div class="hero-actions hero-p">
+                            <a href="#contact" class="nav-link bg-white text-gray-900 font-semibold py-3 px-8 rounded-full text-lg inline-block text-center cta-button hover:bg-gray-200">Start a conversation</a>
+                            <a href="#events" class="nav-link hero-secondary-link text-lg inline-block text-center">See live workshops</a>
+                        </div>
+                        <div class="hero-proof hero-p">
+                            <span class="hero-chip">Adjunct Lecturer · Ohio State Fisher</span>
+                            <span class="hero-chip">AI prompt engineering and Copilot training</span>
+                            <span class="hero-chip">Confident executive adoption</span>
+                        </div>
+                    </div>
+                    <div class="hero-media hero-p">
+                        <img src="jim-perry-teaching.png" alt="Jim Perry teaching AI in an Ohio State classroom" loading="eager" decoding="async">
+                        <div class="hero-quote-card">
+                            <p class="display-face quote-text">“Well paced, engaging, and time well spent.”</p>
+                            <p class="quote-meta">Workshop participant</p>
+                        </div>
                     </div>
                 </div>
             </header>
-            
-            <div class="bg-gray-100">
-                <div class="max-w-6xl mx-auto py-3 px-4 sm:px-6 lg:px-8 text-center text-sm font-medium text-gray-700">
-                    <p>As an <span class="font-bold text-teal-700">Adjunct Lecturer at The Ohio State University Fisher College of Business</span>, I bring academic rigor to practical, real-world AI implementation.</p>
-                </div>
-            </div>
 
             <section id="services" class="animate-on-scroll py-20 bg-gray-100">
                 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center">
+                    <div class="text-center section-intro">
                         <h2 class="text-base font-semibold text-teal-600 tracking-wide uppercase">My Services</h2>
-                        <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">Corporate AI Training & Executive Coaching</p>
+                        <p class="display-face mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">Corporate AI training and executive coaching built for the real world.</p>
                     </div>
                     <div class="mt-12 grid gap-10 md:grid-cols-2 lg:gap-12">
                         <div class="bg-white rounded-lg p-8 card-hover">
-                            <img class="h-48 w-full object-cover rounded-md" src="https://placehold.co/600x400/93c5fd/333333?text=AI+Team+Training" alt="AI Team Training placeholder with light blue background.">
+                            <img class="h-48 w-full object-cover rounded-md" src="jim-perry-teaching.png" alt="Jim Perry teaching an AI training session in a classroom.">
                             <h3 class="mt-6 text-2xl font-bold text-gray-900">AI Team Training</h3>
                             <p class="mt-4 text-gray-600">From hesitant teams to confident innovators, my workshops provide the hands-on skills to turn AI potential into measurable results.</p>
                             <ul class="mt-6 space-y-2 text-gray-600">
@@ -300,7 +462,7 @@
                             </ul>
                         </div>
                         <div class="bg-white rounded-lg p-8 card-hover">
-                             <img class="h-48 w-full object-cover rounded-md" src="https://placehold.co/600x400/6ee7b7/333333?text=Executive+Coaching" alt="Executive Coaching placeholder with mint green background.">
+                             <img class="h-48 w-full object-cover rounded-md" src="DSC00498 (Small).jpg" alt="Portrait of Jim Perry, executive AI coach.">
                             <h3 class="mt-6 text-2xl font-bold text-gray-900">Executive AI Coaching</h3>
                             <p class="mt-4 text-gray-600">For leaders who feel behind on AI, my coaching provides a confidential, strategic path from uncertainty to clear, decisive action.</p>
                              <ul class="mt-6 space-y-2 text-gray-600">
@@ -337,16 +499,16 @@
                         </div>
                         <div class="mt-12 grid gap-8 md:grid-cols-1 lg:grid-cols-2">
                             <div class="bg-gray-100 rounded-lg p-6">
-                                <p class="text-sm text-indigo-600 font-semibold">July 29-30, 2025 - The Ohio State University</p>
+                                <p class="text-sm text-indigo-600 font-semibold">June 23-24, 2026 - The Ohio State University</p>
                                 <h3 class="mt-2 text-xl font-bold text-gray-900">AI Prompt Engineering Workshop</h3>
                                 <p class="mt-2 text-gray-600">An immersive, in-person workshop at the OSU Fisher College of Business designed to equip professionals with the skills to leverage generative AI for strategic advantage.</p>
                                 <a href="https://fisher.osu.edu/executive-education/programs-individuals/ai-prompt-engineering" target="_blank" rel="noopener noreferrer" class="mt-4 inline-block text-indigo-700 hover:text-indigo-900 font-semibold">Learn More &rarr;</a>
                             </div>
                             <div class="bg-gray-100 rounded-lg p-6">
-                               <p class="text-sm text-indigo-600 font-semibold">September 5, 2025 - Online Webinar</p>
-                                <h3 class="mt-2 text-xl font-bold text-gray-900">AI for Small Business Leaders</h3>
-                                <p class="mt-2 text-gray-600">A 60-minute session covering practical AI use cases for marketing, sales, and operations that you can implement immediately.</p>
-                                <a href="#" class="mt-4 inline-block text-gray-500 font-semibold cursor-not-allowed">Registration Coming Soon</a>
+                               <p class="text-sm text-indigo-600 font-semibold">July 21, 2026 - The Ohio State University</p>
+                                <h3 class="mt-2 text-xl font-bold text-gray-900">Copilot: AI for Strategic Impact</h3>
+                                <p class="mt-2 text-gray-600">A one-day, hands-on program focused on using Microsoft Copilot to improve workflows, strengthen communication, and build practical AI confidence across the organization.</p>
+                                <a href="https://fisher.osu.edu/executive-education/programs-individuals/ai-and-copilot-strategic-impact" target="_blank" rel="noopener noreferrer" class="mt-4 inline-block text-indigo-700 hover:text-indigo-900 font-semibold">Learn More &rarr;</a>
                             </div>
                         </div>
                 </div>
@@ -662,11 +824,10 @@
         const cookieBanner = document.getElementById('cookie-banner');
         const cookieAcceptBtn = document.getElementById('cookie-accept');
         const cookieRejectBtn = document.getElementById('cookie-reject');
-        const moreDropdown = document.getElementById('more-dropdown');
-        const moreDropdownMenu = document.getElementById('more-dropdown-menu');
-
         const siteWrapper = document.getElementById('site-wrapper');
         const splashScreen = document.getElementById('splash-screen');
+        const introVideo = document.getElementById('intro-video');
+        const skipIntroBtn = document.getElementById('skip-intro');
         const guideLinks = document.querySelectorAll('.guide-content a[href^="#"]');
 
         function showPage(pageId) {
@@ -695,16 +856,6 @@
             mobileMenu.classList.toggle('hidden');
         });
         
-        // Dropdown Menu Toggle
-        moreDropdown.addEventListener('click', () => {
-            moreDropdownMenu.classList.toggle('hidden');
-        });
-        document.addEventListener('click', function(event) {
-            if (!moreDropdown.contains(event.target)) {
-                moreDropdownMenu.classList.add('hidden');
-            }
-        });
-
         // Event listeners for nav links to scroll on the home page
         navLinks.forEach(link => {
             link.addEventListener('click', function (e) {
@@ -804,14 +955,47 @@
 
         // Splash Screen Logic
         document.addEventListener('DOMContentLoaded', () => {
-            // This will now run every time the page is loaded.
-            setTimeout(() => {
+            const closeSplash = () => {
                 splashScreen.classList.add('fade-out');
-                siteWrapper.style.visibility = 'visible';
                 setTimeout(() => {
                     splashScreen.style.display = 'none';
-                }, 1000); // This inner timeout matches the CSS transition duration
-            }, 2000); // 2-second delay before the fade-out starts
+                }, 800);
+            };
+
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            let splashFallbackTimeout;
+
+            if (prefersReducedMotion || !introVideo) {
+                closeSplash();
+                return;
+            }
+
+            splashFallbackTimeout = setTimeout(closeSplash, 6000);
+
+            introVideo.play().catch(() => {
+                clearTimeout(splashFallbackTimeout);
+                closeSplash();
+            });
+
+            introVideo.addEventListener('ended', () => {
+                clearTimeout(splashFallbackTimeout);
+                closeSplash();
+            }, { once: true });
+
+            introVideo.addEventListener('error', () => {
+                clearTimeout(splashFallbackTimeout);
+                closeSplash();
+            }, { once: true });
+
+            if (skipIntroBtn) {
+                skipIntroBtn.addEventListener('click', () => {
+                    clearTimeout(splashFallbackTimeout);
+                    if (!introVideo.paused) {
+                        introVideo.pause();
+                    }
+                    closeSplash();
+                });
+            }
         });
 
 
