@@ -8,9 +8,9 @@
 > technology leadership to every engagement.
 
 ## Services
-- [AI Team Training](https://www.happyaipath.com/services.html#team-training)
-- [Executive AI Coaching](https://www.happyaipath.com/services.html#executive-coaching)
-- [AI Prompting Lab](https://www.happyaipath.com/tips.html): Free library of high-impact prompt templates for executives, strategy, productivity, and team management.
+- [AI Team Training](https://happyaipath.com/services.html#team-training)
+- [Executive AI Coaching](https://happyaipath.com/services.html#executive-coaching)
+- [AI Prompting Lab](https://happyaipath.com/tips.html): Free library of high-impact prompt templates for executives, strategy, productivity, and team management.
 
 ## Credentials
 - Based in Columbus, Ohio — serving clients locally and nationally
@@ -26,12 +26,12 @@
 - [LinkedIn Profile & Recommendations](https://www.linkedin.com/in/jimperry)
 
 ## Live Content
-- [Blog — AI Insights and Strategies](https://www.happyaipath.com/blog.html): Practical posts on AI adoption, Copilot, ChatGPT, and enterprise AI strategy. Updated regularly.
+- [Blog — AI Insights and Strategies](https://happyaipath.com/blog.html): Practical posts on AI adoption, Copilot, ChatGPT, and enterprise AI strategy. Updated regularly.
 
 ## Contact
-- [Schedule a Consultation](https://www.happyaipath.com/contact.html)
-- [Upcoming Events & Workshops](https://www.happyaipath.com/events.html)
+- [Schedule a Consultation](https://happyaipath.com/contact.html)
+- [Upcoming Events & Workshops](https://happyaipath.com/events.html)
 
 ## Optional
-- [Home](https://www.happyaipath.com/)
-- [AI Website Playbook](https://www.happyaipath.com/guide.html)
+- [Home](https://happyaipath.com/)
+- [AI Website Playbook](https://happyaipath.com/guide.html)

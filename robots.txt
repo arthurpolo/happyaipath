@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.happyaipath.com/sitemap.xml
+Sitemap: https://happyaipath.com/sitemap.xml
