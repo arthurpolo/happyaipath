@@ -22,59 +22,169 @@
     <link rel="preload" as="image" href="HappyAIPath.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-T4QRVGGY9L"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-T4QRVGGY9L');
-</script>
-
-    <!-- Structured Data - WebPage -->
+    <!-- Structured Data - WebPage, Services, and FAQ -->
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "AI Training and Executive Coaching Services | Happy AI Path",
-  "description": "Explore our Corporate AI Training and Executive Coaching services. We empower teams and leaders to master AI and drive business growth.",
-  "url": "https://happyaipath.com/services.html",
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": "Happy AI Path",
-    "url": "https://happyaipath.com/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Happy AI Path",
-    "url": "https://happyaipath.com/",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://happyaipath.com/HappyAIPath.png"
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://happyaipath.com/services.html#webpage",
+      "name": "AI Training and Executive Coaching Services | Happy AI Path",
+      "description": "Explore our Corporate AI Training and Executive Coaching services. We empower teams and leaders to master AI and drive business growth.",
+      "url": "https://happyaipath.com/services.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Happy AI Path",
+        "url": "https://happyaipath.com/"
+      },
+      "publisher": {
+        "@id": "https://happyaipath.com/#organization"
+      },
+      "mainEntity": [
+        {
+          "@id": "https://happyaipath.com/services.html#ai-team-training"
+        },
+        {
+          "@id": "https://happyaipath.com/services.html#executive-ai-coaching"
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://happyaipath.com/#organization",
+      "name": "Happy AI Path",
+      "url": "https://happyaipath.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://happyaipath.com/HappyAIPath.png"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Jim Perry",
+        "jobTitle": "AI Coach and Corporate AI Trainer"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Columbus"
+        },
+        {
+          "@type": "Country",
+          "name": "United States"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://happyaipath.com/services.html#ai-team-training",
+      "name": "AI Team Training",
+      "serviceType": "Corporate AI training and AI adoption workshops",
+      "description": "Hands-on AI training workshops that help teams use Copilot, ChatGPT, Gemini, and practical prompt engineering for real business workflows.",
+      "provider": {
+        "@id": "https://happyaipath.com/#organization"
+      },
+      "url": "https://happyaipath.com/services.html#team-training",
+      "areaServed": "United States",
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "Business teams, managers, and professionals adopting AI tools"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://happyaipath.com/contact.html",
+        "availability": "https://schema.org/InStock",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "USD",
+          "description": "Custom workshop pricing available by consultation."
+        }
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://happyaipath.com/services.html#executive-ai-coaching",
+      "name": "Executive AI Coaching",
+      "serviceType": "Executive AI strategy coaching",
+      "description": "Confidential AI coaching for leaders who need a clear strategy, practical decision support, and an executive roadmap for AI adoption.",
+      "provider": {
+        "@id": "https://happyaipath.com/#organization"
+      },
+      "url": "https://happyaipath.com/services.html#executive-coaching",
+      "areaServed": "United States",
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "Executives, founders, senior leaders, and decision makers"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://happyaipath.com/contact.html",
+        "availability": "https://schema.org/InStock",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "USD",
+          "description": "Custom coaching pricing available by consultation."
+        }
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://happyaipath.com/services.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Who is Happy AI Path training built for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Happy AI Path is built for executives, managers, and business teams that want practical AI fluency with tools like Microsoft Copilot, ChatGPT, Gemini, and prompt engineering."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can the training be customized for my organization?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Workshops and coaching sessions can be tailored to your team's roles, workflows, goals, and current level of AI readiness."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I book AI training or executive coaching?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start with the contact page to schedule a consultation. Jim Perry will help determine whether team training, executive coaching, or a blended approach is the right fit."
+          }
+        }
+      ]
     }
-  }
+  ]
 }
     </script>
+    <script src="consent.js" defer></script>
 </head>
 <body class="bg-white text-gray-800">
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <nav class="bg-white shadow-md sticky top-0 z-40">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
+            <div class="flex justify-between items-center min-h-24 py-3">
                 <div class="flex-shrink-0">
-                    <a href="index.html" class="flex items-center">
-                        <img src="HappyAIPath.svg" alt="Happy AI Path Logo" class="h-10 w-auto">
-                    </a>
+                        <a href="index.html" class="brand-lockup" aria-label="Happy AI Path home">
+                            <span class="brand-smile-stack" aria-hidden="true">
+                                <span class="brand-smile brand-smile-green"><span></span><span></span></span>
+                                <span class="brand-smile brand-smile-blue"><span></span><span></span></span>
+                                <span class="brand-smile brand-smile-black"><span></span><span></span></span>
+                            </span>
+                            <span class="brand-wordmark">Happy AI Path</span>
+                        </a>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
                         <a href="index.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Home</a>
                         <a href="services.html" class="text-[#0E7490] font-semibold px-3 py-2 rounded-md text-sm" aria-current="page">Services</a>
-                        <a href="tips.html" class="text-[#0E7490] font-bold px-3 py-2 rounded-md text-sm nav-prompting-lab">Prompting Lab</a>
+                        <a href="tips.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Prompting Lab</a>
                         <a href="blog.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Blog</a>
                         <a href="events.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Events</a>
                         <a href="about.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About</a>
@@ -93,7 +203,7 @@
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="index.html" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Home</a>
                 <a href="services.html" class="text-[#0E7490] bg-[#0E7490]/10 block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Services</a>
-                <a href="tips.html" class="text-[#0E7490] font-semibold bg-[#0E7490]/10 block px-3 py-2 rounded-md text-base">Prompting Lab</a>
+                <a href="tips.html" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Prompting Lab</a>
                 <a href="blog.html" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
                 <a href="events.html" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Events</a>
                 <a href="about.html" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">About</a>
@@ -102,17 +212,25 @@
         </div>
     </nav>
     <main id="main-content">
+        <section class="page-hero">
+            <svg class="animated-path page-hero-path" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true">
+                <path class="path path-drift path-drift-one" d="M -120 210 C 70 80 220 270 410 145 S 720 40 1120 160" fill="none"/>
+                <path class="path path-drift path-drift-two" d="M -100 95 C 110 180 245 15 430 110 S 690 245 1100 58" fill="none"/>
+                <path class="path path-drift path-drift-three" d="M -140 260 C 95 230 205 112 360 170 S 650 290 1130 220" fill="none"/>
+            </svg>
+            <div class="page-hero-inner">
+                <p class="page-kicker">Our Services</p>
+                <h1 class="page-title display-face">Corporate AI training and executive coaching built for the real world.</h1>
+                <p class="page-lead">Looking for immediate wins? Explore the <a href="tips.html" class="font-semibold underline" title="AI Prompting Lab with ready-made templates">AI Prompting Lab</a> for copy-ready prompt templates that complement every workshop.</p>
+            </div>
+        </section>
+
         <section id="services" class="py-20 section-gray">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center">
-                    <h1 class="text-base font-semibold text-[#0E7490] tracking-wide uppercase">Our Services</h1>
-                    <p class="mt-2 text-3xl font-bold text-gray-900 tracking-tight sm:text-4xl" style="line-height: 1.2;">Corporate AI Training & Executive Coaching</p>
-                    <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto" style="line-height: 1.6;">Looking for immediate wins? Explore the <a href="tips.html" class="text-[#0E7490] font-semibold underline hover:text-[#0C6880]" title="AI Prompting Lab with ready-made templates">AI Prompting Lab</a> for copy-ready prompt templates that complement every workshop.</p>
-                </div>
                 <div class="mt-12 grid gap-10 md:grid-cols-2 lg:gap-12">
                     <!-- AI Team Training Card -->
                     <div class="service-card">
-                        <img class="h-16 w-16 mx-auto mb-4" style="max-width:64px;width:100%;" src="HappyAIPath-large.png" alt="A diverse team of professionals collaborating..." loading="lazy">
+                        <img class="service-card-image" src="jim-perry-teaching.png" alt="Jim Perry teaching an AI training session in a classroom." loading="lazy" decoding="async">
                         <h2 id="team-training" class="mt-6 text-2xl font-bold text-gray-900" style="line-height: 1.2;">AI Team Training</h2>
                         <p class="mt-4 text-gray-600" style="line-height: 1.6;">From hesitant teams to confident innovators, my workshops provide the hands-on skills to turn AI potential into measurable results.</p>
                         <ul class="mt-6 space-y-2 text-gray-600" style="line-height: 1.6;">
@@ -141,7 +259,7 @@
                     </div>
                     <!-- Executive AI Coaching Card -->
                     <div class="service-card">
-                        <img class="h-16 w-16 mx-auto mb-4" style="max-width:64px;width:100%;" src="HappyAIPath-large.webp" alt="An executive leader confidently presenting..." loading="lazy">
+                        <img class="service-card-image service-card-image-portrait" src="DSC00498 (Small).jpg" alt="Portrait of Jim Perry, executive AI coach." loading="lazy" decoding="async">
                         <h2 id="executive-coaching" class="mt-6 text-2xl font-bold text-gray-900" style="line-height: 1.2;">Executive AI Coaching</h2>
                         <p class="mt-4 text-gray-600" style="line-height: 1.6;">For leaders who feel behind on AI, my coaching provides a confidential, strategic path from uncertainty to clear, decisive action.</p>
                         <ul class="mt-6 space-y-2 text-gray-600" style="line-height: 1.6;">
@@ -171,6 +289,27 @@
                 </div>
             </div>
         </section>
+
+        <section id="services-faq" class="py-16 bg-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <p class="page-kicker text-center">Service FAQ</p>
+                <h2 class="display-face mt-3 text-3xl sm:text-4xl font-bold text-gray-900 text-center">Quick answers for AI training buyers.</h2>
+                <div class="mt-10 grid gap-5">
+                    <article class="bg-gray-50 border border-gray-200 rounded-2xl p-6">
+                        <h3 class="text-lg font-bold text-gray-900">Who is Happy AI Path training built for?</h3>
+                        <p class="mt-2 text-gray-600" style="line-height: 1.7;">Executives, managers, and business teams that want practical AI fluency with tools like Microsoft Copilot, ChatGPT, Gemini, and prompt engineering.</p>
+                    </article>
+                    <article class="bg-gray-50 border border-gray-200 rounded-2xl p-6">
+                        <h3 class="text-lg font-bold text-gray-900">Can the training be customized for my organization?</h3>
+                        <p class="mt-2 text-gray-600" style="line-height: 1.7;">Yes. Workshops and coaching sessions can be tailored to your team's roles, workflows, goals, and current level of AI readiness.</p>
+                    </article>
+                    <article class="bg-gray-50 border border-gray-200 rounded-2xl p-6">
+                        <h3 class="text-lg font-bold text-gray-900">How do I book AI training or executive coaching?</h3>
+                        <p class="mt-2 text-gray-600" style="line-height: 1.7;">Start with the <a href="contact.html" class="font-semibold text-[#0E7490] underline">contact page</a> to schedule a consultation. Jim Perry will help determine whether team training, executive coaching, or a blended approach is the right fit.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
     </main>
     <button id="backToTopBtn" title="Go to top">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" /></svg>
@@ -185,7 +324,11 @@
                     <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                 </a>
             </div>
-            <div class="mt-8 text-center text-base text-gray-400">&copy; 2025 Happy AI Path. All rights reserved.</div>
+            <div class="mt-8 text-center text-base text-gray-400">&copy; 2026 Happy AI Path. All rights reserved.</div>
+            <div class="privacy-footer-actions">
+                <a href="privacy.html" class="privacy-footer-link">Privacy Notice</a>
+                <button type="button" class="privacy-choices-link" data-privacy-choices>Privacy & Cookie Choices</button>
+            </div>
         </div>
     </footer>
     <script>
