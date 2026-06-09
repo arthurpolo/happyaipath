@@ -27,10 +27,11 @@
 
 ## Live Content
 - [Blog — AI Insights and Strategies](https://happyaipath.com/blog.html): Practical posts on AI adoption, Copilot, ChatGPT, and enterprise AI strategy. Updated regularly.
+- [Upcoming Events & Workshops](https://happyaipath.com/events.html): OSU programs include AI Prompt Engineering for Business Strategy and Innovation on June 23-24, 2026, and Copilot: AI for Strategic Impact on July 21, 2026.
 
 ## Contact
 - [Schedule a Consultation](https://happyaipath.com/contact.html)
-- [Upcoming Events & Workshops](https://happyaipath.com/events.html)
+- [Privacy and Cookie Notice](https://happyaipath.com/privacy.html): Explains analytics consent, Global Privacy Control, JotForm click-to-load behavior, and privacy request options.
 
 ## Optional
 - [Home](https://happyaipath.com/)
