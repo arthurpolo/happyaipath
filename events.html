@@ -250,24 +250,21 @@
         </div>
       </div>
 
-      <!-- Responsive grid: stacked on mobile, side-by-side on desktop -->
       <div class="mt-12 grid gap-8 md:grid-cols-1 lg:grid-cols-2">
 
-        <!-- Event 1 -->
-        <div class="bg-gray-100 rounded-lg p-6 card-hover" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+        <div class="bg-gray-100 rounded-lg p-6 card-hover" style="box-shadow: var(--shadow-card);">
           <p class="text-sm text-[#0E7490] font-semibold">June 23-24, 2026 - The Ohio State University</p>
-          <h2 class="mt-2 text-xl font-bold text-gray-900" style="line-height: 1.2;">AI Prompt Engineering for Business Strategy and Innovation</h2>
-          <p class="mt-2 text-gray-600" style="line-height: 1.6;">
+          <h2 class="mt-2 text-xl font-bold text-gray-900">AI Prompt Engineering for Business Strategy and Innovation</h2>
+          <p class="mt-2 text-gray-600">
             The AI Prompt Engineering for Business Strategy and Innovation program gives professionals practical skills to make AI work smarter and faster. In two days, participants learn to structure prompts that drive accurate, useful results for specific business needs, from brainstorming strategies to automating workflows and enhancing customer engagement.
           </p>
           <a href="https://fisher.osu.edu/executive-education/programs-individuals/ai-prompt-engineering" class="mt-4 inline-block text-[#0E7490] hover:text-[#0C6880] font-semibold">Learn More →</a>
         </div>
 
-        <!-- Event 2 -->
-        <div class="bg-gray-100 rounded-lg p-6 card-hover" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+        <div class="bg-gray-100 rounded-lg p-6 card-hover" style="box-shadow: var(--shadow-card);">
           <p class="text-sm text-[#0E7490] font-semibold">July 21, 2026 - The Ohio State University</p>
-          <h2 class="mt-2 text-xl font-bold text-gray-900" style="line-height: 1.2;">Copilot: AI for Strategic Impact</h2>
-          <p class="mt-2 text-gray-600" style="line-height: 1.6;">
+          <h2 class="mt-2 text-xl font-bold text-gray-900">Copilot: AI for Strategic Impact</h2>
+          <p class="mt-2 text-gray-600">
             This one-day, hands-on program focuses on using Microsoft Copilot to improve workflows, strengthen communication, and build practical AI confidence across the organization.
           </p>
           <a href="https://fisher.osu.edu/executive-education/programs-individuals/ai-and-copilot-strategic-impact" class="mt-4 inline-block text-[#0E7490] hover:text-[#0C6880] font-semibold">Learn More →</a>
@@ -284,15 +281,15 @@
       <div class="mt-10 grid gap-5">
         <article class="bg-white border border-gray-200 rounded-2xl p-6">
           <h3 class="text-lg font-bold text-gray-900">Where are the 2026 AI workshops held?</h3>
-          <p class="mt-2 text-gray-600" style="line-height: 1.7;">The listed 2026 AI workshops are offered through The Ohio State University Fisher Executive Education in Columbus, Ohio.</p>
+          <p class="mt-2 text-gray-600">The listed 2026 AI workshops are offered through The Ohio State University Fisher Executive Education in Columbus, Ohio.</p>
         </article>
         <article class="bg-white border border-gray-200 rounded-2xl p-6">
           <h3 class="text-lg font-bold text-gray-900">What AI topics do the workshops cover?</h3>
-          <p class="mt-2 text-gray-600" style="line-height: 1.7;">The June program focuses on AI prompt engineering for business strategy and innovation. The July program focuses on Microsoft Copilot for strategic impact.</p>
+          <p class="mt-2 text-gray-600">The June program focuses on AI prompt engineering for business strategy and innovation. The July program focuses on Microsoft Copilot for strategic impact.</p>
         </article>
         <article class="bg-white border border-gray-200 rounded-2xl p-6">
           <h3 class="text-lg font-bold text-gray-900">Can Jim Perry provide a private workshop for my team?</h3>
-          <p class="mt-2 text-gray-600" style="line-height: 1.7;">Yes. Organizations can <a href="contact.html" class="font-semibold text-[#0E7490] underline">contact Happy AI Path</a> to discuss private AI training, executive coaching, or a custom workshop for their team.</p>
+          <p class="mt-2 text-gray-600">Yes. Organizations can <a href="contact.html" class="font-semibold text-[#0E7490] underline">contact Happy AI Path</a> to discuss private AI training, executive coaching, or a custom workshop for their team.</p>
         </article>
       </div>
     </div>
@@ -321,19 +318,16 @@
         document.addEventListener('DOMContentLoaded', () => {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
+            mobileMenuButton?.addEventListener('click', () => {
+                mobileMenu?.classList.toggle('hidden');
             });
 
             const backToTopBtn = document.getElementById('backToTopBtn');
-            window.onscroll = () => {
-                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                    backToTopBtn.style.display = "block";
-                } else {
-                    backToTopBtn.style.display = "none";
-                }
-            };
-            backToTopBtn.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+            window.addEventListener('scroll', () => {
+                if (!backToTopBtn) return;
+                backToTopBtn.style.display = (document.documentElement.scrollTop > 100) ? "block" : "none";
+            }, { passive: true });
+            backToTopBtn?.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
         });
     </script>
 </body>

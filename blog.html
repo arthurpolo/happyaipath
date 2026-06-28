@@ -23,6 +23,7 @@
 
     <link rel="icon" href="HappyAIPath.png" type="image/png">
     <link rel="preload" as="image" href="HappyAIPath.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://api.rss2json.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -154,8 +155,8 @@
         document.addEventListener('DOMContentLoaded', () => {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
+            mobileMenuButton?.addEventListener('click', () => {
+                mobileMenu?.classList.toggle('hidden');
             });
 
             async function loadPosts() {
@@ -186,6 +187,7 @@
                                 img.alt = post.title;
                                 img.className = "h-48 w-full object-cover";
                                 img.loading = "lazy";
+                                img.decoding = "async";
                                 article.appendChild(img);
                             }
 
@@ -202,7 +204,7 @@
                             titleLink.href = post.link;
                             titleLink.target = "_blank";
                             titleLink.rel = "noopener noreferrer";
-                            titleLink.className = "text-gray-900 hover:text-indigo-600 transition-colors duration-200";
+                            titleLink.className = "text-gray-900 hover:text-[#0E7490] transition-colors duration-200";
                             titleLink.textContent = post.title;
                             titleH3.appendChild(titleLink);
 
@@ -217,7 +219,7 @@
                             readMoreLink.href = post.link;
                             readMoreLink.target = "_blank";
                             readMoreLink.rel = "noopener noreferrer";
-                            readMoreLink.className = "font-semibold text-indigo-600 hover:text-indigo-800 transition-colors duration-200 mt-auto";
+                            readMoreLink.className = "font-semibold text-[#0E7490] hover:text-[#0C6880] transition-colors duration-200 mt-auto";
                             readMoreLink.textContent = "Read More →";
 
                             contentDiv.append(dateP, titleH3, snippetP, readMoreLink);
@@ -240,14 +242,11 @@
             loadPosts();
 
             const backToTopBtn = document.getElementById('backToTopBtn');
-            window.onscroll = () => {
-                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                    backToTopBtn.style.display = "block";
-                } else {
-                    backToTopBtn.style.display = "none";
-                }
-            };
-            backToTopBtn.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+            window.addEventListener('scroll', () => {
+                if (!backToTopBtn) return;
+                backToTopBtn.style.display = (document.documentElement.scrollTop > 100) ? "block" : "none";
+            }, { passive: true });
+            backToTopBtn?.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
         });
     </script>
 </body>
