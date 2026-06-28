@@ -172,7 +172,7 @@
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                     </div>
-                    <input type="text" id="searchInput" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-lg py-4" placeholder="Search prompts (e.g., 'coding', 'strategy', 'email')...">
+                    <input type="text" id="searchInput" class="focus:ring-[#0E7490] focus:border-[#0E7490] block w-full pl-10 sm:text-sm border-gray-300 rounded-lg py-4" placeholder="Search prompts (e.g., 'coding', 'strategy', 'email')...">
                 </div>
                 
                 <div class="mt-6 flex flex-wrap justify-center gap-2" id="filterContainer">
@@ -186,15 +186,14 @@
         </div>
     </section>
 
-    <!-- Main Content Grid -->
     <main class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="promptsGrid">
             
-            <!-- Card 1: Strategy -->
+
             <div class="prompt-card bg-white rounded-xl overflow-hidden flex flex-col" data-category="strategy">
                 <div class="p-6 flex-1">
                     <div class="flex items-center justify-between mb-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">Strategy</span>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-100 text-teal-800">Strategy</span>
                         <img src="google-gemini-icon.webp" class="h-6 w-6 object-contain opacity-50" alt="Works with Gemini">
                     </div>
                     <h3 class="text-lg font-bold text-gray-900 mb-2">The "Devil's Advocate" Strategy</h3>
@@ -212,7 +211,7 @@
                 </div>
             </div>
 
-            <!-- Card 2: Coding -->
+
             <div class="prompt-card bg-white rounded-xl overflow-hidden flex flex-col" data-category="coding">
                 <div class="p-6 flex-1">
                     <div class="flex items-center justify-between mb-4">
@@ -234,7 +233,7 @@
                 </div>
             </div>
 
-            <!-- Card 3: Productivity -->
+
             <div class="prompt-card bg-white rounded-xl overflow-hidden flex flex-col" data-category="productivity">
                 <div class="p-6 flex-1">
                     <div class="flex items-center justify-between mb-4">
@@ -256,7 +255,7 @@
                 </div>
             </div>
 
-            <!-- Card 4: Writing -->
+
             <div class="prompt-card bg-white rounded-xl overflow-hidden flex flex-col" data-category="writing">
                 <div class="p-6 flex-1">
                     <div class="flex items-center justify-between mb-4">
@@ -276,11 +275,11 @@
                     </button>
                 </div>
             </div>
-             <!-- Card 5: Strategy -->
+
             <div class="prompt-card bg-white rounded-xl overflow-hidden flex flex-col" data-category="strategy">
                 <div class="p-6 flex-1">
                     <div class="flex items-center justify-between mb-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">Strategy</span>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-100 text-teal-800">Strategy</span>
                     </div>
                     <h3 class="text-lg font-bold text-gray-900 mb-2">Gap Analysis</h3>
                     <p class="text-gray-600 text-sm mb-4">Identify what is missing between your current state and desired future state.</p>
@@ -297,7 +296,7 @@
                 </div>
             </div>
 
-            <!-- Card 6: Productivity -->
+
             <div class="prompt-card bg-white rounded-xl overflow-hidden flex flex-col" data-category="productivity">
                 <div class="p-6 flex-1">
                     <div class="flex items-center justify-between mb-4">
@@ -346,9 +345,8 @@
     <div id="toast">Prompt copied to clipboard!</div>
 
     <script>
-        // Copy to Clipboard
         function copyToClipboard(elementId) {
-            const text = document.getElementById(elementId).innerText;
+            const text = document.getElementById(elementId).textContent;
             navigator.clipboard.writeText(text).then(() => {
                 showToast();
             });
@@ -360,15 +358,12 @@
             setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
         }
 
-        // Filtering
         const filterBtns = document.querySelectorAll('.filter-btn');
         const cards = document.querySelectorAll('.prompt-card');
         const searchInput = document.getElementById('searchInput');
 
-        // Category Filter
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Update active state
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
 
@@ -377,7 +372,6 @@
             });
         });
 
-        // Search Filter
         searchInput.addEventListener('input', (e) => {
             const activeCategory = document.querySelector('.filter-btn.active').getAttribute('data-filter');
             filterCards(activeCategory, e.target.value);
@@ -388,7 +382,7 @@
 
             cards.forEach(card => {
                 const cardCategory = card.getAttribute('data-category');
-                const cardContent = card.innerText.toLowerCase();
+                const cardContent = card.textContent.toLowerCase();
 
                 const matchesCategory = category === 'all' || cardCategory === category;
                 const matchesSearch = cardContent.includes(searchLower);
@@ -401,7 +395,6 @@
             });
         }
 
-        // Mobile Menu Logic
         document.addEventListener('DOMContentLoaded', () => {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');

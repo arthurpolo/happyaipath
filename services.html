@@ -155,7 +155,7 @@
           "name": "How do I book AI training or executive coaching?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Start with the contact page to schedule a consultation. Jim Perry will help determine whether team training, executive coaching, or a blended approach is the right fit."
+            "text": "Start with the Happy AI Path booking page to schedule a consultation. Jim Perry will help determine whether team training, executive coaching, or a blended approach is the right fit."
           }
         }
       ]
@@ -254,7 +254,7 @@
                             </li>
                         </ul>
                         <div class="mt-8">
-                            <a href="contact.html" class="btn-book">Book This Training</a>
+                            <a href="https://outlook.office.com/book/HappyAIPath@happyaipath.com/?ismsaljsauthenabled" class="btn-book" target="_blank" rel="noopener noreferrer">Book This Training</a>
                         </div>
                     </div>
                     <!-- Executive AI Coaching Card -->
@@ -283,7 +283,7 @@
                             </li>
                         </ul>
                         <div class="mt-8">
-                            <a href="contact.html" class="btn-book">Book This Training</a>
+                            <a href="https://outlook.office.com/book/HappyAIPath@happyaipath.com/?ismsaljsauthenabled" class="btn-book" target="_blank" rel="noopener noreferrer">Book This Training</a>
                         </div>
                     </div>
                 </div>
@@ -305,7 +305,7 @@
                     </article>
                     <article class="bg-gray-50 border border-gray-200 rounded-2xl p-6">
                         <h3 class="text-lg font-bold text-gray-900">How do I book AI training or executive coaching?</h3>
-                        <p class="mt-2 text-gray-600" style="line-height: 1.7;">Start with the <a href="contact.html" class="font-semibold text-[#0E7490] underline">contact page</a> to schedule a consultation. Jim Perry will help determine whether team training, executive coaching, or a blended approach is the right fit.</p>
+                        <p class="mt-2 text-gray-600" style="line-height: 1.7;">Start with the <a href="https://outlook.office.com/book/HappyAIPath@happyaipath.com/?ismsaljsauthenabled" class="font-semibold text-[#0E7490] underline" target="_blank" rel="noopener noreferrer">Happy AI Path booking page</a> to schedule a consultation. Jim Perry will help determine whether team training, executive coaching, or a blended approach is the right fit.</p>
                     </article>
                 </div>
             </div>
@@ -341,14 +341,11 @@
                 });
             }
             const backToTopBtn = document.getElementById('backToTopBtn');
-            window.onscroll = () => {
-                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                    backToTopBtn.style.display = "block";
-                } else {
-                    backToTopBtn.style.display = "none";
-                }
-            };
-            backToTopBtn.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+            window.addEventListener('scroll', () => {
+                if (!backToTopBtn) return;
+                backToTopBtn.style.display = (document.documentElement.scrollTop > 100) ? "block" : "none";
+            }, { passive: true });
+            backToTopBtn?.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
         });
     </script>
 </body>

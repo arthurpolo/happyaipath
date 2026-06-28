@@ -180,13 +180,10 @@
                 mobileMenu?.classList.toggle('hidden');
             });
             const backToTopBtn = document.getElementById('backToTopBtn');
-            window.onscroll = () => {
-                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                    backToTopBtn.style.display = "block";
-                } else {
-                    backToTopBtn.style.display = "none";
-                }
-            };
+            window.addEventListener('scroll', () => {
+                if (!backToTopBtn) return;
+                backToTopBtn.style.display = (document.documentElement.scrollTop > 100) ? "block" : "none";
+            }, { passive: true });
             backToTopBtn?.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
         });
     </script>
