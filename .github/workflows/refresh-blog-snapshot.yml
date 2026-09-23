@@ -1,0 +1,36 @@
+name: Refresh blog HTML snapshot
+
+on:
+  # Mondays at 12:17 UTC (8:17 a.m. EDT / 7:17 a.m. EST).
+  schedule:
+    - cron: "17 12 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-blog-snapshot
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - name: Update blog posts in the HTML
+        run: python3 scripts/update_blog_snapshot.py
+      - name: Publish only when posts changed
+        run: |
+          if git diff --quiet -- blog.html; then
+            echo "Blog HTML already up to date"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add blog.html
+          git commit -m "Refresh crawlable Blogger post links"
+          git push origin HEAD:main
