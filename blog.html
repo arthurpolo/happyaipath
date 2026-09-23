@@ -217,7 +217,7 @@
 
                             const dateP = document.createElement('p');
                             dateP.className = "text-sm text-gray-500 mb-2";
-                            dateP.textContent = new Date(post.pubDate.replace(' ', 'T') + 'Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'America/New_York' });
+                            dateP.textContent = new Date(post.pubDate.replace(' ', 'T') + 'Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'America/Los_Angeles' });
 
                             const titleH3 = document.createElement('h3');
                             titleH3.className = "text-xl font-bold mb-3 flex-grow";
