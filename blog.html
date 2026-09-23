@@ -119,8 +119,29 @@
         </section>
 
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-
-            <div id="blog-posts-container" class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div class="max-w-4xl mx-auto rounded-2xl bg-slate-50 border border-slate-200 p-6 sm:p-8">
+                <h2 class="text-2xl font-semibold text-gray-900">Find an article</h2>
+                <p class="mt-2 text-gray-600">Search the full archive or browse a topic. Articles and reader comments open on the Happy AI Path Blogger site.</p>
+                <form action="https://happyaipath.blogspot.com/search" method="get" role="search" class="mt-5 flex flex-col sm:flex-row gap-3">
+                    <label for="blog-search" class="sr-only">Search all Happy AI Path blog posts</label>
+                    <input id="blog-search" name="q" type="search" required placeholder="Search all posts..." class="w-full flex-1 rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#0E7490]">
+                    <button type="submit" class="rounded-lg bg-[#0E7490] px-6 py-3 font-semibold text-white hover:bg-[#0C6880] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0E7490]">Search posts</button>
+                </form>
+                <nav aria-label="Browse blog topics" class="mt-6">
+                    <span class="block text-sm font-semibold text-gray-700 mb-3">Browse topics</span>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="https://happyaipath.blogspot.com/search/label/AI%20in%20Business" class="rounded-full bg-white border border-slate-300 px-4 py-2 text-sm text-[#0E7490] hover:border-[#0E7490]">AI in Business</a>
+                        <a href="https://happyaipath.blogspot.com/search/label/Microsoft%20Copilot" class="rounded-full bg-white border border-slate-300 px-4 py-2 text-sm text-[#0E7490] hover:border-[#0E7490]">Microsoft Copilot</a>
+                        <a href="https://happyaipath.blogspot.com/search/label/PromptEngineering" class="rounded-full bg-white border border-slate-300 px-4 py-2 text-sm text-[#0E7490] hover:border-[#0E7490]">Prompt Engineering</a>
+                        <a href="https://happyaipath.blogspot.com/search/label/ChatGPT" class="rounded-full bg-white border border-slate-300 px-4 py-2 text-sm text-[#0E7490] hover:border-[#0E7490]">ChatGPT</a>
+                    </div>
+                </nav>
+            </div>
+            <div class="mt-12 flex flex-wrap items-baseline justify-between gap-3">
+                <h2 class="text-2xl font-semibold text-gray-900">Latest posts</h2>
+                <a href="https://happyaipath.blogspot.com/" class="font-semibold text-[#0E7490] hover:underline">Browse the full archive →</a>
+            </div>
+            <div id="blog-posts-container" class="mt-6 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                 <div id="loading-indicator" class="col-span-full text-center py-12">
                     <p class="text-lg text-gray-500">Loading latest posts...</p>
                 </div>
@@ -222,7 +243,14 @@
                             readMoreLink.className = "font-semibold text-[#0E7490] hover:text-[#0C6880] transition-colors duration-200 mt-auto";
                             readMoreLink.textContent = "Read More →";
 
-                            contentDiv.append(dateP, titleH3, snippetP, readMoreLink);
+                            const commentsLink = document.createElement('a');
+                            commentsLink.href = post.link + '#comments';
+                            commentsLink.target = "_blank";
+                            commentsLink.rel = "noopener noreferrer";
+                            commentsLink.className = "mt-3 text-sm text-gray-600 hover:text-[#0E7490] hover:underline";
+                            commentsLink.textContent = "Read or leave a comment →";
+
+                            contentDiv.append(dateP, titleH3, snippetP, readMoreLink, commentsLink);
                             article.appendChild(contentDiv);
                             postsContainer.appendChild(article);
                         });
