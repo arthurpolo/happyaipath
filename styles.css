@@ -1664,7 +1664,7 @@ h2, .heading-secondary {
 
 .editorial-service {
     display: grid;
-    grid-template-columns: 5rem minmax(0, 1fr);
+    grid-template-columns: 8rem minmax(0, 1fr);
     gap: clamp(1.5rem, 4vw, 4rem);
     padding-block: clamp(2.25rem, 5vw, 4rem);
     border-bottom: 1px solid var(--editorial-rule);
@@ -1674,10 +1674,14 @@ h2, .heading-secondary {
     border-bottom: 0;
 }
 
-.editorial-service-number {
-    color: var(--editorial-blue);
-    font-family: 'Newsreader', Georgia, serif;
-    font-size: 1.15rem;
+.editorial-service-audience {
+    align-self: start;
+    color: var(--editorial-teal);
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 0.82rem;
+    font-style: italic;
+    font-weight: 600;
+    line-height: 1.25;
 }
 
 .editorial-service h3 {
@@ -1752,13 +1756,20 @@ h2, .heading-secondary {
 
 .editorial-event-list {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
     border-top: 1px solid var(--editorial-rule);
 }
 
 .editorial-event-list article {
-    padding: 1.25rem clamp(1rem, 2vw, 1.75rem) 0;
-    border-left: 1px solid var(--editorial-rule);
+    display: grid;
+    grid-template-columns: minmax(9rem, 0.42fr) minmax(0, 1fr) auto;
+    gap: clamp(1rem, 3vw, 2.5rem);
+    align-items: baseline;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--editorial-rule);
+}
+
+.editorial-event-list article:last-child {
+    border-bottom: 0;
 }
 
 .editorial-event-list time {
@@ -1770,7 +1781,7 @@ h2, .heading-secondary {
 }
 
 .editorial-event-list h3 {
-    margin: 0.65rem 0 1.2rem;
+    margin: 0;
     color: var(--editorial-ink);
     font-family: 'Newsreader', Georgia, serif;
     font-size: clamp(1.15rem, 1.6vw, 1.45rem);
@@ -1781,31 +1792,52 @@ h2, .heading-secondary {
     background: #fff;
 }
 
-.editorial-quote-list {
+.editorial-quote-ledger {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
+    gap: clamp(2rem, 5vw, 5rem);
     border-top: 1px solid var(--editorial-rule);
 }
 
-.editorial-quote-list blockquote {
+.editorial-quote-ledger blockquote {
     margin: 0;
-    padding: 2rem clamp(1.25rem, 3vw, 2.5rem);
-    border-left: 1px solid var(--editorial-rule);
 }
 
-.editorial-quote-list blockquote:first-child {
-    border-left: 0;
+.editorial-quote-featured {
+    padding: clamp(2rem, 5vw, 4rem) 0;
 }
 
-.editorial-quote-list p {
+.editorial-quote-featured p {
     margin: 0;
     color: var(--editorial-ink);
     font-family: 'Newsreader', Georgia, serif;
-    font-size: clamp(1.2rem, 1.8vw, 1.55rem);
-    line-height: 1.35;
+    font-size: clamp(2rem, 4vw, 4rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
 }
 
-.editorial-quote-list footer {
+.editorial-quote-notes {
+    border-left: 1px solid var(--editorial-rule);
+}
+
+.editorial-quote-notes blockquote {
+    padding: 2rem 0 2rem clamp(1.5rem, 3vw, 2.5rem);
+    border-bottom: 1px solid var(--editorial-rule);
+}
+
+.editorial-quote-notes blockquote:last-child {
+    border-bottom: 0;
+}
+
+.editorial-quote-notes p {
+    margin: 0;
+    color: var(--editorial-ink);
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(1.15rem, 1.7vw, 1.45rem);
+    line-height: 1.4;
+}
+
+.editorial-quote-ledger footer {
     margin-top: 1.25rem;
     color: var(--editorial-muted);
     font-size: 0.82rem;
@@ -1918,7 +1950,7 @@ nav button:focus-visible,
     .editorial-three-column,
     .editorial-section-heading,
     .editorial-event-list,
-    .editorial-quote-list,
+    .editorial-quote-ledger,
     .editorial-invitation .editorial-shell {
         grid-template-columns: 1fr;
     }
@@ -1942,17 +1974,25 @@ nav button:focus-visible,
         max-height: 32rem;
     }
 
-    .editorial-event-list article,
-    .editorial-quote-list blockquote,
-    .editorial-quote-list blockquote:first-child {
+    .editorial-event-list article {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
         padding: 1.5rem 0;
-        border-left: 0;
         border-bottom: 1px solid var(--editorial-rule);
     }
 
     .editorial-event-list article:last-child,
-    .editorial-quote-list blockquote:last-child {
+    .editorial-quote-notes blockquote:last-child {
         border-bottom: 0;
+    }
+
+    .editorial-quote-notes {
+        border-top: 1px solid var(--editorial-rule);
+        border-left: 0;
+    }
+
+    .editorial-quote-notes blockquote {
+        padding: 1.5rem 0;
     }
 }
 
