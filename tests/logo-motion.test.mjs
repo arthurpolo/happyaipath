@@ -24,7 +24,7 @@ test('homepage restores the original three-face hero motion', () => {
   assert.equal((html.match(/class="smile-face"/g) ?? []).length, 3);
   assert.match(styles, /animation:\s*orbitSpin 6\.8s cubic-bezier\(0\.65, 0, 0\.35, 1\) both/);
   assert.doesNotMatch(styles, /animation:\s*orbitSpin[^;]*infinite/);
-  assert.match(styles, /\.smile-face:nth-child\(3\)[\s\S]*?--face-color:\s*#f3b63f/);
+  assert.match(styles, /\.smile-face:nth-child\(3\)[\s\S]*?--face-color:\s*#05080f/);
 });
 
 test('logo motion respects reduced-motion preferences', () => {
