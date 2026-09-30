@@ -16,9 +16,11 @@ test('contact page contains a Netlify-detectable form with spam protection', () 
   for (const field of ['name', 'email', 'organization', 'role', 'interest', 'message']) {
     assert.match(contact, new RegExp(`name="${field}"`));
   }
-  for (const field of ['name', 'email', 'interest', 'message']) {
+  for (const field of ['name', 'email', 'interest']) {
     assert.match(contact, new RegExp(`(?:input|select|textarea)[^>]+name="${field}"[^>]+required`));
   }
+  assert.match(contact, /<label for="contact-message">What else should Jim know\? \(For example, which AI tools you can access, your preferred training timeline, or any other relevant context\.\)<\/label>/);
+  assert.doesNotMatch(contact, /<textarea[^>]+name="message"[^>]+required/);
 });
 
 test('contact page offers direct booking with a meeting-invitation reminder', () => {
