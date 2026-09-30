@@ -6,7 +6,7 @@
     <title>AI Prompting Lab | High-Impact Templates & Tips - Happy AI Path</title>
     <link rel="canonical" href="https://happyaipath.com/tips.html">
     <meta name="description" content="A curated library of high-performance AI prompts for executives, strategy, coding, and team management. Copy, paste, and refine.">
-    <meta name="keywords" content="AI Prompts, ChatGPT Templates, Gemini Prompts, Copilot Prompts, Executive Prompting, Chain of Thought, Zero Shot">
+    <meta name="keywords" content="AI Prompts, ChatGPT Templates, Copilot Prompts, Executive Prompting, Communication Reflection, Calendar Review, Leadership Priorities">
     <meta name="author" content="Jim Perry, Happy AI Path">
     <meta name="robots" content="index, follow">
     
@@ -164,7 +164,7 @@
         <div class="page-hero-inner">
             <p class="page-kicker">Prompting Lab</p>
             <h1 class="page-title display-face">The Prompting Lab</h1>
-            <p class="page-lead">A curated collection of high-impact prompts to help you unlock the full potential of Copilot, ChatGPT, and Gemini. Stop guessing, start engineering.</p>
+            <p class="page-lead">A practical collection of prompts for clearer thinking, stronger communication, and more intentional work. Bring your own context; leave with a useful next move.</p>
 
             <!-- Search & Filter -->
             <div class="mt-10 max-w-3xl mx-auto">
@@ -181,12 +181,19 @@
                     <button class="filter-btn px-4 py-2 rounded-full border border-gray-200 bg-white text-gray-700 text-sm font-medium hover:bg-gray-50" data-filter="coding">Coding & Tech</button>
                     <button class="filter-btn px-4 py-2 rounded-full border border-gray-200 bg-white text-gray-700 text-sm font-medium hover:bg-gray-50" data-filter="productivity">Productivity</button>
                     <button class="filter-btn px-4 py-2 rounded-full border border-gray-200 bg-white text-gray-700 text-sm font-medium hover:bg-gray-50" data-filter="writing">Writing</button>
+                    <button class="filter-btn px-4 py-2 rounded-full border border-gray-200 bg-white text-gray-700 text-sm font-medium hover:bg-gray-50" data-filter="reflection">Self-reflection</button>
                 </div>
             </div>
         </div>
     </section>
 
     <main class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <aside class="reflection-note" aria-labelledby="reflection-note-title">
+            <p class="reflection-note-kicker">Before you begin</p>
+            <h2 id="reflection-note-title">Protect the people in your data.</h2>
+            <p>Use an AI tool approved by your organization. Remove confidential information, personal details, and sensitive attachments before sharing email or calendar content.</p>
+        </aside>
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="promptsGrid">
             
 
@@ -194,7 +201,6 @@
                 <div class="p-6 flex-1">
                     <div class="flex items-center justify-between mb-4">
                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-100 text-teal-800">Strategy</span>
-                        <img src="google-gemini-icon.webp" class="h-6 w-6 object-contain opacity-50" alt="Works with Gemini">
                     </div>
                     <h3 class="text-lg font-bold text-gray-900 mb-2">The "Devil's Advocate" Strategy</h3>
                     <p class="text-gray-600 text-sm mb-4">Use this to stress-test your business plans or strategic decisions before finalizing them.</p>
@@ -317,6 +323,66 @@
                 </div>
             </div>
 
+            <div class="prompt-card reflection-card bg-white overflow-hidden flex flex-col" data-category="reflection writing productivity">
+                <div class="p-6 flex-1">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="reflection-tag">Communication mirror</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Where My Emails Work Against Me</h3>
+                    <p class="text-gray-600 text-sm mb-4">Look for recurring habits that may create confusion, weaken trust, or make it harder for others to act.</p>
+                </div>
+                <div class="prompt-block p-4 text-xs leading-relaxed border-t border-gray-700">
+                    <p class="font-mono" id="prompt-7">Review the email samples I provide as a thoughtful executive communication coach. Identify recurring patterns that may make my communication less effective or unintentionally work against my success. Look for unclear requests, buried decisions, missing context, avoidant or overly forceful language, unnecessary length, weak ownership, and places where the reader may not know what to do next. For every pattern, cite a brief example from my writing, explain the likely effect on the reader, and suggest a more effective alternative. Also identify strengths I should preserve. End with three reflection questions and one communication habit to practice this week. Do not infer personality or intent beyond the evidence in the messages. Emails: [Paste a representative, de-identified sample]</p>
+                </div>
+                <div class="bg-gray-50 px-6 py-3 border-t border-gray-100 flex justify-between items-center">
+                    <span class="text-xs text-gray-500 font-medium">Best for: Leadership communication</span>
+                    <button onclick="copyToClipboard('prompt-7')" class="text-[#0E7490] hover:text-[#0C6880] text-sm font-semibold flex items-center gap-1">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                        Copy
+                    </button>
+                </div>
+            </div>
+
+            <div class="prompt-card reflection-card bg-white overflow-hidden flex flex-col" data-category="reflection productivity strategy">
+                <div class="p-6 flex-1">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="reflection-tag">Calendar compass</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Does My Future Calendar Match What Matters?</h3>
+                    <p class="text-gray-600 text-sm mb-4">Compare the time already committed in the weeks ahead with the priorities you say matter most.</p>
+                </div>
+                <div class="prompt-block p-4 text-xs leading-relaxed border-t border-gray-700">
+                    <p class="font-mono" id="prompt-8">Review my upcoming calendar for the next [two/four/six] weeks alongside the priorities I list below. Group scheduled time by priority, obligation, relationship, operational work, learning, and recovery or focus time. Estimate how much time each group receives and identify where my calendar supports or contradicts my stated priorities. Flag fragmented days, meetings without a clear purpose, important work with no protected time, and commitments that could be shortened, delegated, combined, or declined. Then propose a realistic rebalance using the time already available. Ask me five questions before recommending changes where the purpose of an event is unclear. Priorities: [List what matters most]. Calendar: [Paste a de-identified future calendar export]</p>
+                </div>
+                <div class="bg-gray-50 px-6 py-3 border-t border-gray-100 flex justify-between items-center">
+                    <span class="text-xs text-gray-500 font-medium">Best for: Intentional time</span>
+                    <button onclick="copyToClipboard('prompt-8')" class="text-[#0E7490] hover:text-[#0C6880] text-sm font-semibold flex items-center gap-1">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                        Copy
+                    </button>
+                </div>
+            </div>
+
+            <div class="prompt-card reflection-card bg-white overflow-hidden flex flex-col" data-category="reflection productivity strategy">
+                <div class="p-6 flex-1">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="reflection-tag">Evidence check</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">What My Last 30 Days Say I Prioritize</h3>
+                    <p class="text-gray-600 text-sm mb-4">Let your actual attention reveal the work you have prioritized—then compare it with what you expected to see.</p>
+                </div>
+                <div class="prompt-block p-4 text-xs leading-relaxed border-t border-gray-700">
+                    <p class="font-mono" id="prompt-9">Based only on the last 30 days of de-identified emails and calendar invitations I provide, identify the most important things I appear to be working on. Use evidence such as repeated topics, time committed, people involved, decisions requested, deadlines, and follow-up activity. Produce a short list of apparent priorities, explain the evidence for each, and note what received attention but little progress. Do not assume that frequency automatically equals importance; distinguish urgent activity from meaningful work. Before showing your analysis, ask me to write down what I expect the top priorities will be. Then present a side-by-side comparison: what I expected, what the evidence suggests, where they align, where they differ, and one question each difference raises for me. Emails and invitations: [Paste or attach de-identified content]</p>
+                </div>
+                <div class="bg-gray-50 px-6 py-3 border-t border-gray-100 flex justify-between items-center">
+                    <span class="text-xs text-gray-500 font-medium">Best for: Priority clarity</span>
+                    <button onclick="copyToClipboard('prompt-9')" class="text-[#0E7490] hover:text-[#0C6880] text-sm font-semibold flex items-center gap-1">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                        Copy
+                    </button>
+                </div>
+            </div>
+
         </div>
         
         <!-- CTA -->
@@ -384,7 +450,7 @@
                 const cardCategory = card.getAttribute('data-category');
                 const cardContent = card.textContent.toLowerCase();
 
-                const matchesCategory = category === 'all' || cardCategory === category;
+                const matchesCategory = category === 'all' || cardCategory.split(/\s+/).includes(category);
                 const matchesSearch = cardContent.includes(searchLower);
 
                 if (matchesCategory && matchesSearch) {
