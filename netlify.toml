@@ -1,6 +1,68 @@
 [build]
   publish = "."
 
+# Keep one clean, indexable URL for every public page.
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/services.html"
+  to = "/services"
+  status = 301
+
+[[redirects]]
+  from = "/quiz.html"
+  to = "/quiz"
+  status = 301
+
+[[redirects]]
+  from = "/tips"
+  to = "/prompting-lab"
+  status = 301
+
+[[redirects]]
+  from = "/tips.html"
+  to = "/prompting-lab"
+  status = 301
+
+[[redirects]]
+  from = "/blog.html"
+  to = "/blog"
+  status = 301
+
+[[redirects]]
+  from = "/events.html"
+  to = "/events"
+  status = 301
+
+[[redirects]]
+  from = "/about.html"
+  to = "/about"
+  status = 301
+
+[[redirects]]
+  from = "/contact.html"
+  to = "/contact"
+  status = 301
+
+[[redirects]]
+  from = "/privacy.html"
+  to = "/privacy"
+  status = 301
+
+[[redirects]]
+  from = "/guide.html"
+  to = "/guide"
+  status = 301
+
+# The Prompting Lab keeps its existing source filename while exposing a clear URL.
+[[redirects]]
+  from = "/prompting-lab"
+  to = "/tips.html"
+  status = 200
+
 # Keep company pages private until they are approved for publication.
 # Remove these redirects when the page is ready to go live.
 [[redirects]]

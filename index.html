@@ -31,13 +31,14 @@
     <link rel="stylesheet" href="styles.css">
     <script>document.documentElement.classList.add('js');</script>
 
-    <!-- Structured Data - Organization -->
+    <!-- Structured Data - Professional Service and Educational Organization -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
+      "@type": ["ProfessionalService", "EducationalOrganization"],
+      "@id": "https://happyaipath.com/#organization",
       "name": "Happy AI Path",
-      "url": "https://happyaipath.com",
+      "url": "https://happyaipath.com/",
       "logo": "https://happyaipath.com/HappyAIPath.png",
       "description": "Expert AI coaching and training for executives and teams. Gain confidence, clarity, and a strategic edge with guidance from a seasoned Fortune 100 technology leader.",
       "founder": {
@@ -58,7 +59,7 @@
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "customer service",
-        "url": "https://happyaipath.com/contact.html"
+        "url": "https://happyaipath.com/contact"
       },
       "sameAs": [
         "https://www.linkedin.com/company/happyaipath",
@@ -99,24 +100,21 @@
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center min-h-24 py-3">
                     <div class="flex-shrink-0">
-                        <a href="index.html" class="brand-lockup" aria-label="Happy AI Path home">
-                            <span class="brand-smile-stack" aria-hidden="true">
-                                <span class="brand-smile brand-smile-green"><span></span><span></span></span>
-                                <span class="brand-smile brand-smile-blue"><span></span><span></span></span>
-                                <span class="brand-smile brand-smile-black"><span></span><span></span></span>
-                            </span>
-                            <span class="brand-wordmark">Happy AI Path</span>
+                        <a href="/" class="site-logo-link" aria-label="Happy AI Path home">
+                            <img src="HappyAIPath.svg" alt="Happy AI Path" class="site-logo">
                         </a>
                     </div>
                     <div class="hidden md:block desktop-nav">
                         <div class="ml-10 flex items-baseline space-x-4">
-                            <a href="index.html" class="text-[#0E7490] font-semibold px-3 py-2 rounded-md text-sm" aria-current="page">Home</a>
-                            <a href="services.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Services</a>
-                            <a href="tips.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Prompting Lab</a>
-                            <a href="blog.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Blog</a>
-                            <a href="events.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Events</a>
-                            <a href="about.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About</a>
-                            <a href="contact.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                            <a href="/" class="text-[#0E7490] font-semibold px-3 py-2 rounded-md text-sm" aria-current="page">Home</a>
+
+<a href="/services" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Services</a>
+<a href="/quiz" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Quiz</a>
+                            <a href="/prompting-lab" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Prompting Lab</a>
+                            <a href="/blog" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Blog</a>
+                            <a href="/events" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Events</a>
+                            <a href="/about" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                            <a href="/contact" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
                         </div>
                     </div>
                     <div class="md:hidden mobile-nav-toggle">
@@ -129,13 +127,15 @@
             </div>
             <div id="mobile-menu" class="md:hidden hidden mobile-nav-panel">
                 <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                   <a href="index.html" class="text-[#0E7490] bg-[#0E7490]/10 block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Home</a>
-                   <a href="services.html" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Services</a>
-                   <a href="tips.html" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Prompting Lab</a>
-                   <a href="blog.html" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
-                   <a href="events.html" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Events</a>
-                   <a href="about.html" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">About</a>
-                   <a href="contact.html" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+                   <a href="/" class="text-[#0E7490] bg-[#0E7490]/10 block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Home</a>
+
+<a href="/services" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Services</a>
+<a href="/quiz" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Quiz</a>
+                   <a href="/prompting-lab" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Prompting Lab</a>
+                   <a href="/blog" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
+                   <a href="/events" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Events</a>
+                   <a href="/about" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">About</a>
+                   <a href="/contact" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
                 </div>
             </div>
         </nav>
@@ -143,12 +143,37 @@
         <main id="main-content" class="home-editorial">
             <header class="editorial-hero">
                 <div class="editorial-shell editorial-hero-grid">
+                    <div class="hero-stage editorial-logo-motion" aria-hidden="true">
+                        <div class="smile-orbit">
+                            <span class="smile-face">
+                                <svg viewBox="0 0 100 100" focusable="false">
+                                    <circle class="smile-eye" cx="36" cy="34" r="6"></circle>
+                                    <circle class="smile-eye" cx="64" cy="34" r="6"></circle>
+                                    <path class="smile-mouth" d="M24 54 Q50 78 76 54"></path>
+                                </svg>
+                            </span>
+                            <span class="smile-face">
+                                <svg viewBox="0 0 100 100" focusable="false">
+                                    <circle class="smile-eye" cx="36" cy="34" r="6"></circle>
+                                    <circle class="smile-eye" cx="64" cy="34" r="6"></circle>
+                                    <path class="smile-mouth" d="M24 54 Q50 78 76 54"></path>
+                                </svg>
+                            </span>
+                            <span class="smile-face">
+                                <svg viewBox="0 0 100 100" focusable="false">
+                                    <circle class="smile-eye" cx="36" cy="34" r="6"></circle>
+                                    <circle class="smile-eye" cx="64" cy="34" r="6"></circle>
+                                    <path class="smile-mouth" d="M24 54 Q50 78 76 54"></path>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
                     <div class="editorial-hero-copy">
                         <h1 class="display-face">Lead your team into AI with calm authority.</h1>
                         <p>Bring the work that matters. We’ll use it to build sound judgment, useful habits, and an AI practice your people can trust.</p>
                         <div class="editorial-actions">
-                            <a href="contact.html" class="editorial-button editorial-button-primary">Start a conversation</a>
-                            <a href="events.html" class="editorial-button editorial-button-secondary">Explore live workshops</a>
+                            <a href="/contact" class="editorial-button editorial-button-primary">Start a conversation</a>
+                            <a href="/events" class="editorial-button editorial-button-secondary">Explore live workshops</a>
                         </div>
                     </div>
                     <figure class="editorial-hero-image">
@@ -189,7 +214,7 @@
                             <div>
                                 <h3 class="display-face">Executive AI Coaching</h3>
                                 <p>A confidential thought partnership for leaders who need clarity on AI priorities, governance, communication, and responsible adoption.</p>
-                                <a href="services.html">Explore executive coaching</a>
+                                <a href="/services">Explore executive coaching</a>
                             </div>
                         </article>
                         <article class="editorial-service">
@@ -197,7 +222,7 @@
                             <div>
                                 <h3 class="display-face">AI Team Training</h3>
                                 <p>Hands-on, role-aware workshops that help people use ChatGPT, Claude, Copilot, and Gemini with confidence, care, and measurable purpose.</p>
-                                <a href="services.html">Explore team training</a>
+                                <a href="/services">Explore team training</a>
                             </div>
                         </article>
                     </div>
@@ -211,7 +236,7 @@
                         <p class="editorial-label">Why Jim teaches this way</p>
                         <h2 id="credibility-heading" class="display-face">Technology leadership, shaped by the classroom.</h2>
                         <p>Jim Perry brings Fortune 100 technology leadership experience and the perspective of a Lecturer at The Ohio State University Fisher College of Business. His teaching is practical, inclusive, and designed to make complex technology immediately useful.</p>
-                        <a href="about.html" class="editorial-text-link">Meet Jim</a>
+                        <a href="/about" class="editorial-text-link">Meet Jim</a>
                     </div>
                 </div>
             </section>
@@ -226,17 +251,17 @@
                         <article>
                             <time datetime="2026-10-20">October 20, 2026</time>
                             <h3>Anthropic Claude for Business Productivity and Innovation</h3>
-                            <a href="events.html">Workshop details</a>
+                            <a href="/events">Workshop details</a>
                         </article>
                         <article>
                             <time datetime="2026-11-10">November 10, 2026</time>
                             <h3>ChatGPT for Business Productivity and Innovation</h3>
-                            <a href="events.html">Workshop details</a>
+                            <a href="/events">Workshop details</a>
                         </article>
                         <article>
                             <time datetime="2026-12-08">December 8–9, 2026</time>
                             <h3>AI Prompting Intensive for Business Strategy</h3>
-                            <a href="events.html">Workshop details</a>
+                            <a href="/events">Workshop details</a>
                         </article>
                     </div>
                 </div>
@@ -271,7 +296,7 @@
                 <div class="editorial-shell">
                     <h2 id="invitation-heading" class="display-face">Let’s find the right path for your team.</h2>
                     <p>Tell me where AI feels unclear, stuck, or full of potential. We’ll identify a practical next step together.</p>
-                    <a href="contact.html" class="editorial-button editorial-button-primary">Start a conversation</a>
+                    <a href="/contact" class="editorial-button editorial-button-primary">Start a conversation</a>
                 </div>
             </section>
         </main>
@@ -308,7 +333,7 @@
                     &copy; 2026 Happy AI Path. All rights reserved.
                 </div>
                 <div class="privacy-footer-actions">
-                    <a href="privacy.html" class="privacy-footer-link">Privacy Notice</a>
+                    <a href="/privacy" class="privacy-footer-link">Privacy Notice</a>
                     <button type="button" class="privacy-choices-link" data-privacy-choices>Privacy &amp; Cookie Choices</button>
                 </div>
             </div>

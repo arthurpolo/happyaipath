@@ -73,7 +73,7 @@
         banner.id = 'cookie-banner';
         banner.innerHTML = `
             <div class="cookie-banner-inner">
-                <p class="text-sm">We use optional Google Analytics cookies only if you accept them. Reject keeps analytics off. <a href="privacy.html">Privacy notice</a></p>
+                <p class="text-sm">We use optional Google Analytics cookies only if you accept them. Reject keeps analytics off. <a href="/privacy">Privacy notice</a></p>
                 <div class="cookie-banner-actions">
                     <button id="cookie-accept" class="cookie-button cookie-button-accept" type="button">Accept</button>
                     <button id="cookie-reject" class="cookie-button cookie-button-reject" type="button">Reject</button>
@@ -92,7 +92,7 @@
         if (hasGlobalPrivacyControl()) {
             safeStorage.set(STORAGE_KEY, GPC_CHOICE);
             updateConsent(GPC_CHOICE);
-            banner.querySelector('.text-sm').innerHTML = 'Your browser is sending a Global Privacy Control opt-out signal, so optional analytics remains off. <a href="privacy.html">Privacy notice</a>';
+            banner.querySelector('.text-sm').innerHTML = 'Your browser is sending a Global Privacy Control opt-out signal, so optional analytics remains off. <a href="/privacy">Privacy notice</a>';
             banner.classList.add('show');
             acceptButton?.setAttribute('disabled', 'disabled');
             rejectButton?.addEventListener('click', () => banner.classList.remove('show'), { once: true });
