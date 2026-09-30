@@ -5,6 +5,7 @@ import { test } from 'node:test';
 const pages = [
   ['index.html', '/'],
   ['services.html', '/services'],
+  ['pricing.html', '/pricing'],
   ['quiz.html', '/quiz'],
   ['tips.html', '/prompting-lab'],
   ['blog.html', '/blog'],
@@ -18,6 +19,7 @@ const pages = [
 const expectedNavigation = [
   ['/', 'Home'],
   ['/services', 'Services'],
+  ['/pricing', 'Pricing'],
   ['/quiz', 'Quiz'],
   ['/prompting-lab', 'Prompting Lab'],
   ['/blog', 'Blog'],
@@ -42,6 +44,9 @@ for (const [file, cleanPath] of pages) {
     assert.match(html, new RegExp(`<link rel="canonical" href="https://happyaipath\\.com${cleanPath === '/' ? '/' : cleanPath}">`));
     assert.doesNotMatch(html, /href="(?:index|services|quiz|tips|blog|events|about|contact)\.html"/);
     assert.doesNotMatch(html, />Playbook<\/a>/);
+    assert.match(html, /class="[^"]*desktop-nav[^"]*"/);
+    assert.match(html, /class="[^"]*mobile-nav-toggle[^"]*"/);
+    assert.match(html, /id="mobile-menu" class="[^"]*mobile-nav-panel[^"]*"/);
   });
 }
 
@@ -50,6 +55,7 @@ test('Netlify permanently redirects legacy URLs and serves Prompting Lab at its 
   for (const [legacy, clean] of [
     ['/index.html', '/'],
     ['/services.html', '/services'],
+    ['/pricing.html', '/pricing'],
     ['/quiz.html', '/quiz'],
     ['/tips', '/prompting-lab'],
     ['/tips.html', '/prompting-lab'],
@@ -69,4 +75,14 @@ test('the cookie notice links to the clean privacy URL', () => {
   const script = readFileSync(new URL('../consent.js', import.meta.url), 'utf8');
   assert.match(script, /href="\/privacy"/);
   assert.doesNotMatch(script, /href="privacy\.html"/);
+});
+
+test('blog post template keeps the shared pricing navigation responsive', () => {
+  const html = readFileSync(new URL('../blog-post-template.html', import.meta.url), 'utf8');
+  const links = primaryNavigation(html);
+  assert.deepEqual(links.slice(0, expectedNavigation.length), expectedNavigation);
+  assert.deepEqual(links.slice(expectedNavigation.length, expectedNavigation.length * 2), expectedNavigation);
+  assert.match(html, /class="[^"]*desktop-nav[^"]*"/);
+  assert.match(html, /class="[^"]*mobile-nav-toggle[^"]*"/);
+  assert.match(html, /id="mobile-menu" class="[^"]*mobile-nav-panel[^"]*"/);
 });

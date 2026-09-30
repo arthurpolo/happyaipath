@@ -8,8 +8,9 @@
 > technology leadership to every engagement.
 
 ## Services
-- [AI Team Training](https://happyaipath.com/services#team-training)
-- [Executive AI Coaching](https://happyaipath.com/services#executive-coaching)
+- [AI Team Training](https://happyaipath.com/services#team-training): Custom, hands-on training built around participant preparation, real workflows, and current business challenges. Most sessions run two to four hours, with longer and multi-session programs available.
+- [Executive AI Coaching](https://happyaipath.com/services#executive-coaching): Focused one-on-one support for AI-enabled workflows, custom assistants, reporting processes, leadership decisions, and communication.
+- [Engagements and Pricing](https://happyaipath.com/pricing): Custom AI training and one-on-one coaching engagements start at $5,000. Training includes guided preparation completed by participants before the session, custom content development, and hands-on work with real business challenges.
 - [AI Prompting Lab](https://happyaipath.com/prompting-lab): Free library of high-impact prompt templates for executives, strategy, productivity, and team management.
 
 ## Credentials
@@ -31,7 +32,7 @@
 
 ## Contact
 - [Schedule a Consultation](https://happyaipath.com/contact)
-- [Privacy and Cookie Notice](https://happyaipath.com/privacy): Explains analytics consent, Global Privacy Control, JotForm click-to-load behavior, and privacy request options.
+- [Privacy and Cookie Notice](https://happyaipath.com/privacy): Explains analytics consent, Global Privacy Control, Netlify form handling, and privacy request options.
 
 ## Optional
 - [Home](https://happyaipath.com/)

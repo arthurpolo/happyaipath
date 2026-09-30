@@ -13,6 +13,11 @@
   status = 301
 
 [[redirects]]
+  from = "/pricing.html"
+  to = "/pricing"
+  status = 301
+
+[[redirects]]
   from = "/quiz.html"
   to = "/quiz"
   status = 301

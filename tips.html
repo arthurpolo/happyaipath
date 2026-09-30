@@ -115,10 +115,11 @@
                 </div>
 
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-6 items-baseline ml-10">
+                <div class="hidden md:flex space-x-6 items-baseline ml-10 desktop-nav">
                     <a href="/" class="text-gray-500 hover:text-gray-900 px-1 py-2 text-sm font-medium nav-link transition-colors">Home</a>
 
 <a href="/services" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Services</a>
+<a href="/pricing" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Pricing</a>
 <a href="/quiz" class="text-gray-500 hover:text-gray-900 px-1 py-2 text-sm font-medium nav-link transition-colors">Quiz</a>
                     <a href="/prompting-lab" class="text-[#0E7490] font-semibold px-1 py-2 text-sm nav-link active transition-colors" aria-current="page">Prompting Lab</a>
                     <a href="/blog" class="text-gray-500 hover:text-gray-900 px-1 py-2 text-sm font-medium nav-link transition-colors">Blog</a>
@@ -128,7 +129,7 @@
                 </div>
 
                 <!-- Mobile menu button -->
-                 <div class="md:hidden flex items-center">
+                 <div class="md:hidden flex items-center mobile-nav-toggle">
                     <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#0E7490]">
                         <span class="sr-only">Open main menu</span>
                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
@@ -138,11 +139,12 @@
         </div>
 
         <!-- Mobile Menu (Absolute positioning to overlay content) -->
-        <div id="mobile-menu" class="md:hidden hidden absolute top-24 left-0 w-full bg-white border-t border-gray-100 shadow-lg z-50 transform transition-all duration-300 ease-in-out origin-top scale-y-0 opacity-0">
+        <div id="mobile-menu" class="md:hidden hidden absolute top-24 left-0 w-full bg-white border-t border-gray-100 shadow-lg z-50 transform transition-all duration-300 ease-in-out origin-top scale-y-0 opacity-0 mobile-nav-panel">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                <a href="/" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Home</a>
 
 <a href="/services" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Services</a>
+<a href="/pricing" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Pricing</a>
 <a href="/quiz" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Quiz</a>
                <a href="/prompting-lab" class="text-[#0E7490] bg-[#0E7490]/10 block px-3 py-2 rounded-md text-base font-semibold" aria-current="page">Prompting Lab</a>
                <a href="/blog" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
