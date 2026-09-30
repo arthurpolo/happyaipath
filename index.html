@@ -23,13 +23,14 @@
 
     <link rel="icon" href="HappyAIPath.png" type="image/png">
     <link rel="preload" as="image" href="HappyAIPath.svg" type="image/svg+xml">
-    <link rel="preload" as="image" href="jim-perry-ai-workshop.png">
+    <link rel="preload" as="image" href="jim-perry-ai-workshop-home.webp" type="image/webp">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
-    
+    <script>document.documentElement.classList.add('js');</script>
+
     <!-- Structured Data - Organization -->
     <script type="application/ld+json">
     {
@@ -92,7 +93,7 @@
 
 <body class="bg-white text-gray-800">
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    
+
     <div id="site-wrapper">
         <nav class="bg-white shadow-md sticky top-0 z-40">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -107,7 +108,7 @@
                             <span class="brand-wordmark">Happy AI Path</span>
                         </a>
                     </div>
-                    <div class="hidden md:block">
+                    <div class="hidden md:block desktop-nav">
                         <div class="ml-10 flex items-baseline space-x-4">
                             <a href="index.html" class="text-[#0E7490] font-semibold px-3 py-2 rounded-md text-sm" aria-current="page">Home</a>
                             <a href="services.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Services</a>
@@ -118,15 +119,15 @@
                             <a href="contact.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
                         </div>
                     </div>
-                    <div class="md:hidden">
-                        <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-800 focus:outline-none">
+                    <div class="md:hidden mobile-nav-toggle">
+                        <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-gray-900 focus:outline-none" aria-expanded="false" aria-controls="mobile-menu">
                             <span class="sr-only">Open main menu</span>
                             <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
                         </button>
                     </div>
                 </div>
             </div>
-            <div id="mobile-menu" class="md:hidden hidden">
+            <div id="mobile-menu" class="md:hidden hidden mobile-nav-panel">
                 <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                    <a href="index.html" class="text-[#0E7490] bg-[#0E7490]/10 block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Home</a>
                    <a href="services.html" class="text-gray-600 hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Services</a>
@@ -138,115 +139,142 @@
                 </div>
             </div>
         </nav>
-    
-        <main id="main-content">
-            <header class="hero-bg hero-shell">
-                 <svg class="animated-path" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true">
-                    <path class="path path-drift path-drift-one" d="M -120 210 C 70 80 220 270 410 145 S 720 40 1120 160" fill="none"/>
-                    <path class="path path-drift path-drift-two" d="M -100 95 C 110 180 245 15 430 110 S 690 245 1100 58" fill="none"/>
-                    <path class="path path-drift path-drift-three" d="M -140 260 C 95 230 205 112 360 170 S 650 290 1130 220" fill="none"/>
-                </svg>
-                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 hero-grid">
-                    <div class="hero-stage" aria-hidden="true">
-                        <div class="smile-orbit">
-                            <span class="smile-face">
-                                <svg viewBox="0 0 100 100" focusable="false">
-                                    <circle class="smile-eye" cx="36" cy="34" r="6"></circle>
-                                    <circle class="smile-eye" cx="64" cy="34" r="6"></circle>
-                                    <path class="smile-mouth" d="M24 54 Q50 78 76 54"></path>
-                                </svg>
-                            </span>
-                            <span class="smile-face">
-                                <svg viewBox="0 0 100 100" focusable="false">
-                                    <circle class="smile-eye" cx="36" cy="34" r="6"></circle>
-                                    <circle class="smile-eye" cx="64" cy="34" r="6"></circle>
-                                    <path class="smile-mouth" d="M24 54 Q50 78 76 54"></path>
-                                </svg>
-                            </span>
-                            <span class="smile-face">
-                                <svg viewBox="0 0 100 100" focusable="false">
-                                    <circle class="smile-eye" cx="36" cy="34" r="6"></circle>
-                                    <circle class="smile-eye" cx="64" cy="34" r="6"></circle>
-                                    <path class="smile-mouth" d="M24 54 Q50 78 76 54"></path>
-                                </svg>
-                            </span>
+
+        <main id="main-content" class="home-editorial">
+            <header class="editorial-hero">
+                <div class="editorial-shell editorial-hero-grid">
+                    <div class="editorial-hero-copy">
+                        <h1 class="display-face">Lead your team into AI with calm authority.</h1>
+                        <p>Practical coaching and hands-on training that turn AI uncertainty into confident action—for leaders, teams, and the work they do every day.</p>
+                        <div class="editorial-actions">
+                            <a href="contact.html" class="editorial-button editorial-button-primary">Start a conversation <span aria-hidden="true">→</span></a>
+                            <a href="events.html" class="editorial-button editorial-button-secondary">Explore live workshops <span aria-hidden="true">→</span></a>
                         </div>
                     </div>
-                    <div class="hero-copy">
-                        <p class="hero-kicker hero-p">Fortune 100 leadership meets real AI teaching</p>
-                        <h1 class="display-face hero-title mt-6 hero-h1">Lead your team into AI with calm authority.</h1>
-                        <p class="mt-6 hero-lead hero-p">I help executives and teams move from AI curiosity to confident execution through live training, executive coaching, and practical implementation grounded in the real work of modern organizations.</p>
-                        <div id="hero-buttons" class="hero-actions hero-p">
-                             <a href="contact.html" class="hero-primary-link">Start a conversation</a>
-                             <a href="events.html" class="hero-secondary-link">See live workshops</a>
-                             <a href="quiz.html" class="hero-secondary-link">Take the AI readiness quiz</a>
-                        </div>
-                        <div class="hero-proof hero-p" aria-label="Happy AI Path proof points">
-                            <span class="hero-chip">Lecturer · Ohio State Fisher</span>
-                            <span class="hero-chip">AI prompt engineering and Copilot training</span>
-                            <span class="hero-chip">Confident executive adoption</span>
-                        </div>
-                        <div class="hero-tools hero-p" aria-label="AI tools I help teams master">
-                            <p>Training built for the tools you use</p>
-                            <div class="flex flex-wrap ai-bubbles" aria-live="polite">
-                                <span class="ai-bubble" aria-label="Copilot badge" role="button" tabindex="0" data-blurb="Guide your associates to use Agents, Notebooks, and AI in Excel, PowerPoint, and Word while streamlining their workflow." data-tool="Copilot">Copilot</span>
-                                <span class="ai-bubble" aria-label="ChatGPT badge" role="button" tabindex="0" data-blurb="Teach your teams about ChatGPT connectors, Projects, and Custom GPTs to supercharge their capabilities." data-tool="ChatGPT">ChatGPT</span>
-                                <span class="ai-bubble" aria-label="Claude badge" role="button" tabindex="0" data-blurb="Use Claude for research, analysis, writing, and repeatable business workflows with Projects, Skills, and connectors." data-tool="Claude">Claude</span>
-                                <span class="ai-bubble" aria-label="Gemini badge" role="button" tabindex="0" data-blurb="Learn Google's AI ecosystem, from NotebookLM and Gems to AI Studio." data-tool="Gemini">Gemini</span>
-                            </div>
-                            <div id="tool-blurb" class="mt-5 max-w-3xl bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white text-sm sm:text-base shadow-lg hidden" role="status" aria-live="polite"></div>
-                        </div>
-                    </div>
-                    <div class="hero-media hero-p" aria-label="Jim Perry teaching AI">
-                        <img src="jim-perry-ai-workshop.png" alt="Jim Perry teaching an AI workshop to a room of business professionals" loading="eager" decoding="async">
-                        <div class="hero-quote-card">
-                            <p class="display-face quote-text">“Well paced, engaging, and time well spent.”</p>
-                            <p class="quote-meta">Workshop participant</p>
-                        </div>
-                    </div>
+                    <figure class="editorial-hero-image">
+                        <img src="jim-perry-ai-workshop-home.webp" alt="Jim Perry leading an interactive AI workshop for business professionals" width="1605" height="980" fetchpriority="high" decoding="async">
+                        <figcaption>Practical AI learning, grounded in real work.</figcaption>
+                    </figure>
                 </div>
             </header>
-            
-            <div class="bg-gray-100">
-                <div class="max-w-6xl mx-auto py-3 px-4 sm:px-6 lg:px-8 text-center text-sm font-medium text-gray-700">
-                    <p style="line-height: 1.6;">As an <a href="about.html" class="font-bold text-[#0E7490] hover:text-[#0C6880] underline" title="Learn more about Jim Perry's background">Lecturer at The Ohio State University Fisher College of Business</a>, I bring academic rigor to practical, real-world AI implementation.</p>
-                </div>
-            </div>
 
-            <section id="testimonials" class="animate-on-scroll py-20 section-gray">
-                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center">
-                        <h2 class="text-base font-semibold text-[#0E7490] tracking-wide uppercase">What My Clients Say</h2>
-                        <p class="mt-2 text-3xl font-bold text-gray-900 tracking-tight sm:text-4xl" style="line-height: 1.2;">AI Coaching & Training Testimonials</p>
+            <section class="editorial-section editorial-who animate-on-scroll" aria-labelledby="who-heading">
+                <div class="editorial-shell editorial-three-column">
+                    <div>
+                        <p class="editorial-label">Who I help</p>
+                        <h2 id="who-heading" class="display-face">Leaders and teams ready to move from uncertainty to useful action.</h2>
                     </div>
-                    <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-2">
-                        <div class="testimonial-card">
-                            <p class="text-gray-600 italic" style="line-height: 1.6;">"…perfect for anyone…overwhelmed with how to get started using AI tools in their day to day."</p>
-                            <div class="mt-4 font-semibold text-gray-900">- Course Participant</div>
-                        </div>
-                        <div class="testimonial-card">
-                            <p class="text-gray-600 italic" style="line-height: 1.6;">"The information learned in the two days here will 100% revolutionize our company and I can't wait to show with my team!"</p>
-                            <div class="mt-4 font-semibold text-gray-900">- Course Participant</div>
-                        </div>
-                        <div class="testimonial-card">
-                            <p class="text-gray-600 italic" style="line-height: 1.6;">"This course is essential for any employer and employee who are looking to increase productivity and efficiency."</p>
-                            <div class="mt-4 font-semibold text-gray-900">- Course Participant</div>
-                        </div>
-                        <div class="testimonial-card">
-                            <p class="text-gray-600 italic" style="line-height: 1.6;">"Jim Perry has created a fantastic course that provides the basic foundation for AI literacy."</p>
-                            <div class="mt-4 font-semibold text-gray-900">- Course Participant</div>
-                        </div>
+                    <p class="editorial-intro">I work with executives, functional leaders, and teams who want to understand where AI genuinely fits, build good judgment, and use it confidently in everyday work.</p>
+                    <div class="editorial-problems">
+                        <h3>Common challenges we solve</h3>
+                        <ul>
+                            <li>Uncertainty about where AI creates value</li>
+                            <li>Too many tools, opinions, and competing priorities</li>
+                            <li>A gap between experimentation and repeatable workflows</li>
+                            <li>Teams that need practical, psychologically safe learning</li>
+                        </ul>
                     </div>
-                    <div class="mt-12 text-center">
-                        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7377019227494555648/" target="_blank" rel="noopener noreferrer" class="text-[#0E7490] hover:text-[#0C6880] font-semibold">
-                            See more feedback on LinkedIn
-                        </a>
+                </div>
+            </section>
+
+            <section class="editorial-section editorial-services animate-on-scroll" aria-labelledby="services-heading">
+                <div class="editorial-shell">
+                    <div class="editorial-section-heading">
+                        <p class="editorial-label">Ways to work together</p>
+                        <h2 id="services-heading" class="display-face">Support built around your real business decisions.</h2>
                     </div>
+                    <div class="editorial-service-list">
+                        <article class="editorial-service">
+                            <div class="editorial-service-number" aria-hidden="true">01</div>
+                            <div>
+                                <h3 class="display-face">Executive AI Coaching</h3>
+                                <p>A confidential thought partnership for leaders who need clarity on AI priorities, governance, communication, and responsible adoption.</p>
+                                <a href="services.html">Explore executive coaching <span aria-hidden="true">→</span></a>
+                            </div>
+                        </article>
+                        <article class="editorial-service">
+                            <div class="editorial-service-number" aria-hidden="true">02</div>
+                            <div>
+                                <h3 class="display-face">AI Team Training</h3>
+                                <p>Hands-on, role-aware workshops that help people use ChatGPT, Claude, Copilot, and Gemini with confidence, care, and measurable purpose.</p>
+                                <a href="services.html">Explore team training <span aria-hidden="true">→</span></a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="editorial-credibility animate-on-scroll" aria-labelledby="credibility-heading">
+                <div class="editorial-shell editorial-credibility-grid">
+                    <img src="jim-perry-teaching-home.webp" alt="Jim Perry teaching practical AI concepts" width="1620" height="810" loading="lazy" decoding="async">
+                    <div>
+                        <p class="editorial-label">Why Happy AI Path</p>
+                        <h2 id="credibility-heading" class="display-face">Real-world experience. Academic perspective. A human-centered approach.</h2>
+                        <p>Jim Perry brings Fortune 100 technology leadership experience and the perspective of a Lecturer at The Ohio State University Fisher College of Business. His teaching is practical, inclusive, and designed to make complex technology immediately useful.</p>
+                        <a href="about.html" class="editorial-text-link">Meet Jim <span aria-hidden="true">→</span></a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="editorial-section editorial-events animate-on-scroll" aria-labelledby="events-heading">
+                <div class="editorial-shell">
+                    <div class="editorial-events-intro">
+                        <p class="editorial-label">Upcoming events</p>
+                        <h2 id="events-heading" class="display-face">Live, hands-on workshops.</h2>
+                    </div>
+                    <div class="editorial-event-list">
+                        <article>
+                            <time datetime="2026-10-20">October 20, 2026</time>
+                            <h3>Anthropic Claude for Business Productivity and Innovation</h3>
+                            <a href="events.html">View workshop <span aria-hidden="true">→</span></a>
+                        </article>
+                        <article>
+                            <time datetime="2026-11-10">November 10, 2026</time>
+                            <h3>ChatGPT for Business Productivity and Innovation</h3>
+                            <a href="events.html">View workshop <span aria-hidden="true">→</span></a>
+                        </article>
+                        <article>
+                            <time datetime="2026-12-08">December 8–9, 2026</time>
+                            <h3>AI Prompting Intensive for Business Strategy</h3>
+                            <a href="events.html">View workshop <span aria-hidden="true">→</span></a>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="testimonials" class="editorial-section editorial-testimonials animate-on-scroll" aria-labelledby="testimonials-heading">
+                <div class="editorial-shell">
+                    <div class="editorial-section-heading">
+                        <p class="editorial-label">What participants say</p>
+                        <h2 id="testimonials-heading" class="display-face">Practical. Engaging. Immediately useful.</h2>
+                    </div>
+                    <div class="editorial-quote-list">
+                        <blockquote>
+                            <p>“Perfect for anyone overwhelmed with how to get started using AI tools in their day to day.”</p>
+                            <footer>Course participant</footer>
+                        </blockquote>
+                        <blockquote>
+                            <p>“The information learned in the two days here will 100% revolutionize our company.”</p>
+                            <footer>Course participant</footer>
+                        </blockquote>
+                        <blockquote>
+                            <p>“Jim Perry has created a fantastic course that provides the basic foundation for AI literacy.”</p>
+                            <footer>Course participant</footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </section>
+
+            <section class="editorial-invitation animate-on-scroll" aria-labelledby="invitation-heading">
+                <div class="editorial-shell">
+                    <h2 id="invitation-heading" class="display-face">Let’s find the right path for your team.</h2>
+                    <p>Tell me where AI feels unclear, stuck, or full of potential. We’ll identify a practical next step together.</p>
+                    <a href="contact.html" class="editorial-button editorial-button-primary">Start a conversation <span aria-hidden="true">→</span></a>
                 </div>
             </section>
         </main>
 
-        <button id="backToTopBtn" title="Go to top">
+        <button id="backToTopBtn" type="button" title="Go to top" aria-label="Back to top">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
             </svg>
@@ -279,7 +307,7 @@
                 </div>
                 <div class="privacy-footer-actions">
                     <a href="privacy.html" class="privacy-footer-link">Privacy Notice</a>
-                    <button type="button" class="privacy-choices-link" data-privacy-choices>Privacy & Cookie Choices</button>
+                    <button type="button" class="privacy-choices-link" data-privacy-choices>Privacy &amp; Cookie Choices</button>
                 </div>
             </div>
         </footer>
@@ -297,6 +325,8 @@
             mobileMenuButton?.addEventListener('click', (e) => {
                 e.stopPropagation();
                 mobileMenu?.classList.toggle('hidden');
+                const isOpen = !mobileMenu?.classList.contains('hidden');
+                mobileMenuButton.setAttribute('aria-expanded', String(isOpen));
             });
 
             window.addEventListener('scroll', () => {
