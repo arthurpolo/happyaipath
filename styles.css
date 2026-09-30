@@ -32,7 +32,7 @@
     --shadow-testimonial: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 
     /* Typography */
-    --font-family: 'Inter', sans-serif;
+    --font-family: 'Source Sans 3', system-ui, sans-serif;
     --line-height-heading: 1.2;
     --line-height-body: 1.6;
     --surface-warm: #f8f5ef;
@@ -59,7 +59,7 @@ body {
 }
 
 .display-face {
-    font-family: 'Fraunces', Georgia, serif;
+    font-family: 'Newsreader', Georgia, serif;
 }
 
 .section-intro {
@@ -194,7 +194,7 @@ body {
 }
 
 .brand-wordmark {
-    font-family: 'Fraunces', Georgia, serif;
+    font-family: 'Newsreader', Georgia, serif;
     font-size: clamp(1.6rem, 3.2vw, 2.35rem);
     font-weight: 700;
     letter-spacing: -0.045em;
@@ -1676,7 +1676,7 @@ h2, .heading-secondary {
 
 .editorial-service-number {
     color: var(--editorial-blue);
-    font-family: 'Fraunces', Georgia, serif;
+    font-family: 'Newsreader', Georgia, serif;
     font-size: 1.15rem;
 }
 
@@ -1772,7 +1772,7 @@ h2, .heading-secondary {
 .editorial-event-list h3 {
     margin: 0.65rem 0 1.2rem;
     color: var(--editorial-ink);
-    font-family: 'Fraunces', Georgia, serif;
+    font-family: 'Newsreader', Georgia, serif;
     font-size: clamp(1.15rem, 1.6vw, 1.45rem);
     line-height: 1.16;
 }
@@ -1800,7 +1800,7 @@ h2, .heading-secondary {
 .editorial-quote-list p {
     margin: 0;
     color: var(--editorial-ink);
-    font-family: 'Fraunces', Georgia, serif;
+    font-family: 'Newsreader', Georgia, serif;
     font-size: clamp(1.2rem, 1.8vw, 1.55rem);
     line-height: 1.35;
 }
