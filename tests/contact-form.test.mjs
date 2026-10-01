@@ -35,6 +35,19 @@ test('contact form uses accessible inline submission feedback', () => {
   assert.match(contact, /Thanks[^<]*Your message has been sent/i);
 });
 
+test('contact interest options use the approved labels and submitted values', () => {
+  const contact = readFileSync(new URL('../contact.html', import.meta.url), 'utf8');
+  for (const value of [
+    'One-on-one AI coaching',
+    'Team AI training or private workshop',
+    'Speaking or facilitation',
+    'Something else',
+  ]) {
+    assert.match(contact, new RegExp(`<option value="${value}">${value}</option>`));
+  }
+  assert.doesNotMatch(contact, /value="Executive AI coaching"|value="Private corporate workshop"/);
+});
+
 test('JotForm is completely removed from the site contact flow', () => {
   assert.doesNotMatch(contact, /jotform/i);
   assert.doesNotMatch(privacy, /jotform/i);
