@@ -68,6 +68,11 @@ test('Netlify permanently redirects legacy URLs and serves Prompting Lab at its 
   ]) {
     assert.match(config, new RegExp(`from = "${legacy.replace('.', '\\.')}"\\s+to = "${clean}"\\s+status = 301`));
   }
+  assert.match(
+    config,
+    /from = "\/pricing\.html"\s+to = "\/pricing"\s+status = 301\s+force = true/,
+    'the pricing redirect must override the existing pricing.html file'
+  );
   assert.match(config, /from = "\/prompting-lab"\s+to = "\/tips\.html"\s+status = 200/);
 });
 

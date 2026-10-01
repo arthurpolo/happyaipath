@@ -16,6 +16,7 @@
   from = "/pricing.html"
   to = "/pricing"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/quiz.html"
