@@ -13,13 +13,24 @@ function read(relativePath) {
 test('pricing page communicates approved starting prices and hands-on preparation', () => {
   const html = read('pricing.html');
   assert.match(html, /<h1[^>]*>Engagements &amp; Pricing<\/h1>/);
-  assert.equal((html.match(/<h2[^>]*class="display-face">Engagements start at \$5,000<\/h2>/g) ?? []).length, 2);
-  assert.match(html, /Every training engagement is hands-on and designed specifically for your team\./);
-  assert.match(html, /participants complete guided preparation based on their current responsibilities, workflows, and business challenges/i);
-  assert.match(html, /Most training sessions run between two and four hours\./);
-  assert.match(html, /Longer, more in-depth sessions and multi-session programs are available/);
+  assert.match(html, /<h2[^>]*class="display-face">Training starts at \$5,000<\/h2>/);
+  assert.match(html, /<h2[^>]*class="display-face">Coaching starts at \$5,000<\/h2>/);
+  assert.match(html, /Your team brings real work to the session\./);
+  assert.match(html, /Participants complete guided preparation in advance/);
+  assert.match(html, /Most training sessions run two to four hours\./);
+  assert.match(html, /Longer sessions and multi-session programs are available/);
   assert.doesNotMatch(html, /\$15,000|\$30,000/);
   assert.doesNotMatch(html, /—/);
+});
+
+test('pricing page presents training and coaching as an immediate two-column comparison', () => {
+  const html = read('pricing.html');
+  assert.match(html, /class="[^"]*pricing-options-grid[^"]*"/);
+  assert.equal((html.match(/<article[^>]+class="pricing-option(?: pricing-option-accent)?"/g) ?? []).length, 2);
+  assert.match(html, /Final pricing depends on whether the training is virtual or in person/);
+  assert.match(html, /Final pricing depends on the length of the engagement/);
+  assert.doesNotMatch(html, /class="pricing-outcomes"/);
+  assert.doesNotMatch(html, /<h3>Participants leave with<\/h3>|<h3>Clients leave with<\/h3>/);
 });
 
 test('pricing page has complete search, social, image, and structured data metadata', () => {
