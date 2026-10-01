@@ -29,7 +29,8 @@ test('Homepage uses approved descriptions, proof, pricing links, and testimonial
   assert.ok((html.match(/href="\/pricing"[^>]*>View pricing<\/a>/g) ?? []).length >= 2);
   assert.match(html, /Since January 2025, Jim has trained more than 1,000 professionals, including sessions with more than 300 participants\./);
   assert.doesNotMatch(html, /100% revolutionize our company/);
-  assert.match(html, /TODO\(Jim\): add role and company type to each testimonial\./);
+  assert.doesNotMatch(html, /TODO\(Jim\): add role and company type to each testimonial\.|Course participant/);
+  assert.equal((html.match(/<footer>Trainee<\/footer>/g) ?? []).length, 2);
 });
 
 test('Contact uses approved copy and Netlify interest values', () => {
@@ -70,6 +71,15 @@ test('only Contact links directly to Outlook booking', () => {
   });
   assert.deepEqual(occurrences, ['contact.html']);
   assert.match(read('contact.html'), /href="https:\/\/outlook\.office\.com\/book\/HappyAIPath@happyaipath\.com\/\?ismsaljsauthenabled"[^>]*>Book time with Jim<\/a>/);
+});
+
+test('Events uses the full university and college names', () => {
+  const events = read('events.html');
+  const llms = read('llms.txt');
+
+  assert.doesNotMatch(events, /OSU Fisher|with Ohio State|through Ohio State/);
+  assert.doesNotMatch(llms, /OSU Fisher/);
+  assert.match(events, /Fisher College of Business Executive Education at The Ohio State University/);
 });
 
 test('Pricing page remains byte-for-byte unchanged', () => {
