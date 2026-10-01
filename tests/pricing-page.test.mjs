@@ -23,6 +23,17 @@ test('pricing page communicates approved starting prices and hands-on preparatio
   assert.doesNotMatch(html, /—/);
 });
 
+test('pricing page uses the shared editorial fonts, surface, and visible primary buttons', () => {
+  const html = read('pricing.html');
+  const css = read('styles.css');
+
+  assert.match(html, /family=Newsreader:[^"&]+&family=Source\+Sans\+3:/);
+  assert.match(html, /<main id="main-content" class="home-editorial pricing-page">/);
+  assert.match(css, /\.pricing-page\s*{[^}]*background:\s*var\(--editorial-paper\)/s);
+  assert.match(css, /\.editorial-button-primary\s*{[^}]*background:\s*var\(--editorial-teal\)/s);
+  assert.equal((html.match(/class="editorial-button editorial-button-primary"/g) ?? []).length, 2);
+});
+
 test('pricing page presents training and coaching as an immediate two-column comparison', () => {
   const html = read('pricing.html');
   assert.match(html, /class="[^"]*pricing-options-grid[^"]*"/);

@@ -29,12 +29,15 @@ test('Homepage uses approved descriptions, proof, pricing links, and testimonial
   assert.ok((html.match(/href="\/pricing"[^>]*>View pricing<\/a>/g) ?? []).length >= 2);
   assert.match(html, /Since January 2025, Jim has trained more than 1,000 professionals, including sessions with more than 300 participants\./);
   assert.doesNotMatch(html, /100% revolutionize our company/);
-  assert.doesNotMatch(html, /TODO\(Jim\): add role and company type to each testimonial\.|Course participant/);
-  assert.equal((html.match(/<footer>Trainee<\/footer>/g) ?? []).length, 2);
+  assert.match(html, /<div class="editorial-service-audience">For one person<\/div>/);
+  assert.match(html, /Hands-on workshops built around your team's roles, tools, and current work\./);
+  assert.doesNotMatch(html, /TODO\(Jim\): add role and company type to each testimonial\.|Course participant|<footer>Trainee<\/footer>/);
+  assert.equal((html.match(/<footer>Workshop participant<\/footer>/g) ?? []).length, 2);
 });
 
 test('Contact uses approved copy and Netlify interest values', () => {
   const html = read('contact.html');
+  assert.match(html, /<title>Contact Jim Perry \| Happy AI Path<\/title>/);
   assert.match(html, /Book a conversation with Jim Perry about AI training or coaching for your team\./);
   assert.match(html, /<h1[^>]*>Tell me what your team is working through\.<\/h1>/);
   assert.match(html, /Book a time on Jim's calendar or send a short message below\. Either way, Jim will follow up personally\./);
@@ -54,7 +57,8 @@ test('About contains the approved corrections', () => {
   assert.match(html, /from streamlining operations to improving decision-making\./);
   assert.match(html, /As a <span[^>]*>Lecturer/);
   assert.match(html, /meta name="keywords" content="[^"]*AI Coach/);
-  assert.doesNotMatch(html, /As an <span|Executive AI Coach|unlocking new growth opportunities/);
+  assert.match(html, /The Ohio State University Fisher College of Business teaching experience/);
+  assert.doesNotMatch(html, /As an <span|Executive AI Coach|unlocking new growth opportunities|OSU Fisher/);
 });
 
 test('One-on-One AI Coaching is the service name across discovery copy', () => {
@@ -82,7 +86,19 @@ test('Events uses the full university and college names', () => {
   assert.match(events, /Fisher College of Business Executive Education at The Ohio State University/);
 });
 
-test('Pricing page remains byte-for-byte unchanged', () => {
-  const hash = createHash('sha256').update(read('pricing.html')).digest('hex');
-  assert.equal(hash, '2197771bb7a504290dd429992acf8311908bde3b701a20b2578612b17a11cab3');
+test('Pricing page text remains unchanged', () => {
+  const html = read('pricing.html');
+  const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1] ?? '';
+  const text = main
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&rsquo;/g, '’')
+    .replace(/&#39;/g, "'")
+    .replace(/&quot;/g, '"')
+    .replace(/\s+/g, ' ')
+    .trim();
+  const hash = createHash('sha256').update(text).digest('hex');
+  assert.equal(hash, '4b03276fa8fd9ed3bc929f5164fdab88e0d2ce9b8d69679508de6b61fd8969f4');
 });
