@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 concurrency:
   group: refresh-blog-snapshot
@@ -23,14 +24,27 @@ jobs:
           persist-credentials: true
       - name: Update blog posts in the HTML
         run: python3 scripts/update_blog_snapshot.py
-      - name: Publish only when posts changed
+      - name: Open a pull request only when posts changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
         run: |
           if git diff --quiet -- blog.html; then
             echo "Blog HTML already up to date"
             exit 0
           fi
+          pending=$(gh pr list --base main --state open --json headRefName --jq '[.[] | select(.headRefName | startswith("blog-refresh/"))] | length')
+          if [ "$pending" -gt 0 ]; then
+            echo "A blog refresh pull request is already awaiting review"
+            exit 0
+          fi
+          branch="blog-refresh/snapshot-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          git switch -c "$branch"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add blog.html
           git commit -m "Refresh crawlable Blogger post links"
-          git push origin HEAD:main
+          git push origin "HEAD:refs/heads/$branch"
+          gh pr create --base main --head "$branch" \
+            --title "Refresh crawlable Blogger post links" \
+            --body "Updates the blog HTML snapshot from the Blogger feed. Review and merge this pull request to publish the refreshed links."
