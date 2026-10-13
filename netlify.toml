@@ -15,6 +15,12 @@
 
 # Keep one clean, indexable URL for every public page.
 [[redirects]]
+  from = "/blog/10-hard-learned-lessons-in-prompt-engineering"
+  to = "https://blog.happyaipath.com/2025/10/10-hard-learned-lessons-in-prompt.html"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/index.html"
   to = "/"
   status = 301
