@@ -91,3 +91,16 @@ test('blog post template keeps the shared pricing navigation responsive', () => 
   assert.match(html, /class="[^"]*mobile-nav-toggle[^"]*"/);
   assert.match(html, /id="mobile-menu" class="[^"]*mobile-nav-panel[^"]*"/);
 });
+
+// Existing files shadow unforced Netlify redirect rules.
+test('all legacy HTML URLs override static file shadowing', () => {
+  const config = readFileSync(new URL('../netlify.toml', import.meta.url), 'utf8');
+  const rules = config.split('[[redirects]]').slice(1);
+  for (const [file, cleanPath] of pages) {
+    const rule = rules.find(block => block.includes(`from = "/${file}"`));
+    assert.ok(rule, `missing redirect for ${file}`);
+    assert.ok(rule.includes(`to = "${cleanPath}"`), `${file} must target its canonical URL`);
+    assert.match(rule, /status = 301/, `${file} must redirect permanently`);
+    assert.match(rule, /force = true/, `${file} must override the existing HTML file`);
+  }
+});

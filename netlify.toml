@@ -14,6 +14,7 @@
     Cross-Origin-Opener-Policy = "same-origin"
 
 # Keep one clean, indexable URL for every public page.
+# Force legacy redirects so existing HTML files do not shadow these rules.
 [[redirects]]
   from = "/blog/10-hard-learned-lessons-in-prompt-engineering"
   to = "https://blog.happyaipath.com/2025/10/10-hard-learned-lessons-in-prompt.html"
@@ -24,11 +25,13 @@
   from = "/index.html"
   to = "/"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/services.html"
   to = "/services"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/pricing.html"
@@ -40,46 +43,55 @@
   from = "/quiz.html"
   to = "/quiz"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/tips"
   to = "/prompting-lab"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/tips.html"
   to = "/prompting-lab"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/blog.html"
   to = "/blog"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/events.html"
   to = "/events"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/about.html"
   to = "/about"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/contact.html"
   to = "/contact"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/privacy.html"
   to = "/privacy"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/guide.html"
   to = "/guide"
   status = 301
+  force = true
 
 # The Prompting Lab keeps its existing source filename while exposing a clear URL.
 [[redirects]]
